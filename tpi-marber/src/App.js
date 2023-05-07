@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
-function App() {
+import Navbar from "./components/NavBar/Navbar";
+import Banner from "./components/Banner/Banner";
+import Products from "./components/BeerItem/BeerItem";
+
+const BEER = [
+  {
+    id: 1,
+    image:
+      "https://vinotecamasis.com.ar/wp-content/uploads/2022/01/Cerveza-Warsteiner-Lata-473-ml.png",
+    title: "Warsteiner",
+    description:
+      "Warsteiner es una cerveza de origen Alemán tipo Pilsener, 100% malta. Está elaborada con ingredientes finos y naturales de acuerdo a la Ley de la Pureza Alemana.",
+    price: 400,
+  },
+];
+
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Navbar useTransparent />
+        <Banner />
       </header>
+      <Products BEER={BEER} />
     </div>
   );
-}
+};
 
 export default App;
