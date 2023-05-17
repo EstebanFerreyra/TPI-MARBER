@@ -1,7 +1,12 @@
-.nav-item:hover{
-    background-color: #9fa4a1;
+.nav-item:hover {
+  background-color: #9fa4a1;
 }
 
-.btn-outline-success{
-    margin: 5px;
+.btn-outline-success {
+  margin: 5px;
+}
+
+.navbar-brand {
+  border: none;
+  background-color: whitesmoke;
 }
