@@ -1,11 +1,13 @@
-import React, { createContext, useContext } from "react";
-import { auth } from "../../Firebase/Firebase.config";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { auth } from "../components/Firebase/Firebase.config";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 export const authContext = createContext();
@@ -19,6 +21,19 @@ export const useAuth = () => {
 };
 
 export function AuthProvider({ children }) {
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    const suscribed = onAuthStateChanged(auth, (currentUser) => {
+      if (!currentUser) {
+        console.log("no hay usuario suscrito");
+        setUser("");
+      } else {
+        setUser(currentUser);
+      }
+    });
+    return () => suscribed();
+  }, []);
+
   const register = async (email, password) => {
     const response = await createUserWithEmailAndPassword(
       auth,
@@ -49,6 +64,7 @@ export function AuthProvider({ children }) {
         login,
         loginWithGoogle,
         logout,
+        user,
       }}
     >
       {children}

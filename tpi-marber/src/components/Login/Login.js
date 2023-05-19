@@ -1,15 +1,28 @@
 import React, { useState } from "react";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 function Login() {
   const auth = useAuth();
+  // const { displayName } = auth.user;
+  // console.log(displayName);
 
   const [emailRegister, setEmailRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleRegister = (e) => {
     e.preventDefault();
     auth.register(emailRegister, passwordRegister);
+  };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    auth.login(email, password);
+  };
+
+  const handlerLogout = (e) => {
+    auth.logout();
   };
   return (
     <>
@@ -26,57 +39,25 @@ function Login() {
 
                       <div class="form-outline mb-4">
                         <input
-                          onChange={(e) => setEmailRegister(e.target.value)}
+                          onChange={(e) => setEmail(e.target.value)}
                           type="email"
-                          id="formExample3cg"
                           class="form-control form-control-lg"
                         />
-                        <label class="form-label" for="exampleInputEmail1">
-                          Correo electrónico
-                        </label>
+                        <label class="form-label">Correo electrónico</label>
                       </div>
 
                       <div class="form-outline mb-4">
                         <input
-                          onChange={(e) => setPasswordRegister(e.target.value)}
+                          onChange={(e) => setPassword(e.target.value)}
                           type="password"
-                          id="formExample4cg"
                           class="form-control form-control-lg"
                         />
-                        <label class="form-label" for="formExample4cg">
-                          contraseña
-                        </label>
-                      </div>
-
-                      <div class="form-outline mb-4">
-                        <input
-                          type="password"
-                          id="formExample4cdg"
-                          class="form-control form-control-lg"
-                        />
-                        <label class="form-label" for="formExample4cdg">
-                          Repita su contraseña
-                        </label>
-                      </div>
-
-                      <div class="form-check d-flex justify-content-center mb-5">
-                        <input
-                          class="form-check-input me-2"
-                          type="checkbox"
-                          value=""
-                          id="form2Example3cg"
-                        />
-                        <label class="form-check-label" for="form2Example3g">
-                          I agree all statements in{" "}
-                          <a href="#!" class="text-body">
-                            <u>Terms of service</u>
-                          </a>
-                        </label>
+                        <label class="form-label">contraseña</label>
                       </div>
 
                       <div class="d-flex justify-content-center">
                         <button
-                          onClick={(e) => handleRegister(e)}
+                          onClick={(e) => handleLogin(e)}
                           type="button"
                           class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
                         >
@@ -87,8 +68,17 @@ function Login() {
                       <p class="text-center text-muted mt-5 mb-0">
                         No tienes cuenta?{" "}
                         <a href="#!" class="fw-bold text-body">
-                          <u>Registrarse</u>
+                          <u>Registrarse </u>
                         </a>
+                        <div class="d-flex justify-content-center">
+                          <button
+                            onClick={() => handlerLogout()}
+                            type="button"
+                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                          >
+                            logout
+                          </button>
+                        </div>
                       </p>
                     </form>
                   </div>
@@ -98,7 +88,7 @@ function Login() {
           </div>
         </div>
       </section>
-
+      {/* ------------------ Register ---------------------- */}
       <section class="vh-100 bg-image">
         <div class="mask d-flex align-items-center h-100 gradient-custom-3">
           <div class="container h-100">
@@ -125,34 +115,19 @@ function Login() {
                       <div class="form-outline mb-4">
                         <input
                           type="email"
-                          id="form3Example3cg"
                           class="form-control form-control-lg"
+                          onChange={(e) => setEmailRegister(e.target.value)}
                         />
-                        <label class="form-label" for="exampleInputEmail1">
-                          Correo electrónico
-                        </label>
+                        <label class="form-label">Correo electrónico</label>
                       </div>
 
                       <div class="form-outline mb-4">
                         <input
                           type="password"
-                          id="form3Example4cg"
                           class="form-control form-control-lg"
+                          onChange={(e) => setPasswordRegister(e.target.value)}
                         />
-                        <label class="form-label" for="form3Example4cg">
-                          contraseña
-                        </label>
-                      </div>
-
-                      <div class="form-outline mb-4">
-                        <input
-                          type="password"
-                          id="form3Example4cdg"
-                          class="form-control form-control-lg"
-                        />
-                        <label class="form-label" for="form3Example4cdg">
-                          Repita su contraseña
-                        </label>
+                        <label class="form-label">contraseña</label>
                       </div>
 
                       <div class="form-check d-flex justify-content-center mb-5">
@@ -160,9 +135,8 @@ function Login() {
                           class="form-check-input me-2"
                           type="checkbox"
                           value=""
-                          id="form2Example3cg"
                         />
-                        <label class="form-check-label" for="form2Example3g">
+                        <label class="form-check-label">
                           I agree all statements in{" "}
                           <a href="#!" class="text-body">
                             <u>Terms of service</u>
@@ -172,6 +146,7 @@ function Login() {
 
                       <div class="d-flex justify-content-center">
                         <button
+                          onClick={(e) => handleRegister(e)}
                           type="button"
                           class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
                         >
