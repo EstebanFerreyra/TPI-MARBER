@@ -1,31 +1,49 @@
 import "./App.css";
 
-import Navbar from "./components/NavBar/Navbar";
-import Banner from "./components/Banner/Banner";
-import Products from "./components/BeerItem/BeerItem";
+import Beers from "./components/Beers/Beers";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import NotFound from "./components/routes/NotFound";
+import HomeMarber from "./components/HomeMarber/HomeMarber";
+import AboutUs from "./components/AboutUs/AboutUs";
+import Login from "./components/Login/Login";
+import { AuthProvider } from "./components/Login/context/AuthContext";
+function App() {
+  // return (
+  //   <div className="App">
+  //     <NavBar></NavBar>
+  //     <Carousel />
+  //     <Beers/>
+  //   </div>
+  // );
 
-const BEER = [
-  {
-    id: 1,
-    image:
-      "https://vinotecamasis.com.ar/wp-content/uploads/2022/01/Cerveza-Warsteiner-Lata-473-ml.png",
-    title: "Warsteiner",
-    description:
-      "Warsteiner es una cerveza de origen Alemán tipo Pilsener, 100% malta. Está elaborada con ingredientes finos y naturales de acuerdo a la Ley de la Pureza Alemana.",
-    price: 400,
-  },
-];
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomeMarber />,
+    },
+    {
+      path: "/beers",
+      element: <Beers />,
+    },
+    {
+      path: "/aboutus",
+      element: <AboutUs />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "*",
+      element: <NotFound />,
+    },
+  ]);
 
-const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Navbar useTransparent />
-        <Banner />
-      </header>
-      <Products BEER={BEER} />
-    </div>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   );
-};
+}
 
 export default App;
