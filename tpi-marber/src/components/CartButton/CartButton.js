@@ -12,8 +12,8 @@ function CartButton({ quantity }) {
 
   return (
     <div className="NavBar">
-      <h2 className="d-flex justify-content-center">{quantity}</h2>
       <div className="d-flex justify-content-center">
+        <h2 className="d-flex justify-content-end">{quantity}</h2>
         <button
           onClick={addOne}
           disabled={quant === 5}
@@ -31,6 +31,7 @@ function CartButton({ quantity }) {
         >
           Quit
         </button>
+        <button className="btn btn-danger ms-1">X</button>
       </div>
     </div>
   );

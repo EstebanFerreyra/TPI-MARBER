@@ -6,6 +6,7 @@ import { CartContext } from "../../contexts/ShoppingCartContext";
 
 const NavBar = () => {
   const [click, setClick] = useState(false);
+  const { cart } = useContext(CartContext);
 
   const navigation = useNavigate();
 
@@ -29,11 +30,16 @@ const NavBar = () => {
     navigation("/buying");
   };
 
-  const [cart, setCart] = useContext(CartContext);
+  const cartQty = () => {
+    var quantity = 0;
 
-  const quantity = cart.reduce((acc, current) => {
-    return acc + current.quantity;
-  }, 0);
+    if (localStorage.getItem("cart").length !== 0) {
+      return (quantity = JSON.parse(localStorage.getItem("cart").length));
+    } else if (localStorage.getItem("cart").length === 0) {
+      return quantity;
+    }
+  };
+  // tengo el arreglo en localStorage, traerlo y mostrar el lenght o 0;
 
   return (
     <div>
@@ -94,7 +100,7 @@ const NavBar = () => {
                 />
               </button>
               <span className="cart-count">
-                <b>{quantity}</b>
+                <b>{cartQty}</b>
               </span>
               <button
                 className="btn btn-outline-success"

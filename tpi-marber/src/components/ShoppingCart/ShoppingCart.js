@@ -6,7 +6,7 @@ import "./ShoppingCart.css";
 import CartButton from "../CartButton/CartButton";
 
 const ShoppingCart = ({}) => {
-  const [cart, setCart] = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   const quantity = cart.reduce((acc, current) => {
     return acc + current.quantity;
@@ -25,18 +25,22 @@ const ShoppingCart = ({}) => {
       <div>
         <NavBar />
       </div>
-      <div className="card-order">
-        <h2>total: ${total}</h2>
-
-        <div className="card-inside">
+      <div className="card d-flex justify-content-center m-5 p-1">
+        <div className="card p-2">
+          <p>detalle de la compra</p>
           <h3>items in cart: {quantity}</h3>
+
+          <div className="d-flex justify-content-end">
+            <CartButton quantity={quantity} />
+          </div>
+          <h2>total: ${total}</h2>
         </div>
-      </div>
-      <div className=" d-flex justify-content-center m-3">
-        <CartButton quantity={quantity} />
-        <button className="btn btn-secondary" onClick={finishedBuy}>
-          Check out
-        </button>
+
+        <div className="d-flex justify-content-center m-3">
+          <button className="btn btn-secondary" onClick={finishedBuy}>
+            Check out
+          </button>
+        </div>
       </div>
     </div>
   );
