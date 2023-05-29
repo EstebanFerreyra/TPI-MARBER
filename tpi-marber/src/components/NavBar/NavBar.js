@@ -31,15 +31,10 @@ const NavBar = () => {
   };
 
   const cartQty = () => {
-    var quantity = 0;
+    let quantity = localStorage.getItem("cart").length;
 
-    if (localStorage.getItem("cart").length !== 0) {
-      return (quantity = JSON.parse(localStorage.getItem("cart").length));
-    } else if (localStorage.getItem("cart").length === 0) {
-      return quantity;
-    }
+    return quantity;
   };
-  // tengo el arreglo en localStorage, traerlo y mostrar el lenght o 0;
 
   return (
     <div>
@@ -100,7 +95,7 @@ const NavBar = () => {
                 />
               </button>
               <span className="cart-count">
-                <b>{cartQty}</b>
+                <b>0</b>
               </span>
               <button
                 className="btn btn-outline-success"
