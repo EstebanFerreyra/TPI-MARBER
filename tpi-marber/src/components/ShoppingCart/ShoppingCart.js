@@ -7,16 +7,12 @@ import NavBar from "../NavBar/NavBar";
 import CartButton from "../CartButton/CartButton";
 import CartItems from "../CartItems/CartItems";
 
-const ShoppingCart = ({}) => {
+const ShoppingCart = () => {
   const { cart } = useContext(CartContext);
 
-  const quantity = cart.reduce((acc, current) => {
-    return acc + current.quantity;
-  }, 0);
+  const quantity = cart.length;
 
-  const total = cart.reduce((acc, current) => {
-    return acc + current.quantity * current.beerPrice;
-  }, 0);
+  // const priceArray = ;
 
   const finishedBuy = (event) => {
     alert("¡Compra realizada con éxito!");
@@ -34,7 +30,7 @@ const ShoppingCart = ({}) => {
           <div className="d-flex justify-content-end">
             <CartButton quantity={quantity} />
           </div>
-          <h3>total: ${total}</h3>
+          <h3>total: ${}</h3>
         </div>
 
         <div className="d-flex justify-content-center m-3">

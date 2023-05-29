@@ -13,7 +13,7 @@ const BeerFilter = ({ onFilterStyleChange, filterStyle }) => {
             <option value="">Seleccione un estilo</option>
             <option value="apa">APA</option>
             <option value="ipa">IPA</option>
-            <option value="roja">ROJA</option>
+            <option value="red">ROJA</option>
             <option value="lager">LAGER</option>
             <option value="negra">NEGRA</option>
           </select>

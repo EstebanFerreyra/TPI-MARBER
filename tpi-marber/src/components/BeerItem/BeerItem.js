@@ -15,7 +15,7 @@ const BeerItem = ({ beerId, beerName, beerImage, beerStyle, beerPrice }) => {
       price: beerPrice,
     };
     addToCart(itemArmado);
-    <CartItems onAddToSummary={itemArmado} />;
+    //<CartItems onAddToSummary={itemArmado} />;
   };
 
   return (

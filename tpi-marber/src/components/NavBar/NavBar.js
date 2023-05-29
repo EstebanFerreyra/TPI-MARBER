@@ -30,11 +30,12 @@ const NavBar = () => {
     navigation("/buying");
   };
 
-  const cartQty = () => {
-    let quantity = localStorage.getItem("cart").length;
+  // const cartQty = () => {
+  //   let quantity = localStorage.getItem("cart").length;
+  //   return quantity;
+  // };
 
-    return quantity;
-  };
+  const quantity = cart.length;
 
   return (
     <div>
@@ -95,7 +96,7 @@ const NavBar = () => {
                 />
               </button>
               <span className="cart-count">
-                <b>0</b>
+                <b>{quantity}</b>
               </span>
               <button
                 className="btn btn-outline-success"

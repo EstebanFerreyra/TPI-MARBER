@@ -7,7 +7,7 @@ import BeerFilter from "../BeerFilter/BeerFilter";
 
 const Beers = () => {
   const [beers, setBeers] = useState([]);
-  const [filterStyle, setFilterStyle] = useState(null);
+  const [filterStyle, setFilterStyle] = useState("");
 
   const url = "https://localhost:7160/marber/BeerController/GetBeers";
   useEffect(() => {
@@ -19,21 +19,24 @@ const Beers = () => {
       },
     })
       .then((response) => response.json())
-      .then(setBeers);
+      .then((data) => setBeers(data));
   }, []);
 
-  const beersMapped = beers.map((beer) => (
-    <BeerItem
-      key={beer.beerId}
-      beerName={beer.beerName}
-      beerImage={beer.beerImage}
-      beerStyle={beer.beerStyle}
-      beerPrice={beer.beerPrice}
-    />
-  ));
+  const beersMapped = beers
+    .filter((beer) => beer.beerStyle === filterStyle[0] || filterStyle[1])
+    .map((beer) => (
+      <BeerItem
+        key={beer.beerId}
+        beerName={beer.beerName}
+        beerImage={beer.beerImage}
+        beerStyle={beer.beerStyle}
+        beerPrice={beer.beerPrice}
+      />
+    ));
 
   const filterStyleChanged = (style) => {
     setFilterStyle(style);
+    console.log(filterStyle);
   };
 
   return (

@@ -9,7 +9,7 @@ export const ShoppingCartProvider = ({ children }) => {
 
   const addToCart = (item) => {
     setCart([...cart, item]);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify([...cart, item]));
   };
 
   // useEffect(() => {
