@@ -8,8 +8,31 @@ export const ShoppingCartProvider = ({ children }) => {
   const [cart, setCart] = useState(cartLocalStorage);
 
   const addToCart = (item) => {
-    setCart([...cart, item]);
-    localStorage.setItem("cart", JSON.stringify([...cart, item]));
+    let newCart = [...cart];
+    let itemInCart = newCart.find((itemAdd) => item.name === itemAdd.name);
+    if (itemInCart) {
+      itemInCart.quantity++ &&
+        localStorage.setItem(
+          "cart",
+          JSON.stringify([...cart], {
+            ...itemInCart,
+            quantity: itemInCart.quantity++,
+          })
+        );
+    } else {
+      itemInCart = {
+        ...item,
+        quantity: 1,
+      };
+      newCart.push(itemInCart);
+    }
+    setCart(newCart);
+
+    // setCart([...cart, { ...item, quantity: 1 }]);
+    // localStorage.setItem(
+    //   "cart",
+    //   JSON.stringify([...cart, { ...item, quantity: 1 }])
+    // );
   };
 
   // useEffect(() => {

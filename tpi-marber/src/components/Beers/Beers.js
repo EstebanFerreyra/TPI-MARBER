@@ -23,7 +23,7 @@ const Beers = () => {
   }, []);
 
   const beersMapped = beers
-    .filter((beer) => beer.beerStyle === filterStyle[0] || filterStyle[1])
+    //.filter((beer) => beer.beerStyle === filterStyle[0] || filterStyle[1])
     .map((beer) => (
       <BeerItem
         key={beer.beerId}

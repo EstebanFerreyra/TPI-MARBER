@@ -4,7 +4,6 @@ import { CartContext } from "../../contexts/ShoppingCartContext";
 
 import "./ShoppingCart.css";
 import NavBar from "../NavBar/NavBar";
-import CartButton from "../CartButton/CartButton";
 import CartItems from "../CartItems/CartItems";
 
 const ShoppingCart = () => {
@@ -12,7 +11,13 @@ const ShoppingCart = () => {
 
   const quantity = cart.length;
 
-  // const priceArray = ;
+  const total = cart.reduce(
+    (totalPrice, item) => totalPrice + item.quantity * item.price,
+    0
+  );
+  // cart.length !== 0
+  //   ? cart.reduce((sum, { price, quantity }) => sum + price * quantity)
+  //   : 0;
 
   const finishedBuy = (event) => {
     alert("¡Compra realizada con éxito!");
@@ -27,10 +32,8 @@ const ShoppingCart = () => {
         <div className="card p-2">
           <CartItems />
           <h4>items in cart: {quantity}</h4>
-          <div className="d-flex justify-content-end">
-            <CartButton quantity={quantity} />
-          </div>
-          <h3>total: ${}</h3>
+          <div className="d-flex justify-content-end"></div>
+          <h3>total: ${total}</h3>
         </div>
 
         <div className="d-flex justify-content-center m-3">

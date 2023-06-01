@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { CartContext } from "../../contexts/ShoppingCartContext";
 
 function CartButton({ quantity }) {
-  const [quant, setQuantity] = useState(quantity);
-  const addOne = () => {
-    return setQuantity(quant + 1);
+  // const { cart } = useContext(CartContext);
+  // const quantity = cart.length;
+
+  const addOne = (quantity) => {
+    return quantity + 1;
   };
 
-  const quitOne = () => {
-    return setQuantity(quant - 1);
+  const quitOne = (quantity) => {
+    return quantity - 1;
   };
 
   return (
@@ -16,20 +19,20 @@ function CartButton({ quantity }) {
         <h2 className="d-flex justify-content-end">{quantity}</h2>
         <button
           onClick={addOne}
-          disabled={quant === 5}
+          disabled={quantity === 5}
           type="button"
-          className="btn btn-primary me-1"
+          className="btn btn-primary max-auto"
         >
-          Add
+          +
         </button>
 
         <button
           onClick={quitOne}
-          disabled={quant === 1}
+          disabled={quantity === 1}
           type="button"
           className="btn btn-secondary ms-1"
         >
-          Quit
+          -
         </button>
         <button className="btn btn-danger ms-1">X</button>
       </div>
