@@ -7,12 +7,7 @@ import CartButton from "../CartButton/CartButton";
 
 const CartItems = () => {
   const { cart } = useContext(CartContext);
-  // const [cartItem, setCartItem] = useState([]);
   console.log(cart);
-  //const summary = (onAddToSummary) => {
-  // const newCartItem = [onAddToSummary, ...cart];
-  // setCartItem(newCartItem);
-  //};
 
   // showCartButton = () => {
   //  !cartItem ? display block : display none;

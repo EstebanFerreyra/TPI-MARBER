@@ -11,11 +11,10 @@ const BeerFilter = ({ onFilterStyleChange, filterStyle }) => {
         <div className="Beer-filter__control">
           <select onChange={changeStyleHandler} value={filterStyle}>
             <option value="">Seleccione un estilo</option>
-            <option value="apa">APA</option>
             <option value="ipa">IPA</option>
             <option value="red">ROJA</option>
-            <option value="lager">LAGER</option>
-            <option value="negra">NEGRA</option>
+            <option value="blonde">RUBIA</option>
+            <option value="black">NEGRA</option>
           </select>
         </div>
       </div>

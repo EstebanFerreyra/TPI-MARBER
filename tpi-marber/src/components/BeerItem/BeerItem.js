@@ -2,21 +2,20 @@ import React, { useContext } from "react";
 import CardBeer from "../CardBeer/CardBeer";
 import { Button } from "react-bootstrap";
 import { CartContext } from "../../contexts/ShoppingCartContext";
-//import CartItems from "../CartItems/CartItems";
 
 const BeerItem = ({ beerId, beerName, beerImage, beerStyle, beerPrice }) => {
   const { addToCart } = useContext(CartContext);
 
-  const addToCartHandler = (beer) => {
+  const addToCartHandler = (event) => {
     let item = {
-      key: beerId,
+      id: beerId,
       name: beerName,
       style: beerStyle,
       price: beerPrice,
       quantity: 0,
     };
     addToCart(item);
-    //<CartItems onAddToSummary={itemArmado} />;
+    console.log(item);
   };
 
   return (

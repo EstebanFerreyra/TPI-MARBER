@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import { CartContext } from "../../contexts/ShoppingCartContext";
 
 function CartButton({ quantity }) {
-  // const { cart } = useContext(CartContext);
-  // const quantity = cart.length;
+  //const { cart } = useContext(CartContext);
+  //const quantity = cart.length;
 
   const addOne = (quantity) => {
     return quantity + 1;

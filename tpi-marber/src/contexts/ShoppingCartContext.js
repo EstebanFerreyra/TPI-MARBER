@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const CartContext = createContext(null);
 
@@ -8,8 +8,8 @@ export const ShoppingCartProvider = ({ children }) => {
   const [cart, setCart] = useState(cartLocalStorage);
 
   const addToCart = (item) => {
-    let newCart = [...cart];
-    let itemInCart = newCart.find((itemAdd) => item.name === itemAdd.name);
+    //let newCart = [...cart];
+    let itemInCart = cart.find((itemAdded) => itemAdded.name === item.name);
     if (itemInCart) {
       itemInCart.quantity++ &&
         localStorage.setItem(
@@ -20,13 +20,20 @@ export const ShoppingCartProvider = ({ children }) => {
           })
         );
     } else {
-      itemInCart = {
-        ...item,
-        quantity: 1,
-      };
-      newCart.push(itemInCart);
+      setCart([...cart, { ...item, quantity: 1 }]);
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([...cart, { ...item, quantity: 1 }])
+      );
+      // itemInCart = {
+      //   ...item,
+      //   quantity: 1,
+      // };
+      //newCart.push(itemInCart);
+
+      ////push devuelve la cantidad de elementos del array despues de agregarle el nuevo elemento al final
     }
-    setCart(newCart);
+    //setCart(newCart);
 
     // setCart([...cart, { ...item, quantity: 1 }]);
     // localStorage.setItem(
@@ -45,3 +52,39 @@ export const ShoppingCartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+
+//ver si conviene pasar las funciones por contexto e importarlas en CartItems
+
+// const increaseQuantity = (item) => {
+//   const updatedCart = cart.map((itemAdded) => {
+//     if (itemAdded.id === item) {
+//       return {
+//         ...itemAdded,
+//         quantity: itemAdded.quantity + 1,
+//       };
+//     }
+//     return itemAdded;
+//   });
+//   setCart(updatedCart);
+//   localStorage.setItem('cart', JSON.stringify(updatedCart));
+// };
+
+// const decreaseQuantity = (item) => {
+//   const updatedCart = cart.map((itemAdded) => {
+//     if (itemAdded.id === item) {
+//       return {
+//         ...itemAdded,
+//         quantity: itemAdded.quantity - 1,
+//       };
+//     }
+//     return itemAdded;
+//   });
+//   setCart(updatedCart);
+//   localStorage.setItem('cart', JSON.stringify(updatedCart));
+// };
+
+// const removeItem = (item) => {
+//   const updatedCart = cart.filter((itemAdded) => itemAdded.id !== item);
+//   setCart(updatedCart);
+//   localStorage.setItem('cart', JSON.stringify(updatedCart));
+// };
