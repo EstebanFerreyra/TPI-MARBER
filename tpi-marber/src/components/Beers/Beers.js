@@ -26,7 +26,8 @@ const Beers = () => {
     //.filter((beer) => beer.beerStyle === filterStyle[0] || filterStyle[1])
     .map((beer) => (
       <BeerItem
-        beerId={beer.beerId}
+        key={beer.id}
+        id={beer.id}
         beerName={beer.beerName}
         beerImage={beer.beerImage}
         beerStyle={beer.beerStyle}

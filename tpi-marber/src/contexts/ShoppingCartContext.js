@@ -8,10 +8,9 @@ export const ShoppingCartProvider = ({ children }) => {
   const [cart, setCart] = useState(cartLocalStorage);
 
   const addToCart = (item) => {
-    //let newCart = [...cart];
-    let itemInCart = cart.find((itemAdded) => itemAdded.name === item.name);
+    let itemInCart = cart.find((itemAdded) => itemAdded.id === item.id);
     if (itemInCart) {
-      itemInCart.quantity++ &&
+      itemInCart + 1 &&
         localStorage.setItem(
           "cart",
           JSON.stringify([...cart], {
@@ -25,11 +24,6 @@ export const ShoppingCartProvider = ({ children }) => {
         "cart",
         JSON.stringify([...cart, { ...item, quantity: 1 }])
       );
-      // itemInCart = {
-      //   ...item,
-      //   quantity: 1,
-      // };
-      //newCart.push(itemInCart);
 
       ////push devuelve la cantidad de elementos del array despues de agregarle el nuevo elemento al final
     }
