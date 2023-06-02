@@ -9,6 +9,15 @@ import HomeMarber from "./components/HomeMarber/HomeMarber";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Login from "./components/Login/Login";
 import { AuthProvider } from "./context/AuthContext";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useState } from "react";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { async } from "@firebase/util";
+
+const auth = getAuth();
+
+const firestore = getFirestore();
+
 function App() {
   // return (
   //   <div className="App">
@@ -17,6 +26,25 @@ function App() {
   //     <Beers/>
   //   </div>
   // );
+  async function getRol(uid) {
+    const docuRef = doc(firestore, "usuarios/${uid}");
+    const docCifred = await getDoc(docuRef);
+    const infoFinal = docCifred.data();
+  }
+
+  const [user, setUser] = useState(null);
+
+  onAuthStateChanged(auth, (userFirebase) => {
+    if (userFirebase) {
+      const userData = {
+        uid: userFirebase.uid,
+        email: userFirebase.email,
+      };
+      setUser(userData);
+    } else {
+      setUser(null);
+    }
+  });
 
   const router = createBrowserRouter([
     {

@@ -9,6 +9,9 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
+
+const firestore = getFirestore();
 
 export const authContext = createContext();
 
@@ -34,12 +37,16 @@ export function AuthProvider({ children }) {
     return () => suscribed();
   }, []);
 
-  const register = async (email, password) => {
+  const register = async (email, password, rol) => {
     const response = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
+    const docuRef = doc(firestore, `users/${response.user.uid}`);
+    const data = { email: email, rol: rol || "client" };
+    await setDoc(docuRef, data);
+
     console.log(response);
   };
 
