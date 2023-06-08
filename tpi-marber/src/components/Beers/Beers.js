@@ -4,6 +4,7 @@ import "./Beers.css";
 import NotFound from "../routes/NotFound";
 import NavBar from "../NavBar/NavBar";
 import BeerFilter from "../BeerFilter/BeerFilter";
+import SideCart from "../SideCart/SideCart";
 
 const Beers = () => {
   const [beers, setBeers] = useState([]);

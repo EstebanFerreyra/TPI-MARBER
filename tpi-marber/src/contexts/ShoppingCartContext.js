@@ -7,6 +7,15 @@ const cartLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
 export const ShoppingCartProvider = ({ children }) => {
   const [cart, setCart] = useState(cartLocalStorage);
 
+  const quantity = parseInt(cart.quantity);
+
+  // Determine the data type of the quantity property
+  const quantityType = typeof quantity;
+
+  // Console log the quantity value and its data type
+  console.log("Quantity:", quantity);
+  console.log("Data Type:", quantityType);
+
   const addToCart = (item) => {
     let itemInCart = cart.find((itemAdded) => itemAdded.id === item.id);
     if (itemInCart) {
@@ -38,8 +47,19 @@ export const ShoppingCartProvider = ({ children }) => {
   //   localStorage.setItem("cart", JSON.stringify(cart));
   // }, [cart]);
 
+  const increaseQuantity = (id) => {
+    const updatedCart = cart.map((item) =>
+      item.id === id ? { ...item, quantity: +1 } : item
+    );
+
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeItem }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeItem, increaseQuantity }}
+    >
       {children}
     </CartContext.Provider>
   );

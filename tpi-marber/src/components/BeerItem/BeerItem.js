@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { CartContext } from "../../contexts/ShoppingCartContext";
 
 const BeerItem = ({ id, beerName, beerImage, beerStyle, beerPrice }) => {
-  const { addToCart, removeItem } = useContext(CartContext);
+  const { addToCart, removeItem, increaseQuantity } = useContext(CartContext);
 
   const addToCartHandler = (event) => {
     const item = {
@@ -29,6 +29,10 @@ const BeerItem = ({ id, beerName, beerImage, beerStyle, beerPrice }) => {
     removeItem(item);
   };
 
+  const increaseHandler = (id) => {
+    increaseQuantity(id);
+  };
+
   return (
     <CardBeer>
       <h2>{beerName}</h2>
@@ -38,9 +42,10 @@ const BeerItem = ({ id, beerName, beerImage, beerStyle, beerPrice }) => {
       <Button onClick={addToCartHandler} className="btn btn-success m-2">
         Add to cart
       </Button>
-      <Button onClick={removeItemHandler} className="btn btn-success m-2">
+      <Button onClick={removeItemHandler} className="btn btn-danger m-0">
         Remove
       </Button>
+      {/* <button onClick={increaseHandler}>+</button> */}
       <Button className="btn btn-info m-2">+ Info</Button>
     </CardBeer>
   );

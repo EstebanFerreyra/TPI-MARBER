@@ -8,7 +8,16 @@ import "./CartItems.css";
 const CartItems = () => {
   const { cart } = useContext(CartContext);
   console.log(cart);
+  //
+  const quantity = cart.quantity;
 
+  // Determine the data type of the quantity property
+  const quantityType = typeof quantity;
+
+  // Console log the quantity value and its data type
+  console.log("Quantity:", quantity);
+  console.log("Data Type:", quantityType);
+  //
   // showCartButton = () => {
   //  !cartItem ? display block : display none;
   // }
@@ -21,7 +30,7 @@ const CartItems = () => {
       <p>detalle de la compra</p>
       {cart.map((item) => (
         <div>
-          <div key={item.id}>
+          <div key={parseInt(item.id)}>
             <p>Producto: {item.name}</p>
             <p>${item.price}</p>
           </div>

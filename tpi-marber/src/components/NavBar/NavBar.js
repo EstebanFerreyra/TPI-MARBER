@@ -3,9 +3,11 @@ import { useNavigate } from "react-router";
 
 import "./NavBar.css";
 import { CartContext } from "../../contexts/ShoppingCartContext";
+import SideCart from "../SideCart/SideCart";
 
 const NavBar = () => {
   const [click, setClick] = useState(false);
+  const [sideCart, setSideCart] = useState(false);
   const { cart } = useContext(CartContext);
 
   const navigation = useNavigate();
@@ -79,6 +81,9 @@ const NavBar = () => {
                 </button>
               </li>
             </ul>
+
+            <button onClick={() => setSideCart(!sideCart)}>show cart</button>
+            {sideCart && <SideCart />}
 
             <div className="d-flex" role="search">
               <button
