@@ -27,21 +27,19 @@ export const ShoppingCartProvider = ({ children }) => {
 
       ////push devuelve la cantidad de elementos del array despues de agregarle el nuevo elemento al final
     }
-    //setCart(newCart);
-
-    // setCart([...cart, { ...item, quantity: 1 }]);
-    // localStorage.setItem(
-    //   "cart",
-    //   JSON.stringify([...cart, { ...item, quantity: 1 }])
-    // );
   };
 
+  const removeItem = (item) => {
+    const updatedCart = cart.filter((itemAdded) => itemAdded.id !== item.id);
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
   // useEffect(() => {
   //   localStorage.setItem("cart", JSON.stringify(cart));
   // }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeItem }}>
       {children}
     </CartContext.Provider>
   );

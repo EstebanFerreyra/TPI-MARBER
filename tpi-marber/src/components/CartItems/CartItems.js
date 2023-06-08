@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { CartContext } from "../../contexts/ShoppingCartContext";
 
 import "./CartItems.css";
-import CartButton from "../CartButton/CartButton";
+//import CartButton from "../CartButton/CartButton";
 
 const CartItems = () => {
   const { cart } = useContext(CartContext);
@@ -20,10 +20,11 @@ const CartItems = () => {
     <div>
       <p>detalle de la compra</p>
       {cart.map((item) => (
-        <div key={item.id}>
-          <p>Producto: {item.name}</p>
-          <p>${item.price}</p>
-          <CartButton quantity={item.quantity} />
+        <div>
+          <div key={item.id}>
+            <p>Producto: {item.name}</p>
+            <p>${item.price}</p>
+          </div>
         </div>
       ))}
     </div>

@@ -19,7 +19,6 @@ function CartButton({ quantity }) {
         <h2 className="d-flex justify-content-end">{quantity}</h2>
         <button
           onClick={addOne}
-          disabled={quantity === 5}
           type="button"
           className="btn btn-primary max-auto"
         >
@@ -28,7 +27,6 @@ function CartButton({ quantity }) {
 
         <button
           onClick={quitOne}
-          disabled={quantity === 1}
           type="button"
           className="btn btn-secondary ms-1"
         >
