@@ -8,6 +8,7 @@ import Login from "./components/Login/Login";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import { ShoppingCartProvider } from "./contexts/ShoppingCartContext";
 import { ThemeContextProvider } from "./contexts/ThemeContext";
+import Orders from "./components/Orders/Orders";
 
 function App() {
   const router = createBrowserRouter([
@@ -34,6 +35,10 @@ function App() {
     {
       path: "/buying",
       element: <ShoppingCart />,
+    },
+    {
+      path: "/orders",
+      element: <Orders />,
     },
     {
       path: "*",

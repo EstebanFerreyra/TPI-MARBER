@@ -2,9 +2,16 @@ import React, { useContext } from "react";
 
 import "./SideCart.css";
 import { CartContext } from "../../contexts/ShoppingCartContext";
+import { useNavigate } from "react-router-dom";
 
 const SideCart = () => {
   const { cart } = useContext(CartContext);
+  const navigation = useNavigate();
+
+  const goToCartHandler = () => {
+    navigation("/buying");
+  };
+
   return (
     <div className="side-cart">
       <p>detalle de la compra</p>
@@ -16,7 +23,9 @@ const SideCart = () => {
           </div>
         </div>
       ))}
-      <button className="btn btn-secondary">Check out</button>
+      <button className="btn btn-secondary" onClick={goToCartHandler}>
+        Go to cart
+      </button>
     </div>
   );
 };

@@ -28,8 +28,12 @@ const NavBar = () => {
     navigation("/login");
   };
 
-  const goToCartHandler = () => {
-    navigation("/buying");
+  // const goToCartHandler = () => {
+  //   navigation("/buying");
+  // };
+
+  const goToOrdersHandler = () => {
+    navigation("/orders");
   };
 
   // const cartQty = () => {
@@ -80,16 +84,29 @@ const NavBar = () => {
                   Productos
                 </button>
               </li>
+
+              <li className="nav-item dropdown">
+                <button
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#"
+                  onClick={goToOrdersHandler}
+                >
+                  Ventas
+                </button>
+              </li>
             </ul>
 
-            <button onClick={() => setSideCart(!sideCart)}>show cart</button>
+            {/* <button onClick={() => setSideCart(!sideCart)}>show cart</button> */}
             {sideCart && <SideCart />}
 
             <div className="d-flex" role="search">
               <button
                 className="btn btn-outline-success"
                 type="submit"
-                onClick={goToCartHandler}
+                onClick={() => setSideCart(!sideCart)}
+
+                //onClick={goToCartHandler}
               >
                 {" "}
                 <img
@@ -100,9 +117,11 @@ const NavBar = () => {
                   height="15px"
                 />
               </button>
+
               <span className="cart-count">
                 <b>{quantity}</b>
               </span>
+
               <button
                 className="btn btn-outline-success"
                 type="submit"
