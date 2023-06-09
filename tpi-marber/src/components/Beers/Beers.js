@@ -1,13 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import BeerItem from '../BeerItem/BeerItem'
+import { APIContext } from '../context/Api/api.context'
 import "./Beers.css"
-import NotFound from '../routes/NotFound'
+import { Spinner } from 'react-bootstrap'
+import Loader from '../ui/Loader'
 
-const Beers = () => {
-    const [beers, setBeers] = useState([])
+const Beers = ({beers, getBeers, handleDeleteBeer1}) => {  
+    const { toggleLoading } = useContext(APIContext);
 
     const url = 'https://localhost:7160/marber/BeerController/GetBeers'
+
+    const handleDeleteBeer2 = (beersValue) => {
+      handleDeleteBeer1(beersValue);
+      console.log("beers");
+    }
+
     useEffect(() => {
+      toggleLoading(true);
         fetch(url, {
           method: 'GET',
           mode: 'cors',
@@ -16,23 +25,30 @@ const Beers = () => {
           }
         })
           .then(response => response.json())
-          .then(setBeers);
+          .then((data) => {
+            getBeers(data);
+          })
+          .catch((error) => console.log(error));
+          toggleLoading(false);
       }, [])
+
 
     const beersMapped = beers
         .map((beer) =>        
             <BeerItem
                 key={beer.id}
                 beerName={beer.beerName}
-                beerStyle={beer.beerName}
-                beerPrice={beer.beerName}
+                beerStyle={beer.beerStyle}
+                beerPrice={beer.beerPrice}
+                handleDeleteBeer2={handleDeleteBeer2}
             />
         )
 
+    
   return (
     <div className="beers">
         {beersMapped.length === 0 ? (
-            <NotFound/>
+            <Loader/>
         ) : (
             beersMapped
         )}
