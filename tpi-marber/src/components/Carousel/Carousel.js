@@ -6,13 +6,12 @@ const Carousel = () => {
       <div id="carouselExample" className="carousel slide">
         <div className="carousel-inner">
           <div className="carousel-item active">
-          <img src="https://www.ngenespanol.com/wp-content/uploads/2018/08/7-buenas-razones-para-tomar-cerveza.png" className="d-block w-100" alt="..." />          </div>
+            <img src="https://www.ngenespanol.com/wp-content/uploads/2018/08/7-buenas-razones-para-tomar-cerveza.png" className="d-block w-100" alt="..." />          </div>
           <div className="carousel-item">
-          <img src="https://cdn.pixabay.com/photo/2014/04/03/10/00/hops-309577_1280.png" className="d-block w-100" alt="..." />
-            <img src="https://www.ngenespanol.com/wp-content/uploads/2018/08/7-buenas-razones-para-tomar-cerveza.png" className="d-block w-100" alt="..." />
+            <img src="https://www.clarin.com/img/2022/05/28/iMvDsusQJ_1256x620__1.jpg" className="d-block w-100" alt="..." />
           </div>
           <div className="carousel-item">
-            <img src="https://dam.ngenespanol.com/wp-content/uploads/2019/02/islandia-cerveza-3.jpg.imgo_.jpg" className="d-block w-100" alt="..." />
+            <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2017/02/cervefest-festival-de-cervezas-xochimilco.jpg" className="d-block w-100" alt="..." />
           </div>
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
