@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavBar from "../NavBar/NavBar";
 
 const Orders = () => {
-  const [tables, setTables] = useState(false);
+  const [tables, setTables] = useState(true);
 
   const addTables = () => {
     setTables(!tables);
@@ -14,9 +14,7 @@ const Orders = () => {
         <NavBar />
       </div>
 
-      <h2 className="d-flex justify-content-center">
-        Estado de pedidos & ventas
-      </h2>
+      <h2 className="d-flex justify-content-center">Estado de pedidos</h2>
 
       {!tables ? (
         <p className="d-flex justify-content-center">
@@ -25,7 +23,7 @@ const Orders = () => {
       ) : (
         <div class="container">
           <table class="table table-hover">
-            <thead>
+            <thead style={{ backgroundColor: "lightsteelblue" }}>
               <tr>
                 <th>Cliente</th>
                 <th>Descripción pedido</th>

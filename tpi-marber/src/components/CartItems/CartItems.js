@@ -28,14 +28,18 @@ const CartItems = () => {
   return (
     <div>
       <p>detalle de la compra</p>
-      {cart.map((item) => (
-        <div>
-          <div key={parseInt(item.id)}>
-            <p>Producto: {item.name}</p>
-            <p>${item.price}</p>
+      {cart.length === 0 ? (
+        <p>empty cart</p>
+      ) : (
+        cart.map((item) => (
+          <div>
+            <div key={parseInt(item.id)}>
+              <p>Producto: {item.name}</p>
+              <p>${item.price}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 };

@@ -2,9 +2,12 @@
   position: absolute;
   top: 100%;
   right: 0;
-  width: 300px;
-  background-color: #fff;
-  opacity: 95%;
+  width: 23%;
+  height: 100vh;
+  padding: 10px;
+  background-color: whitesmoke;
+  box-shadow: 1px 1200px 1px 1200px rgba(0, 0, 0, 0.2);
+  opacity: 100%;
   border-radius: 0 0 6% 6%;
-  z-index: 9999; /*para q se vea adelante de otros comnponentes*/
+  z-index: 9998; /*para q se vea adelante de otros comnponentes*/
 }

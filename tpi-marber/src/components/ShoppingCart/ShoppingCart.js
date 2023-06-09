@@ -28,18 +28,19 @@ const ShoppingCart = () => {
       <div>
         <NavBar />
       </div>
-      <div className="card d-flex justify-content-center m-5 p-1">
-        <div className="card p-2">
-          <CartItems />
-          <h4>items in cart: {quantity}</h4>
-          <div className="d-flex justify-content-end"></div>
-          <h3>total: ${total}</h3>
-        </div>
+      <div className="d-flex justify-content-center p-1 ">
+        <div className="card d-flex justify-content-center m-5 p-1 w-75 shadow p-3 mb-5 bg-body rounded">
+          <div className="card p-2">
+            <CartItems />
+            <div className="d-flex justify-content-end"></div>
+            <h3>total: ${total}</h3>
+          </div>
 
-        <div className="d-flex justify-content-center m-3">
-          <button className="btn btn-secondary" onClick={finishedBuy}>
-            Check out
-          </button>
+          <div className="d-flex justify-content-center m-3">
+            <button className="btn btn-secondary" onClick={finishedBuy}>
+              Check out
+            </button>
+          </div>
         </div>
       </div>
     </div>
