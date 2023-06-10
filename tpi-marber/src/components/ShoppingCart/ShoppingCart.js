@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 
-import { CartContext } from "../../contexts/ShoppingCartContext";
-
-import "./ShoppingCart.css";
+import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import NavBar from "../NavBar/NavBar";
 import CartItems from "../CartItems/CartItems";
 
 const ShoppingCart = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
 
   const quantity = cart.length;
 
@@ -15,13 +13,12 @@ const ShoppingCart = () => {
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
   );
-  // cart.length !== 0
-  //   ? cart.reduce((sum, { price, quantity }) => sum + price * quantity)
-  //   : 0;
 
-  const finishedBuy = (event) => {
+  const finishedBuy = () => {
     alert("¡Compra realizada con éxito!");
-  };
+    clearCart();
+    window.location.reload();
+  }; //preguntar si es conveniente recargar la pagina para q se vacíe el carrito
 
   return (
     <div>
@@ -32,7 +29,7 @@ const ShoppingCart = () => {
         <div className="card d-flex justify-content-center m-5 p-1 w-75 shadow p-3 mb-5 bg-body rounded">
           <div className="card p-2">
             <CartItems />
-            <div className="d-flex justify-content-end"></div>
+            {/* <div className="d-flex justify-content-end">cart buttons</div>  */}
             <h3>total: ${total}</h3>
           </div>
 

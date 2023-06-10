@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
+import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
+import { useNavigate } from "react-router-dom";
 
 import "./SideCart.css";
-import { CartContext } from "../../contexts/ShoppingCartContext";
-import { useNavigate } from "react-router-dom";
 
 const SideCart = () => {
   const { cart } = useContext(CartContext);

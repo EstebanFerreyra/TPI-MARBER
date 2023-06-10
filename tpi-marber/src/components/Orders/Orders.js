@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import NavBar from "../NavBar/NavBar";
-
+import Footer from "../Footer/Footer";
+//solo debería ser visible para admin
 const Orders = () => {
-  const [tables, setTables] = useState(true);
+  const [tables, setTables] = useState(false);
 
   const addTables = () => {
     setTables(!tables);
@@ -14,7 +15,12 @@ const Orders = () => {
         <NavBar />
       </div>
 
-      <h2 className="d-flex justify-content-center">Estado de pedidos</h2>
+      <div className="d-flex justify-content-center">
+        <h2>Estado de pedidos</h2>
+        <button className="btn btn-secondary m-2" onClick={addTables}>
+          mostrar
+        </button>
+      </div>
 
       {!tables ? (
         <p className="d-flex justify-content-center">
@@ -65,6 +71,10 @@ const Orders = () => {
           </table>
         </div>
       )}
+
+      {/* <div className="fixed-bottom">
+        <Footer />
+      </div> */}
     </div>
   );
 };

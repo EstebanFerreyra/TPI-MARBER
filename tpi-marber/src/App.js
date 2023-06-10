@@ -1,13 +1,17 @@
 import "./App.css";
-import Beers from "./components/Beers/Beers";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from "./components/routes/NotFound";
 import HomeMarber from "./components/HomeMarber/HomeMarber";
-import AboutUs from "./components/AboutUs/AboutUs";
-import Login from "./components/Login/Login";
+import ViewBeerAdmin from "./components/ViewBeerAdmin/ViewBeerAdmin";
+import ViewAboutUs from "./components/ViewAboutUs/ViewAboutUs";
+import ViewLogin from "./components/ViewLogin/ViewLogin";
+import ViewBeerUser from "./components/ViewBeerUser/ViewBeerUser";
+import RegisteredUserContextProvider, {
+  RegisteredUserContext,
+} from "./components/context/RegisteredUserContext/RegisteredUserContext";
+import Protected from "./components/Protected/Protected";
+import { ShoppingCartProvider } from "./components/context/ShoppingCartContext/ShoppingCartContext";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
-import { ShoppingCartProvider } from "./contexts/ShoppingCartContext";
-import { ThemeContextProvider } from "./contexts/ThemeContext";
 import Orders from "./components/Orders/Orders";
 
 function App() {
@@ -17,28 +21,36 @@ function App() {
       element: <HomeMarber />,
     },
     {
-      path: "/home",
-      element: <HomeMarber />,
+      path: "/beersadmin",
+      element: (
+        <Protected>
+          <ViewBeerAdmin />
+        </Protected>
+      ),
     },
     {
       path: "/beers",
-      element: <Beers />,
+      element: <ViewBeerUser />,
     },
     {
       path: "/aboutus",
-      element: <AboutUs />,
+      element: <ViewAboutUs />,
     },
     {
       path: "/login",
-      element: <Login />,
+      element: <ViewLogin />,
+    },
+    {
+      path: "/orders",
+      element: <Orders />,
     },
     {
       path: "/buying",
       element: <ShoppingCart />,
     },
     {
-      path: "/orders",
-      element: <Orders />,
+      path: "/singin",
+      element: <ViewLogin />,
     },
     {
       path: "*",
@@ -46,12 +58,15 @@ function App() {
     },
   ]);
 
+  //return <RouterProvider router={router}/>
   return (
-    <ThemeContextProvider>
+    <RegisteredUserContextProvider
+      RegisteredUserContext={RegisteredUserContext}
+    >
       <ShoppingCartProvider>
         <RouterProvider router={router} />
       </ShoppingCartProvider>
-    </ThemeContextProvider>
+    </RegisteredUserContextProvider>
   );
 }
 
