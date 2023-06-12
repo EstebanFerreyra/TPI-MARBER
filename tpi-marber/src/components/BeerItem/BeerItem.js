@@ -16,9 +16,14 @@ const BeerItem = ({
 }) => {
   const { addToCart, removeItem } = useContext(CartContext);
 
-
-
-  const BeerItem = ({ key, id, beerName, beerStyle, beerPrice, handleDeleteBeer2 }) => {
+  const BeerItem = ({
+    key,
+    id,
+    beerName,
+    beerStyle,
+    beerPrice,
+    handleDeleteBeer2,
+  }) => {
     const navigation = useNavigate();
 
     const userRegisteredLocal = useContext(RegisteredUserContext);
@@ -35,17 +40,16 @@ const BeerItem = ({
       const url = `https://localhost:7160/marber/BeerController/deletebeerbyid/${id}`;
 
       fetch(url, {
-        method: 'DELETE',
-        mode: 'cors',
+        method: "DELETE",
+        mode: "cors",
         headers: {
-          'Content-Type': 'application/json'
-        }
+          "Content-Type": "application/json",
+        },
       })
-        .then(response => response.json())
-        .then(response => handleDeleteBeer2(response))
+        .then((response) => response.json())
+        .then((response) => handleDeleteBeer2(response))
         .catch((error) => console.log(error));
-
-    }
+    };
 
     // const addToCarryHandle = () => {
     //   if (success === true) {
@@ -87,7 +91,11 @@ const BeerItem = ({
     return (
       <CardBeer>
         {(type === "admin" || type === "superadmin") && (
-          <button type="button" class="btn btn-danger" onClick={deleteBeerHandle}>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onClick={deleteBeerHandle}
+          >
             X
           </button>
         )}
@@ -118,5 +126,5 @@ const BeerItem = ({
       </CardBeer>
     );
   };
-
-  export default BeerItem;
+};
+export default BeerItem;
