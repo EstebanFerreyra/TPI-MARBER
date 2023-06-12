@@ -11,3 +11,14 @@
   border-radius: 0 0 6% 6%;
   z-index: 9998; /*para q se vea adelante de otros comnponentes*/
 }
+
+.checkout {
+  position: relative;
+
+  border-width: 0;
+  border-radius: 0;
+  color: whitesmoke;
+  background: lightslategray;
+  width: 100%;
+  height: 60px;
+}

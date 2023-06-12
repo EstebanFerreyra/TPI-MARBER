@@ -6,18 +6,16 @@ const cartLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
 
 export const ShoppingCartProvider = ({ children }) => {
   const [cart, setCart] = useState(cartLocalStorage);
-
+  console.log(cart, "in shoppingCartContext.js");
   const addToCart = (item) => {
-    let itemInCart = cart.find((itemAdded) => itemAdded.id === item.id);
-    if (itemInCart) {
-      itemInCart + 1 &&
-        localStorage.setItem(
-          "cart",
-          JSON.stringify([...cart], {
-            ...itemInCart,
-            quantity: itemInCart.quantity++,
-          })
-        );
+    let itemInCartIndex = cart.findIndex(
+      (itemAdded) => itemAdded.id === item.id
+    );
+    if (itemInCartIndex >= 0) {
+      const newCart = [...cart];
+      newCart[itemInCartIndex].quantity += 1;
+      setCart([...newCart]);
+      localStorage.setItem("cart", JSON.stringify([...newCart]));
     } else {
       setCart([...cart, { ...item, quantity: 1 }]);
       localStorage.setItem(

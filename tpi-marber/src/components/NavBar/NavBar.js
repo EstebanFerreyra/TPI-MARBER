@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-import React, { useContext, useState } from "react";
-=======
 import React, { useState, useContext } from "react";
->>>>>>> cfeb4becbca328b85f2f85569c197262bd7b4015
 import { useNavigate } from "react-router";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 
 import "./NavBar.css";
-<<<<<<< HEAD
-import { CartContext } from "../../contexts/ShoppingCartContext";
-=======
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
->>>>>>> cfeb4becbca328b85f2f85569c197262bd7b4015
 import SideCart from "../SideCart/SideCart";
 
 const NavBar = () => {
@@ -19,30 +11,6 @@ const NavBar = () => {
   const [sideCart, setSideCart] = useState(false);
   const { cart } = useContext(CartContext);
 
-<<<<<<< HEAD
-  const navigation = useNavigate();
-
-  const goToHomeHandler = () => {
-    navigation("/home");
-  };
-
-  const goToBeersHandler = () => {
-    navigation("/beers");
-  };
-
-  const goToAboutUsHandler = () => {
-    navigation("/aboutus");
-  };
-
-  const goToLoginHandler = () => {
-    navigation("/login");
-  };
-
-  // const goToCartHandler = () => {
-  //   navigation("/buying");
-  // };
-
-=======
   const quantity = cart.length;
 
   const userRegisteredLocal = useContext(RegisteredUserContext);
@@ -69,19 +37,10 @@ const NavBar = () => {
     navigation("/");
   };
 
->>>>>>> cfeb4becbca328b85f2f85569c197262bd7b4015
   const goToOrdersHandler = () => {
     navigation("/orders");
   };
 
-<<<<<<< HEAD
-  // const cartQty = () => {
-  //   let quantity = localStorage.getItem("cart").length;
-  //   return quantity;
-  // };
-
-  const quantity = cart.length;
-=======
   const logOutHandle = () => {
     userRegisteredLocal.setRegisteredUser({
       success: false,
@@ -90,16 +49,11 @@ const NavBar = () => {
     });
     navigation("/login");
   };
->>>>>>> cfeb4becbca328b85f2f85569c197262bd7b4015
 
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-<<<<<<< HEAD
-          <button className="navbar-brand" onClick={goToHomeHandler}>
-            MARBER
-=======
           <button
             className="navbar-brand"
             href="#"
@@ -111,7 +65,6 @@ const NavBar = () => {
               height="30px"
               width="80px"
             ></img>
->>>>>>> cfeb4becbca328b85f2f85569c197262bd7b4015
           </button>
           <button
             className="navbar-toggler"
@@ -159,13 +112,6 @@ const NavBar = () => {
                 </button>
               </li>
             </ul>
-<<<<<<< HEAD
-
-            {/* <button onClick={() => setSideCart(!sideCart)}>show cart</button> */}
-            {sideCart && <SideCart />}
-
-            <div className="d-flex" role="search">
-=======
             {userRegisteredLocal.registeredUser.success === true && (
               <span className="navbar-text" style={{ "margin-right": "10px" }}>
                 ¡Bienvenido{" "}
@@ -176,7 +122,6 @@ const NavBar = () => {
             <div className="d-flex" role="search">
               {sideCart && <SideCart />}
 
->>>>>>> cfeb4becbca328b85f2f85569c197262bd7b4015
               <button
                 className="btn btn-outline-success"
                 type="submit"
@@ -198,15 +143,6 @@ const NavBar = () => {
                 <b>{quantity}</b>
               </span>
 
-<<<<<<< HEAD
-              <button
-                className="btn btn-outline-success"
-                type="submit"
-                onClick={goToLoginHandler}
-              >
-                Iniciar sesion
-              </button>
-=======
               {userRegisteredLocal.registeredUser.success === false && (
                 <button
                   className="btn btn-outline-success"
@@ -225,7 +161,6 @@ const NavBar = () => {
                   Cerrar sesion
                 </button>
               )}
->>>>>>> cfeb4becbca328b85f2f85569c197262bd7b4015
             </div>
             {click ? <></> : <></>}
           </div>

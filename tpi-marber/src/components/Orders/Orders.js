@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Footer";
-//solo debería ser visible para admin
+
 const Orders = () => {
   const [tables, setTables] = useState(false);
 
@@ -33,7 +32,7 @@ const Orders = () => {
               <tr>
                 <th>Cliente</th>
                 <th>Descripción pedido</th>
-                <th>Fecha</th>
+
                 <th>Monto</th>
                 <th>Estado</th>
               </tr>
@@ -42,28 +41,28 @@ const Orders = () => {
               <tr>
                 <td>Juan</td>
                 <td>Cód id_productos</td>
-                <td>dd/mm/yy</td>
+
                 <td>$total</td>
                 <td>despachado</td>
               </tr>
               <tr>
                 <td>Silvia</td>
                 <td>Cód id_productos</td>
-                <td>dd/mm/yy</td>
+
                 <td>$total</td>
                 <td>pagado</td>
               </tr>
               <tr>
                 <td>Raúl</td>
                 <td>Cód id_productos</td>
-                <td>dd/mm/yy</td>
+
                 <td>$total</td>
                 <td>pendiente</td>
               </tr>
               <tr>
                 <td>Bar de la esquina</td>
                 <td>Cód id_productos</td>
-                <td>dd/mm/yy</td>
+
                 <td>$total</td>
                 <td>pendiente</td>
               </tr>
@@ -71,10 +70,6 @@ const Orders = () => {
           </table>
         </div>
       )}
-
-      {/* <div className="fixed-bottom">
-        <Footer />
-      </div> */}
     </div>
   );
 };

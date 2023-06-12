@@ -1,11 +1,39 @@
-import React, { useContext } from "react";
-
+import React, { useContext, useState } from "react";
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import NavBar from "../NavBar/NavBar";
 import CartItems from "../CartItems/CartItems";
+import axios from "axios";
+import Loader from "../ui/Loader";
 
 const ShoppingCart = () => {
   const { cart, clearCart } = useContext(CartContext);
+  const [preferenceId, setPreferenceId] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  console.log(cart, "in shoppingCart.js");
+  initMercadoPago("TEST-c83112be-2db8-4c9e-916e-7c852b74266a");
+
+  const createPreference = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/create_preference",
+        {
+          description: "Cerveza Porter",
+          price: 10,
+          quantity: 1,
+          currency_id: "ARS",
+        }
+      );
+
+      const { id } = response.data;
+      return id;
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
 
   const quantity = cart.length;
 
@@ -19,6 +47,15 @@ const ShoppingCart = () => {
     clearCart();
     window.location.reload();
   }; //preguntar si es conveniente recargar la pagina para q se vacíe el carrito
+
+  // const handleBuy = async () => {
+  //   const id = await createPreference();
+  //   if (id) {
+  //     setPreferenceId(id);
+  //     setLoading(false);
+  //     clearCart();
+  //   }
+  // };
 
   return (
     <div>
@@ -37,6 +74,10 @@ const ShoppingCart = () => {
             <button className="btn btn-secondary" onClick={finishedBuy}>
               Check out
             </button>
+          </div>
+          <div className="d-flex justify-content-center">
+            {loading && <Loader />}
+            {preferenceId && <Wallet initialization={{ preferenceId }} />}
           </div>
         </div>
       </div>

@@ -47,7 +47,7 @@ const BeerItem = ({
       name: beerName,
       style: beerStyle,
       price: beerPrice,
-      quantity: 0,
+      quantity: 1,
     };
     addToCart(item);
     console.log(item);
