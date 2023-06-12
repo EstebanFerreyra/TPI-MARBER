@@ -15,7 +15,7 @@ const SingIn = ({ setLogStatusHandle }) => {
 
     const { toggleLoading } = useContext(APIContext);
     const { isLoading } = useContext(APIContext);
-    const { userRegisteredLocal } = useContext(RegisteredUserContext);
+    const { registeredUser, setRegisteredUserHandle } = useContext(RegisteredUserContext);
 
     useEffect(() => {
         fetch(url, {
@@ -80,13 +80,13 @@ const SingIn = ({ setLogStatusHandle }) => {
 
         customers.map((client) => {
             if (client.userBd === user && client.passwordBd === password) {
-                console.log(userRegisteredLocal.registeredUser);
-                userRegisteredLocal.setRegisteredUser({
+                //console.log(userRegisteredLocal.registeredUser);
+                setRegisteredUserHandle({
                     success: true,
                     user: client.userBd,
                     role: client.roleBd
                 });
-                console.log(userRegisteredLocal.registeredUser);
+                //console.log(userRegisteredLocal.registeredUser);
 
                 existUser = true;
                 toggleLoading(true);
@@ -111,11 +111,11 @@ const SingIn = ({ setLogStatusHandle }) => {
     }
 
     const goToPage = () => {
-        if (existUser === true && userRegisteredLocal.registeredUser.role !== "client") {
-            console.log(userRegisteredLocal.registeredUser)
+        if (existUser === true && registeredUser.role !== "client") {
+            console.log(registeredUser)
             navigation("/beersadmin");
         } else {
-            console.log(userRegisteredLocal.registeredUser)
+            console.log(registeredUser)
             navigation("/beers");
         }
     }

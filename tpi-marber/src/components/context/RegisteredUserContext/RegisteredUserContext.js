@@ -8,9 +8,13 @@ const RegisteredUserContextProvider = ({children}) => {
         role: ""
     });
 
+    const setRegisteredUserHandle = (obj) => {
+        setRegisteredUser(obj);
+    }
+
     
     return (
-        <RegisteredUserContext.Provider value={{registeredUser, setRegisteredUser}}>
+        <RegisteredUserContext.Provider value={{ registeredUser, setRegisteredUserHandle }}>
             {children}
         </RegisteredUserContext.Provider>
     )
