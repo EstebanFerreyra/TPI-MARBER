@@ -164,10 +164,10 @@ const NavBar = () => {
             </div>
             {click ? <></> : <></>}
           </div>
-        </div>
+          </div>
       </nav>
     </div>
   );
-};
+}
 
 export default NavBar;

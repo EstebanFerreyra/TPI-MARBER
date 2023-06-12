@@ -11,7 +11,7 @@ export const DeleteBeer = (id, handleDeleteBeer3) => {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
-    .then(response => handleDeleteBeer3(response))
-    .catch((error) => console.log(error));
+        .then(response => response.json())
+        .then(response => handleDeleteBeer3(response))
+        .catch((error) => console.log(error));
 }
