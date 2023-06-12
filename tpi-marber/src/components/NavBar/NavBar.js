@@ -13,7 +13,7 @@ const NavBar = () => {
 
   const quantity = cart.length;
 
-  const userRegisteredLocal = useContext(RegisteredUserContext);
+  const { registeredUser, setRegisteredUserHandle } = useContext(RegisteredUserContext);
 
   const clickHandler = () => {
     setClick(true);
@@ -42,7 +42,7 @@ const NavBar = () => {
   };
 
   const logOutHandle = () => {
-    userRegisteredLocal.setRegisteredUser({
+    setRegisteredUserHandle({
       success: false,
       user: "",
       role: "",
@@ -102,7 +102,7 @@ const NavBar = () => {
               </li>
 
               <li className="nav-item dropdown">
-                {userRegisteredLocal.registeredUser.success === true && userRegisteredLocal.registeredUser.role !== "client" &&<button
+                {registeredUser.success === true && registeredUser.role !== "client" && <button
                   className="nav-link active"
                   aria-current="page"
                   href="#"
@@ -112,10 +112,10 @@ const NavBar = () => {
                 </button>}
               </li>
             </ul>
-            {userRegisteredLocal.registeredUser.success === true && (
+            {registeredUser.success === true && (
               <span className="navbar-text" style={{ "margin-right": "10px" }}>
                 ¡Bienvenido{" "}
-                <strong>{userRegisteredLocal.registeredUser.user}</strong>!
+                <strong>{registeredUser.user}</strong>!
               </span>
             )}
 
@@ -127,7 +127,7 @@ const NavBar = () => {
                 type="submit"
                 onClick={() => setSideCart(!sideCart)}
 
-                //onClick={goToCartHandler}
+              //onClick={goToCartHandler}
               >
                 {" "}
                 <img
@@ -143,7 +143,7 @@ const NavBar = () => {
                 <b>{quantity}</b>
               </span>
 
-              {userRegisteredLocal.registeredUser.success === false && (
+              {registeredUser.success === false && (
                 <button
                   className="btn btn-outline-success"
                   type="submit"
@@ -152,7 +152,7 @@ const NavBar = () => {
                   Iniciar sesion
                 </button>
               )}
-              {userRegisteredLocal.registeredUser.success === true && (
+              {registeredUser.success === true && (
                 <button
                   className="btn btn-outline-success"
                   type="submit"
@@ -164,7 +164,7 @@ const NavBar = () => {
             </div>
             {click ? <></> : <></>}
           </div>
-          </div>
+        </div>
       </nav>
     </div>
   );
