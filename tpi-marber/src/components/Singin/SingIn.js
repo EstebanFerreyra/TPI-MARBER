@@ -15,7 +15,7 @@ const SingIn = ({ setLogStatusHandle }) => {
 
     const { toggleLoading } = useContext(APIContext);
     const { isLoading } = useContext(APIContext);
-    const userRegisteredLocal = useContext(RegisteredUserContext);
+    const { userRegisteredLocal } = useContext(RegisteredUserContext);
 
     useEffect(() => {
         fetch(url, {
@@ -52,8 +52,8 @@ const SingIn = ({ setLogStatusHandle }) => {
     const url = 'https://localhost:7160/marber/ClientController/GetCustomers';
     const singInHandle = (event) => {
         event.preventDefault();
-        if(user.length === 0 || password.length === 0){
-            if(user.length === 0) {
+        if (user.length === 0 || password.length === 0) {
+            if (user.length === 0) {
                 userRef.current.focus();
                 userRef.current.style.borderColor = "red";
                 userRef.current.style.outline = "none";
@@ -62,13 +62,13 @@ const SingIn = ({ setLogStatusHandle }) => {
                 userRef.current.style.outline = "";
             }
 
-            if(password.length === 0) {
+            if (password.length === 0) {
                 passwordRef.current.focus();
                 passwordRef.current.style.borderColor = "red";
                 passwordRef.current.style.outline = "none";
             } else {
                 passwordRef.current.style.borderColor = "";
-                 passwordRef.current.style.outline = "";
+                passwordRef.current.style.outline = "";
             }
             return;
         }
@@ -87,7 +87,7 @@ const SingIn = ({ setLogStatusHandle }) => {
                     role: client.roleBd
                 });
                 console.log(userRegisteredLocal.registeredUser);
-                
+
                 existUser = true;
                 toggleLoading(true);
 
@@ -96,9 +96,9 @@ const SingIn = ({ setLogStatusHandle }) => {
                     toggleLoading(false);
                 }, "3000");
 
-            } 
+            }
         })
-        if(!existUser){
+        if (!existUser) {
             setTimeout(() => {
                 userRef.current.value = "";
                 passwordRef.current.value = "";
@@ -111,7 +111,7 @@ const SingIn = ({ setLogStatusHandle }) => {
     }
 
     const goToPage = () => {
-        if(existUser === true && userRegisteredLocal.registeredUser.role !== "client"){
+        if (existUser === true && userRegisteredLocal.registeredUser.role !== "client") {
             console.log(userRegisteredLocal.registeredUser)
             navigation("/beersadmin");
         } else {
@@ -125,18 +125,18 @@ const SingIn = ({ setLogStatusHandle }) => {
             <form>
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Usuario</label>
-                    <input type="text" className="form-control" aria-describedby="emailHelp" onChange={changeUserHandle} ref={userRef}/>
+                    <input type="text" className="form-control" aria-describedby="emailHelp" onChange={changeUserHandle} ref={userRef} />
                     {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
                 </div>
                 <div className="mb-3">
                     <label for="exampleInputPassword1" className="form-label">Contraseña</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" onChange={changePasswordHandle} ref={passwordRef}/>
+                    <input type="password" className="form-control" id="exampleInputPassword1" onChange={changePasswordHandle} ref={passwordRef} />
                 </div>
                 {/* {userRegisteredLocal.registeredUser.success !== true && <p>El usuario o la contraseña son incorrectos</p>} */}
                 <button type="submit" className="btn btn-primary" onClick={singInHandle}>Iniciar sesion</button>
                 <button type="submit" className="btn btn-info" onClick={goToLoginHandler} >Ir a registrarme</button>
             </form>
-            {isLoading === true && <Loader/>}
+            {isLoading === true && <Loader />}
         </div>
     )
 }
