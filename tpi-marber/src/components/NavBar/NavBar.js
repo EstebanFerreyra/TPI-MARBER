@@ -102,14 +102,14 @@ const NavBar = () => {
               </li>
 
               <li className="nav-item dropdown">
-                <button
+                {userRegisteredLocal.registeredUser.success === true && userRegisteredLocal.registeredUser.role !== "client" &&<button
                   className="nav-link active"
                   aria-current="page"
                   href="#"
                   onClick={goToOrdersHandler}
                 >
                   Ventas
-                </button>
+                </button>}
               </li>
             </ul>
             {userRegisteredLocal.registeredUser.success === true && (

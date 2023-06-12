@@ -42,15 +42,20 @@ const BeerItem = ({
   // };
 
   const addToCartHandler = (event) => {
-    const item = {
-      id: id,
-      name: beerName,
-      style: beerStyle,
-      price: beerPrice,
-      quantity: 0,
-    };
-    addToCart(item);
-    console.log(item);
+    if (success === true) {
+      const item = {
+        id: id,
+        name: beerName,
+        style: beerStyle,
+        price: beerPrice,
+        quantity: 0,
+      };
+      addToCart(item);
+      console.log(item);
+    } else {
+      alert("PRIMERO DEBES INICIAR SESION");
+      navigation("/login");
+    }
   };
 
   const removeItemHandler = (event) => {
@@ -85,7 +90,7 @@ const BeerItem = ({
           Add to cart
         </Button>
         <Button className="btn btn-danger m-2" onClick={removeItemHandler}>
-          x
+          Sacar del carrito
         </Button>
       </div>
       {/* <button type="button" class="btn btn-info">Modificar</button> */}

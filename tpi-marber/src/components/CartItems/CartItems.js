@@ -15,7 +15,7 @@ const CartItems = () => {
           <div>
             <div key={parseInt(item.id)}>
               <p>Producto: {item.name}</p>
-              <p>${item.price}</p>
+              <p>${item.price*item.quantity}</p>
             </div>
           </div>
         ))
