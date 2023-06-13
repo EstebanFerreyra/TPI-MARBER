@@ -6,7 +6,7 @@ const cartLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
 
 export const ShoppingCartProvider = ({ children }) => {
   const [cart, setCart] = useState(cartLocalStorage);
-  console.log(cart, "in shoppingCartContext.js");
+
   const addToCart = (item) => {
     let itemInCartIndex = cart.findIndex(
       (itemAdded) => itemAdded.id === item.id

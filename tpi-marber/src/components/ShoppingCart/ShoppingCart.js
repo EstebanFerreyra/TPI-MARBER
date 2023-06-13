@@ -11,7 +11,6 @@ const ShoppingCart = () => {
   const [preferenceId, setPreferenceId] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  console.log(cart, "in shoppingCart.js");
   initMercadoPago("TEST-c83112be-2db8-4c9e-916e-7c852b74266a");
 
   const createPreference = async () => {
@@ -20,10 +19,9 @@ const ShoppingCart = () => {
       const response = await axios.post(
         "http://localhost:8080/create_preference",
         {
-          description: "Cerveza Porter",
-          price: 10,
-          quantity: 1,
-          currency_id: "ARS",
+          description: cart[0].name,
+          price: cart[0].price,
+          quantity: cart[0].quantity,
         }
       );
 
@@ -42,20 +40,20 @@ const ShoppingCart = () => {
     0
   );
 
-  const finishedBuy = () => {
-    alert("¡Compra realizada con éxito!");
-    clearCart();
-    window.location.reload();
-  }; //preguntar si es conveniente recargar la pagina para q se vacíe el carrito
+  // const finishedBuy = () => {
+  //   alert("¡Compra realizada con éxito!");
+  //   clearCart();
+  //   window.location.reload();
+  // }; //preguntar si es conveniente recargar la pagina para q se vacíe el carrito
 
-  // const handleBuy = async () => {
-  //   const id = await createPreference();
-  //   if (id) {
-  //     setPreferenceId(id);
-  //     setLoading(false);
-  //     clearCart();
-  //   }
-  // };
+  const handleBuy = async () => {
+    const id = await createPreference();
+    if (id) {
+      setPreferenceId(id);
+      setLoading(false);
+      clearCart();
+    }
+  };
 
   return (
     <div>
@@ -71,7 +69,7 @@ const ShoppingCart = () => {
           </div>
 
           <div className="d-flex justify-content-center m-3">
-            <button className="btn btn-secondary" onClick={finishedBuy}>
+            <button className="btn btn-secondary" onClick={handleBuy}>
               Check out
             </button>
           </div>

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import NavBar from "../NavBar/NavBar";
+import OrderRow from "../OrderRow/OrderRow";
 
 const Orders = () => {
-  const [tables, setTables] = useState(false);
-
-  const addTables = () => {
-    setTables(!tables);
-  };
+  const orders = [
+    { id_client: 1, id_prod: 2, quantity: 3, price: 1500 },
+    { id_client: 4, id_prod: 1, quantity: 12, price: 2000 },
+  ];
 
   return (
     <div>
@@ -16,60 +16,20 @@ const Orders = () => {
 
       <div className="d-flex justify-content-center">
         <h2>Estado de pedidos</h2>
-        <button className="btn btn-secondary m-2" onClick={addTables}>
-          mostrar
-        </button>
       </div>
-
-      {!tables ? (
-        <p className="d-flex justify-content-center">
-          No hay ventas que mostrar...
-        </p>
-      ) : (
-        <div class="container">
-          <table class="table table-hover">
-            <thead style={{ backgroundColor: "lightsteelblue" }}>
-              <tr>
-                <th>Cliente</th>
-                <th>Descripción pedido</th>
-
-                <th>Monto</th>
-                <th>Estado</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Juan</td>
-                <td>Cód id_productos</td>
-
-                <td>$total</td>
-                <td>despachado</td>
-              </tr>
-              <tr>
-                <td>Silvia</td>
-                <td>Cód id_productos</td>
-
-                <td>$total</td>
-                <td>pagado</td>
-              </tr>
-              <tr>
-                <td>Raúl</td>
-                <td>Cód id_productos</td>
-
-                <td>$total</td>
-                <td>pendiente</td>
-              </tr>
-              <tr>
-                <td>Bar de la esquina</td>
-                <td>Cód id_productos</td>
-
-                <td>$total</td>
-                <td>pendiente</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      )}
+      <div class="container">
+        <table class="table table-hover">
+          <thead style={{ backgroundColor: "lightsteelblue" }}>
+            <tr>
+              <th>Cliente</th>
+              <th>Descripción pedido</th>
+              <th>Cantidad</th>
+              <th>Monto</th>
+            </tr>
+          </thead>
+          <OrderRow orders={orders} />
+        </table>
+      </div>
     </div>
   );
 };

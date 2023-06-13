@@ -16,6 +16,8 @@ const CartItems = () => {
         subtotal: item.price * item.quantity,
       })),
     };
+
+    console.log(newInvoice);
   };
 
   return (
