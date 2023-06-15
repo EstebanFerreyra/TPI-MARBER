@@ -22,7 +22,11 @@ const NavBar = () => {
   const navigation = useNavigate();
 
   const goToBeersHandler = () => {
-    navigation("/beers");
+    if(registeredUser.role !== "client") {
+      navigation("/beersadmin");
+    } else {
+      navigation("/beers");
+    }
   };
 
   const goToAboutUsHandler = () => {
@@ -40,6 +44,10 @@ const NavBar = () => {
   const goToOrdersHandler = () => {
     navigation("/orders");
   };
+
+  const goToUsers = () => {
+    navigation("/users");
+  }
 
   const logOutHandle = () => {
     setRegisteredUserHandle({
@@ -109,6 +117,16 @@ const NavBar = () => {
                   onClick={goToOrdersHandler}
                 >
                   Ventas
+                </button>}
+              </li>
+              <li className="nav-item dropdown">
+                {registeredUser.success === true && registeredUser.role === "superadmin" && <button
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#"
+                  onClick={goToUsers}
+                >
+                  Usuarios
                 </button>}
               </li>
             </ul>

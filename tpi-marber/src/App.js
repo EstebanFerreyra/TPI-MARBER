@@ -13,8 +13,11 @@ import Protected from "./components/Protected/Protected";
 import { ShoppingCartProvider } from "./components/context/ShoppingCartContext/ShoppingCartContext";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Orders from "./components/Orders/Orders";
+import ViewSuperAdmin from "./components/ViewSuperAdmin/ViewSuperAdmin";
+import CustomersContextProvider, { CustomersContext } from "./components/context/CustomersContext/CustomersContext";
 
 function App() {
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -34,7 +37,15 @@ function App() {
     },
     {
       path: "/aboutus",
-      element: <ViewAboutUs />,
+      element: <ViewAboutUs />
+    },
+    {
+      path: "/users",
+      element: (
+        <Protected>
+          <ViewSuperAdmin />
+        </Protected>
+      )
     },
     {
       path: "/login",
@@ -60,13 +71,16 @@ function App() {
 
   //return <RouterProvider router={router}/>
   return (
-    <RegisteredUserContextProvider
-      RegisteredUserContext={RegisteredUserContext}
-    >
-      <ShoppingCartProvider>
-        <RouterProvider router={router} />
-      </ShoppingCartProvider>
-    </RegisteredUserContextProvider>
+    <CustomersContextProvider CustomersContext={CustomersContext}>
+      <RegisteredUserContextProvider
+        RegisteredUserContext={RegisteredUserContext}
+      >
+        <ShoppingCartProvider>
+          <RouterProvider router={router} />
+        </ShoppingCartProvider>
+      </RegisteredUserContextProvider>
+    </CustomersContextProvider>
+   
   );
 }
 

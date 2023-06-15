@@ -14,9 +14,8 @@ import Login from '../Login/Login'
 const ViewBeerAdmin = () => {
   const [beers, setBeers] = useState([]);
   const [addBeer, setAddBeer] = useState(false);
-  const [isAddClient, setIsAddClient] = useState(false);
 
-  const userRegisteredLocal = useContext(RegisteredUserContext);
+  const {registeredUser} = useContext(RegisteredUserContext);
 
   const seeAddBeerHandle = () => {
     setAddBeer(true);
@@ -43,25 +42,14 @@ const ViewBeerAdmin = () => {
     setBeers(beersValue);
   }
 
-  const seeLoginHandle = () => {
-    setIsAddClient(true);
-  }
-
-  const hideLoginHandle = () => {
-    setIsAddClient(false);
-  }
-
   return (
     <>
       <NavBar />
       {/* para super usuario */}
       <ul>
-        {isAddClient === false && userRegisteredLocal.registeredUser.role === "superadmin" && <li> <button type="button" className="btn btn-primary" onClick={seeLoginHandle}>Agregar usuario</button></li>}
-        {isAddClient === true &&<li><button type="button" className="btn btn-secondary" onClick={hideLoginHandle}>Volver</button></li> }     
         {addBeer === false && <li><button type="button" className="btn btn-primary" onClick={seeAddBeerHandle}>Nueva cerveza</button></li>}
         {addBeer === true && <li><button type="button" className="btn btn-secondary" onClick={hideAddBeerHandle}>Volver</button></li>}
       </ul>
-      {isAddClient === true && <Login />}
       {addBeer === true && <AddBeer handleAddBeer={handleAddBeer} beers={beers} />}
       {/* <ModifyBeer handleModifyBeer={handleModifyBeer}/>
         <DeleteBeer handleDeleteBeer={handleDeleteBeer}/> */}

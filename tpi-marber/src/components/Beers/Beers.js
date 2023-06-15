@@ -5,13 +5,13 @@ import "./Beers.css";
 import { Spinner } from "react-bootstrap";
 import Loader from "../ui/Loader";
 
-const Beers = ({ beers, getBeers, handleDeleteBeer }) => {
+const Beers = ({ beers, getBeers, handleDeleteBeer1 }) => {
   const { toggleLoading } = useContext(APIContext);
 
   const url = 'https://localhost:7160/marber/BeerController/GetBeers'
 
   const handleDeleteBeer2 = (beersValue) => {
-    handleDeleteBeer(beersValue);
+    handleDeleteBeer1(beersValue);
     console.log("beers");
   }
 
