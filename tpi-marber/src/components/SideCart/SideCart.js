@@ -19,11 +19,11 @@ const SideCart = () => {
         <div>
           <div key={parseInt(item.id)}>
             <p>Producto: {item.name}</p>
-            <p>${item.price*item.quantity}</p>
+            <p>${item.price * item.quantity}</p>
           </div>
         </div>
       ))}
-      <button className="btn btn-secondary" onClick={goToCartHandler}>
+      <button className="checkout btn btn-secondary" onClick={goToCartHandler}>
         Go to cart
       </button>
     </div>
