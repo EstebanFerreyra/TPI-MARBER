@@ -58,6 +58,10 @@ const NavBar = () => {
     navigation("/login");
   };
 
+  const goToAllBuys = () => {
+    navigation("/orders")
+  }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -107,6 +111,17 @@ const NavBar = () => {
                 >
                   Productos
                 </button>
+              </li>
+
+              <li className="nav-item dropdown">
+                {registeredUser.success === true && registeredUser.role === "client" && <button
+                  className="nav-link active"
+                  aria-current="page"
+                  href="#"
+                  onClick={goToAllBuys}
+                >
+                  Mis compras
+                </button>}
               </li>
 
               <li className="nav-item dropdown">

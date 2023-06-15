@@ -1,13 +1,23 @@
 import React, { useEffect, useState, useContext } from "react";
 import NavBar from "../NavBar/NavBar";
 import OrderRow from "../OrderRow/OrderRow";
+import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+
+  const { registeredUser } = useContext(RegisteredUserContext);
+
   const setOrdersHandle = (obj) => {
     setOrders(obj);
   }
-  const url = "https://localhost:7160/marber/OrderController/GetOrder";
+
+  let url = `https://localhost:7160/marber/OrderController/GetOrder/${registeredUser.id}`
+
+  if(registeredUser.role === "superadmin"){
+    url = "https://localhost:7160/marber/OrderController/GetOrder";
+  }
+  
 
   useEffect(() => {
     //toggleLoading(true);
