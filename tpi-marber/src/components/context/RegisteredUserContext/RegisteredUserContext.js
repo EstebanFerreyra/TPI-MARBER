@@ -4,6 +4,7 @@ export const RegisteredUserContext = React.createContext([]);
 const RegisteredUserContextProvider = ({children}) => {
     const [registeredUser, setRegisteredUser] = useState({
         success: false,
+        id: 0,
         user: "",
         role: ""
     });

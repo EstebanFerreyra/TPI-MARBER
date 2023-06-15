@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import NavBar from "../NavBar/NavBar";
 import OrderRow from "../OrderRow/OrderRow";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-
-  const url = "https://localhost:7160/marber/OrderController/GetOrders";
+  const setOrdersHandle = (obj) => {
+    setOrders(obj);
+  }
+  const url = "https://localhost:7160/marber/OrderController/GetOrder";
 
   useEffect(() => {
     //toggleLoading(true);
@@ -18,8 +20,9 @@ const Orders = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setOrders(data);
+        setOrdersHandle(data);
       })
+      // .then(data => console.log(data))
       .catch((error) => console.log(error));
     //toggleLoading(false);
   }, []);
@@ -37,13 +40,20 @@ const Orders = () => {
         <table class="table table-hover">
           <thead style={{ backgroundColor: "lightsteelblue" }}>
             <tr>
+              <th>Id Orden</th>
               <th>Cliente</th>
-              <th>Descripción pedido</th>
+              <th>Producto</th>
               <th>Cantidad</th>
               <th>Monto</th>
+              <th>TOTAL</th>
             </tr>
           </thead>
-          <OrderRow orders={orders} />
+          <tbody>
+            {orders.map((order) => {
+
+              return <OrderRow key={order.id} id={order.id} idUser={order.idUser} idBeer={order.idBeer} quantity={order.quantity} beerPrice={order.beerPrice}/>
+            })}
+          </tbody>
         </table>
       </div>
     </div>

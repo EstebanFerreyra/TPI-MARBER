@@ -68,6 +68,7 @@ const SingIn = ({ setLogStatusHandle }) => {
             if (client.userBd === user && client.passwordBd === password) {
                 setRegisteredUserHandle({
                     success: true,
+                    id: client.id,
                     user: client.userBd,
                     role: client.roleBd
                 });

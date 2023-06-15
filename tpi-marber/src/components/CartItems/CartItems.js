@@ -1,23 +1,41 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
+import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 
 const CartItems = () => {
   const { cart } = useContext(CartContext);
+  const { registeredUser } = useContext(RegisteredUserContext);
 
   const checkoutHandler = () => {
-    // API Fetch
+    const url = 'https://localhost:7160/marber/OrderController/AddOrder';
 
-    const newInvoice = {
-      // userId del contexto
-      details: cart.map((item) => ({
-        productId: item.id,
-        quantity: item.quantity,
-        unitPrice: item.price,
-        subtotal: item.price * item.quantity,
-      })),
-    };
+    cart.map((order) => {
+      fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          idUser: registeredUser.id,
+          idBeer: order.id,
+          quantity: order.quantity,
+          beerPrice: order.price
+        })
+      })
+        .then(response => response)
+        .catch((error) => console.log(error));
+    })
 
-    console.log(newInvoice);
+    // const newInvoice = {
+    //   userId del contexto
+    //   details: cart.map((item) => ({
+    //     productId: item.id,
+    //     quantity: item.quantity,
+    //     unitPrice: item.price,
+    //     subtotal: item.price * item.quantity,
+    //   })),
+    // };
   };
 
   return (

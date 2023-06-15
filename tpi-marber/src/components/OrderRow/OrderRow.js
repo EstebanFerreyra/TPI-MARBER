@@ -1,17 +1,17 @@
 import React from "react";
 
-const OrderRow = ({ orders }) => {
+const OrderRow = ({ id, idUser, idBeer, quantity, beerPrice }) => {
+
+
   return (
-    <tbody>
-      {orders.map((o) => (
-        <tr>
-          <td>{o.id_client}</td>
-          <td>{o.id_prod}</td>
-          <td>{o.quantity}</td>
-          <td>${o.price}</td>
-        </tr>
-      ))}
-    </tbody>
+    <tr>
+      <td>{id}</td>
+      <td>{idUser}</td>
+      <td>{idBeer}</td>
+      <td>{quantity}</td>
+      <td>${beerPrice}</td>
+      <td>${beerPrice*quantity}</td>
+    </tr>
   );
 };
 
