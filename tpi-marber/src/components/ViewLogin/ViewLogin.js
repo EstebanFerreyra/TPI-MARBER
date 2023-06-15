@@ -14,8 +14,8 @@ const ViewLogin = () => {
     return (
         <>
             <NavBar />
-            {logStatus && <SingIn setLogStatusHandle={setLogStatusHandle}/>}
-            {!logStatus && <Login setLogStatusHandle={setLogStatusHandle}/>}
+            {logStatus && <SingIn setLogStatusHandle={setLogStatusHandle} />}
+            {!logStatus && <Login setLogStatusHandle={setLogStatusHandle} />}
             <Footer />
         </>
     )

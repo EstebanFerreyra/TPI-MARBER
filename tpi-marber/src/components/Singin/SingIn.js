@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useContext, useRef } from 'react'
+import React, { useState, useContext, useRef } from 'react'
 import { useNavigate } from "react-router";
 import { RegisteredUserContext } from '../context/RegisteredUserContext/RegisteredUserContext';
 import { APIContext } from '../context/Api/api.context'
 import Loader from '../ui/Loader';
+import {CustomersContext} from '../context/CustomersContext/CustomersContext';
 
 
 const SingIn = ({ setLogStatusHandle }) => {
     const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
-    const [customers, setCustomers] = useState([]);
 
     const userRef = useRef(null);
     const passwordRef = useRef(null);
@@ -16,21 +16,7 @@ const SingIn = ({ setLogStatusHandle }) => {
     const { toggleLoading } = useContext(APIContext);
     const { isLoading } = useContext(APIContext);
     const { registeredUser, setRegisteredUserHandle } = useContext(RegisteredUserContext);
-
-    useEffect(() => {
-        fetch(url, {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => response.json())
-            .then((data) => {
-                setCustomers(data);
-            })
-            .catch((error) => console.log(error));
-    }, [])
+    const { customers } = useContext(CustomersContext);
 
     const navigation = useNavigate();
 
@@ -47,9 +33,9 @@ const SingIn = ({ setLogStatusHandle }) => {
         setLogStatusHandle(false);
         navigation("/login");
     }
+
     var existUser;
 
-    const url = 'https://localhost:7160/marber/ClientController/GetCustomers';
     const singInHandle = (event) => {
         event.preventDefault();
         if (user.length === 0 || password.length === 0) {
@@ -80,22 +66,17 @@ const SingIn = ({ setLogStatusHandle }) => {
 
         customers.map((client) => {
             if (client.userBd === user && client.passwordBd === password) {
-                //console.log(userRegisteredLocal.registeredUser);
                 setRegisteredUserHandle({
                     success: true,
                     user: client.userBd,
                     role: client.roleBd
                 });
-                //console.log(userRegisteredLocal.registeredUser);
 
                 existUser = true;
                 toggleLoading(true);
 
-                setTimeout(() => {
-                    goToPage();
-                    toggleLoading(false);
-                }, "3000");
-
+                goToPage();
+                toggleLoading(false);
             }
         })
         if (!existUser) {

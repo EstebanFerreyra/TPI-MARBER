@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import CardBeer from "../CardBeer/CardBeer";
 import { Button } from "react-bootstrap";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import { useNavigate } from "react-router";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
+import ModifyBeer from "../ModifyBeer/ModifyBeer"
 
-
-const BeerItem = ({ key, id, beerName, beerStyle, beerPrice, handleDeleteBeer2 }) => {
+const BeerItem = ({ id, beerName, beerStyle, beerPrice, handleDeleteBeer2 }) => {
+  const [priceActually, setPriceActually] = useState(beerPrice)
+  const [modify, setModify] = useState(false);
   const navigation = useNavigate();
   const { addToCart, removeItem } = useContext(CartContext)
 
@@ -62,6 +64,10 @@ const BeerItem = ({ key, id, beerName, beerStyle, beerPrice, handleDeleteBeer2 }
     }
   };
 
+  const seeModifyBeer = () => {
+    setModify(true);
+  }
+
   const removeItemHandler = (event) => {
     const item = {
       id: id,
@@ -72,6 +78,11 @@ const BeerItem = ({ key, id, beerName, beerStyle, beerPrice, handleDeleteBeer2 }
     };
     removeItem(item);
   };
+
+  const setModifyPriceHandle = (bool, newPrice) => {
+    setPriceActually(newPrice);
+    setModify(bool);
+  }
 
   return (
     <CardBeer>
@@ -88,22 +99,23 @@ const BeerItem = ({ key, id, beerName, beerStyle, beerPrice, handleDeleteBeer2 }
         height="100px"
       ></img>
       <h3>{beerStyle}</h3>
-      <p>$ {beerPrice}</p>
+      <p>$ {priceActually}</p>
       <div className="d-flex">
         <Button className="btn btn-success m-2" onClick={addToCartHandler}>
-          Add to cart
+          +
         </Button>
         <Button className="btn btn-danger m-2" onClick={removeItemHandler}>
-          Sacar del carrito
+          -
         </Button>
       </div>
       {/* <button type="button" class="btn btn-info">Modificar</button> */}
-      {(type === "admin" || type === "superadmin") && (
-        <button type="button" class="btn btn-info">
+      {(type === "admin" || type === "superadmin") && modify === false &&(
+        <button type="button" class="btn btn-info" onClick={seeModifyBeer}>
           Modificar
         </button>
       )}
       <Button className="btn btn-info m-2">+ Info</Button>
+      {modify === true && <ModifyBeer id={id} setModifyPriceHandle={setModifyPriceHandle}/>}
     </CardBeer>
   );
 };

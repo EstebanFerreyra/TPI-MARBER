@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
+import { CustomersContext } from "../context/CustomersContext/CustomersContext";
 
 const Login = ({ setLogStatusHandle }) => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,8 @@ const Login = ({ setLogStatusHandle }) => {
 
   const navigation = useNavigate();
 
-  const userRegisteredLocal = useContext(RegisteredUserContext);
+  const { registeredUser } = useContext(RegisteredUserContext);
+  const { setCustomersHandle } = useContext(CustomersContext)
 
   const client = {
     emailBd: email,
@@ -93,7 +95,13 @@ const Login = ({ setLogStatusHandle }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(client),
-    });
+    })
+      .then(res => res.json())
+      .then((data) => {
+        setCustomersHandle(data);
+      })
+      .catch(error => console.log(error));
+
     setLogStatusHandle(true);
     emalRef.current.value = "";
     userRef.current.value = "";
@@ -142,7 +150,7 @@ const Login = ({ setLogStatusHandle }) => {
             ref={passwordRef}
           />
         </div>
-        {userRegisteredLocal.registeredUser.role === "superadmin" && (
+        {registeredUser.role === "superadmin" && (
           <div className="mb-3">
             <label className="selec-label">Tipo de usuario</label>
             <select
