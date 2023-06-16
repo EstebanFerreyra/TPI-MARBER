@@ -17,13 +17,13 @@ const SideCart = () => {
       <p>detalle de la compra</p>
       {cart.map((item) => (
         <div>
-          <div key={parseInt(item.id)}>
+          <div key={item.id}>
             <p>Producto: {item.name}</p>
             <p>${item.price * item.quantity}</p>
           </div>
         </div>
       ))}
-      <button className="checkout btn btn-secondary" onClick={goToCartHandler}>
+      <button className="checkout" onClick={goToCartHandler}>
         Go to cart
       </button>
     </div>
