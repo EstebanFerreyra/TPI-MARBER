@@ -1,36 +1,36 @@
 import React, { useEffect, useContext } from "react";
 import BeerItem from "../BeerItem/BeerItem";
 import { APIContext } from "../context/Api/api.context";
-import "./Beers.css";
-import { Spinner } from "react-bootstrap";
 import Loader from "../ui/Loader";
+
+import "./Beers.css";
 
 const Beers = ({ beers, getBeers, handleDeleteBeer1 }) => {
   const { toggleLoading } = useContext(APIContext);
 
-  const url = 'https://localhost:7160/marber/BeerController/GetBeers'
+  const url = "https://localhost:7160/marber/BeerController/GetBeers";
 
   const handleDeleteBeer2 = (beersValue) => {
     handleDeleteBeer1(beersValue);
     console.log("beers");
-  }
+  };
 
   useEffect(() => {
     toggleLoading(true);
     fetch(url, {
-      method: 'GET',
-      mode: 'cors',
+      method: "GET",
+      mode: "cors",
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     })
-      .then(response => response.json())
+      .then((response) => response.json())
       .then((data) => {
         getBeers(data);
       })
       .catch((error) => console.log(error));
     toggleLoading(false);
-  }, [])
+  }, []);
 
   const beersMapped = beers.map((beer) => (
     <BeerItem
@@ -45,11 +45,7 @@ const Beers = ({ beers, getBeers, handleDeleteBeer1 }) => {
 
   return (
     <div className="beers">
-      {beersMapped.length === 0 ? (
-        <Loader />
-      ) : (
-        beersMapped
-      )}
+      {beersMapped.length === 0 ? <Loader /> : beersMapped}
     </div>
   );
 };

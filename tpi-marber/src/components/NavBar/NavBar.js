@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
-
 import "./NavBar.css";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import SideCart from "../SideCart/SideCart";
@@ -13,7 +12,9 @@ const NavBar = () => {
 
   const quantity = cart.length;
 
-  const { registeredUser, setRegisteredUserHandle } = useContext(RegisteredUserContext);
+  const { registeredUser, setRegisteredUserHandle } = useContext(
+    RegisteredUserContext
+  );
 
   const clickHandler = () => {
     setClick(true);
@@ -22,7 +23,7 @@ const NavBar = () => {
   const navigation = useNavigate();
 
   const goToBeersHandler = () => {
-    if(registeredUser.role !== "client") {
+    if (registeredUser.role !== "client") {
       navigation("/beersadmin");
     } else {
       navigation("/beers");
@@ -47,7 +48,7 @@ const NavBar = () => {
 
   const goToUsers = () => {
     navigation("/users");
-  }
+  };
 
   const logOutHandle = () => {
     setRegisteredUserHandle({
@@ -110,30 +111,35 @@ const NavBar = () => {
               </li>
 
               <li className="nav-item dropdown">
-                {registeredUser.success === true && registeredUser.role !== "client" && <button
-                  className="nav-link active"
-                  aria-current="page"
-                  href="#"
-                  onClick={goToOrdersHandler}
-                >
-                  Ventas
-                </button>}
+                {registeredUser.success === true &&
+                  registeredUser.role !== "client" && (
+                    <button
+                      className="nav-link active"
+                      aria-current="page"
+                      href="#"
+                      onClick={goToOrdersHandler}
+                    >
+                      Ventas
+                    </button>
+                  )}
               </li>
               <li className="nav-item dropdown">
-                {registeredUser.success === true && registeredUser.role === "superadmin" && <button
-                  className="nav-link active"
-                  aria-current="page"
-                  href="#"
-                  onClick={goToUsers}
-                >
-                  Usuarios
-                </button>}
+                {registeredUser.success === true &&
+                  registeredUser.role === "superadmin" && (
+                    <button
+                      className="nav-link active"
+                      aria-current="page"
+                      href="#"
+                      onClick={goToUsers}
+                    >
+                      Usuarios
+                    </button>
+                  )}
               </li>
             </ul>
             {registeredUser.success === true && (
               <span className="navbar-text" style={{ "margin-right": "10px" }}>
-                ¡Bienvenido{" "}
-                <strong>{registeredUser.user}</strong>!
+                ¡Bienvenido <strong>{registeredUser.user}</strong>!
               </span>
             )}
 
@@ -145,7 +151,7 @@ const NavBar = () => {
                 type="submit"
                 onClick={() => setSideCart(!sideCart)}
 
-              //onClick={goToCartHandler}
+                //onClick={goToCartHandler}
               >
                 {" "}
                 <img
@@ -186,6 +192,6 @@ const NavBar = () => {
       </nav>
     </div>
   );
-}
+};
 
 export default NavBar;

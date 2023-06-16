@@ -11,13 +11,14 @@ import RegisteredUserContextProvider, {
 } from "./components/context/RegisteredUserContext/RegisteredUserContext";
 import Protected from "./components/Protected/Protected";
 import { ShoppingCartProvider } from "./components/context/ShoppingCartContext/ShoppingCartContext";
-import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Orders from "./components/Orders/Orders";
 import ViewSuperAdmin from "./components/ViewSuperAdmin/ViewSuperAdmin";
-import CustomersContextProvider, { CustomersContext } from "./components/context/CustomersContext/CustomersContext";
+import CustomersContextProvider, {
+  CustomersContext,
+} from "./components/context/CustomersContext/CustomersContext";
+import CartItems from "./components/CartItems/CartItems";
 
 function App() {
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -37,7 +38,7 @@ function App() {
     },
     {
       path: "/aboutus",
-      element: <ViewAboutUs />
+      element: <ViewAboutUs />,
     },
     {
       path: "/users",
@@ -45,7 +46,7 @@ function App() {
         <Protected>
           <ViewSuperAdmin />
         </Protected>
-      )
+      ),
     },
     {
       path: "/login",
@@ -57,7 +58,7 @@ function App() {
     },
     {
       path: "/buying",
-      element: <ShoppingCart />,
+      element: <CartItems />,
     },
     {
       path: "/singin",
@@ -80,7 +81,6 @@ function App() {
         </ShoppingCartProvider>
       </RegisteredUserContextProvider>
     </CustomersContextProvider>
-   
   );
 }
 
