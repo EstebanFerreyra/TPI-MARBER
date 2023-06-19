@@ -63,6 +63,10 @@ const NavBar = () => {
     navigation("/orders");
   };
 
+  const sideCartHandler = () => {
+    setSideCart(!sideCart);
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -162,14 +166,12 @@ const NavBar = () => {
             )}
 
             <div className="d-flex" role="search">
-              {sideCart && <SideCart />}
+              {sideCart && <SideCart onClose={sideCartHandler} />}
 
               <button
                 className="btn btn-outline-success"
                 type="submit"
-                onClick={() => setSideCart(!sideCart)}
-
-                //onClick={goToCartHandler}
+                onClick={sideCartHandler}
               >
                 {" "}
                 <img

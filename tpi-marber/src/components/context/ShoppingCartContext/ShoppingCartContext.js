@@ -22,8 +22,6 @@ export const ShoppingCartProvider = ({ children }) => {
         "cart",
         JSON.stringify([...cart, { ...item, quantity: 1 }])
       );
-
-      ////push devuelve la cantidad de elementos del array despues de agregarle el nuevo elemento al final
     }
   };
 
@@ -35,12 +33,34 @@ export const ShoppingCartProvider = ({ children }) => {
 
   const clearCart = () => {
     localStorage.removeItem("cart");
+    setCart([]);
   };
 
-  const increaseQuantity = (id) => {
-    const updatedCart = cart.map((item) =>
-      item.id === id ? { ...item, quantity: +1 } : item
-    );
+  const increaseQuantity = (itemId) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === itemId) {
+        return {
+          ...item,
+          quantity: (item.quantity += 1),
+        };
+      }
+      return item;
+    });
+
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const decreaseQuantity = (itemId) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === itemId) {
+        return {
+          ...item,
+          quantity: (item.quantity -= 1),
+        };
+      }
+      return item;
+    });
 
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
@@ -48,11 +68,16 @@ export const ShoppingCartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeItem, increaseQuantity, clearCart }}
+      value={{
+        cart,
+        addToCart,
+        removeItem,
+        increaseQuantity,
+        decreaseQuantity,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>
   );
 };
-
-//ver si conviene pasar las funciones por contexto e importarlas en CartItems
