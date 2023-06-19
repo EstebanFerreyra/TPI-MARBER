@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import { useNavigate } from "react-router-dom";
+import useClickOutside from "../custom/useClickOutside/useClickOutside";
 
 import "./SideCart.css";
 
-const SideCart = () => {
+const SideCart = ({ onClose }) => {
   const { cart } = useContext(CartContext);
+  const ref = useClickOutside(onClose);
+
   const navigation = useNavigate();
 
   const goToCartHandler = () => {
@@ -13,18 +16,20 @@ const SideCart = () => {
   };
 
   return (
-    <div className="side-cart">
+    <div className="side-cart" ref={ref}>
       <p>detalle de la compra</p>
       {cart.map((item) => (
         <div>
           <div key={item.id}>
-            <p>Producto: {item.name}</p>
+            <p>
+              Producto: {item.name} x{item.quantity}
+            </p>
             <p>${item.price * item.quantity}</p>
           </div>
         </div>
       ))}
       <button className="checkout" onClick={goToCartHandler}>
-        Go to cart
+        Ir al carrito
       </button>
     </div>
   );
