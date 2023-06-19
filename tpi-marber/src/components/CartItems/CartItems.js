@@ -30,9 +30,13 @@ const CartItems = () => {
         .then((response) => response)
         .catch((error) => console.log(error));
     });
-
-    alert("¡Compra realizada con éxito!");
-    clearCart();
+    if (cart.length !== 0) {
+      clearCart();
+      alert("¡Compra realizada con éxito!");
+      //y que salte el boton de mercadopago
+    } else {
+      alert("Aún no has seleccionado un producto.");
+    }
 
     // const newInvoice = {
     //   userId del contexto
