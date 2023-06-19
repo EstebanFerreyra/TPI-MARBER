@@ -23,3 +23,8 @@
 .cart-text {
   color: teal;
 }
+
+.checkout {
+  font-size: larger;
+  background-color: teal;
+}

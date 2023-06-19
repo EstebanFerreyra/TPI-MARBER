@@ -17,7 +17,7 @@ const SideCart = ({ onClose }) => {
 
   return (
     <div className="side-cart" ref={ref}>
-      <p>detalle de la compra</p>
+      <p>Detalle de la compra</p>
       {cart.map((item) => (
         <div>
           <div key={item.id}>

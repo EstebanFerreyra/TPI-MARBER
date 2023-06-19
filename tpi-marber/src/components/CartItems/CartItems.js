@@ -60,8 +60,6 @@ const CartItems = () => {
     removeItem(item);
   };
 
-  const quantity = cart.length;
-
   const total = cart.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
@@ -141,7 +139,10 @@ const CartItems = () => {
             <h3 className="cart-text">Total: ${total}</h3>
           </div>
           <div className="d-flex justify-content-center">
-            <button className="btn btn-secondary" onClick={checkoutHandler}>
+            <button
+              className="checkout btn btn-secondary"
+              onClick={checkoutHandler}
+            >
               Finalizar compra
             </button>
           </div>

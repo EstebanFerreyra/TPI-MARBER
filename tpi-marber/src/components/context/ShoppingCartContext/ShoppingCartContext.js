@@ -22,8 +22,6 @@ export const ShoppingCartProvider = ({ children }) => {
         "cart",
         JSON.stringify([...cart, { ...item, quantity: 1 }])
       );
-
-      ////push devuelve la cantidad de elementos del array despues de agregarle el nuevo elemento al final
     }
   };
 
@@ -83,5 +81,3 @@ export const ShoppingCartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
-
-//ver si conviene pasar las funciones por contexto e importarlas en CartItems
