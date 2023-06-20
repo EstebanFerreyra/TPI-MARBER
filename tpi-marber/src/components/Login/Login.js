@@ -16,7 +16,7 @@ const Login = ({ setLogStatusHandle }) => {
   const navigation = useNavigate();
 
   const { registeredUser } = useContext(RegisteredUserContext);
-  const { setCustomersHandle } = useContext(CustomersContext)
+  const { setCustomersHandle } = useContext(CustomersContext);
 
   const client = {
     emailBd: email,
@@ -96,11 +96,11 @@ const Login = ({ setLogStatusHandle }) => {
       },
       body: JSON.stringify(client),
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((data) => {
         setCustomersHandle(data);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
 
     setLogStatusHandle(true);
     emalRef.current.value = "";
@@ -111,8 +111,8 @@ const Login = ({ setLogStatusHandle }) => {
 
   return (
     <div>
-      <div className='card d-flex justify-content-center w-75 p-2 m-5'>
-        <div className='card d-flex justify-content-center'>
+      <div className="card d-flex justify-content-center w-75 p-2 m-5">
+        <div className="card d-flex justify-content-center">
           <form>
             <div className="mb-3">
               <label for="exampleInputEmail1" className="form-label">
@@ -166,7 +166,11 @@ const Login = ({ setLogStatusHandle }) => {
                 </select>
               </div>
             )}
-            <button type="submit" className="btn btn-primary" onClick={loginHandle}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={loginHandle}
+            >
               Registrarse
             </button>
             <button

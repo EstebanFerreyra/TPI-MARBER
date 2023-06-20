@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import NavBar from "../NavBar/NavBar";
+import { useNavigate } from "react-router-dom";
 
 import "./CartItems.css";
 
@@ -9,33 +10,36 @@ const CartItems = () => {
   const { cart, clearCart, increaseQuantity, decreaseQuantity, removeItem } =
     useContext(CartContext);
   const { registeredUser } = useContext(RegisteredUserContext);
+  const navigation = useNavigate();
 
   const checkoutHandler = () => {
     const url = "https://localhost:7160/marber/OrderController/AddOrder";
 
-    cart.map((order) => {
-      fetch(url, {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          idUser: registeredUser.id,
-          idBeer: order.id,
-          quantity: order.quantity,
-          beerPrice: order.price,
-        }),
-      })
-        .then((response) => response)
-        .catch((error) => console.log(error));
-    });
-    if (cart.length !== 0) {
+    if (cart.length === 0) {
+      alert("Aún no has seleccionado un producto.");
+      navigation("/beers"); //para admin o superadmn debe ser /beersadmin
+    } else {
+      cart.map((order) => {
+        fetch(url, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            idUser: registeredUser.id,
+            idBeer: order.id,
+            quantity: order.quantity,
+            beerPrice: order.price,
+          }),
+        })
+          .then((response) => response)
+          .catch((error) => console.log(error));
+      });
+
       clearCart();
       alert("¡Compra realizada con éxito!");
       //y que salte el boton de mercadopago
-    } else {
-      alert("Aún no has seleccionado un producto.");
     }
 
     // const newInvoice = {
