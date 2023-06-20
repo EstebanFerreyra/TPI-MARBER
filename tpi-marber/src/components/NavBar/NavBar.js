@@ -51,6 +51,7 @@ const NavBar = () => {
   };
 
   const logOutHandle = () => {
+    localStorage.removeItem("registeredUser");
     setRegisteredUserHandle({
       success: false,
       user: "",

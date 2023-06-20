@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { RegisteredUserContext } from '../context/RegisteredUserContext/RegisteredUserContext';
 import { APIContext } from '../context/Api/api.context'
 import Loader from '../ui/Loader';
-import {CustomersContext} from '../context/CustomersContext/CustomersContext';
+import { CustomersContext } from '../context/CustomersContext/CustomersContext';
 
 
 const SingIn = ({ setLogStatusHandle }) => {
@@ -66,6 +66,12 @@ const SingIn = ({ setLogStatusHandle }) => {
 
         customers.map((client) => {
             if (client.userBd === user && client.passwordBd === password) {
+                localStorage.setItem("registeredUser", JSON.stringify({
+                    success: true,
+                    id: client.id,
+                    user: client.userBd,
+                    role: client.roleBd
+                }))
                 setRegisteredUserHandle({
                     success: true,
                     id: client.id,
@@ -104,21 +110,25 @@ const SingIn = ({ setLogStatusHandle }) => {
 
     return (
         <div>
-            <form>
-                <div className="mb-3">
-                    <label for="exampleInputEmail1" className="form-label">Usuario</label>
-                    <input type="text" className="form-control" aria-describedby="emailHelp" onChange={changeUserHandle} ref={userRef} />
-                    {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
+            <div className='card d-flex justify-content-center w-75 p-2 m-5'>
+                <div className='card d-flex justify-content-center'>
+                    <form>
+                        <div className="mb-3">
+                            <label for="exampleInputEmail1" className="form-label">Usuario</label>
+                            <input type="text" className="form-control" aria-describedby="emailHelp" onChange={changeUserHandle} ref={userRef} />
+                            {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
+                        </div>
+                        <div className="mb-3">
+                            <label for="exampleInputPassword1" className="form-label">Contraseña</label>
+                            <input type="password" className="form-control" id="exampleInputPassword1" onChange={changePasswordHandle} ref={passwordRef} />
+                        </div>
+                        {/* {userRegisteredLocal.registeredUser.success !== true && <p>El usuario o la contraseña son incorrectos</p>} */}
+                        <button type="submit" className="btn btn-primary" onClick={singInHandle}>Iniciar sesion</button>
+                        <button type="submit" className="btn btn-info" onClick={goToLoginHandler} >Ir a registrarme</button>
+                    </form>
                 </div>
-                <div className="mb-3">
-                    <label for="exampleInputPassword1" className="form-label">Contraseña</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" onChange={changePasswordHandle} ref={passwordRef} />
-                </div>
-                {/* {userRegisteredLocal.registeredUser.success !== true && <p>El usuario o la contraseña son incorrectos</p>} */}
-                <button type="submit" className="btn btn-primary" onClick={singInHandle}>Iniciar sesion</button>
-                <button type="submit" className="btn btn-info" onClick={goToLoginHandler} >Ir a registrarme</button>
-            </form>
-            {isLoading === true && <Loader />}
+                {isLoading === true && <Loader />}
+            </div>
         </div>
     )
 }
