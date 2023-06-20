@@ -66,6 +66,12 @@ const SingIn = ({ setLogStatusHandle }) => {
 
         customers.map((client) => {
             if (client.userBd === user && client.passwordBd === password) {
+                localStorage.setItem("registeredUser", JSON.stringify({
+                    success: true,
+                    id: client.id,
+                    user: client.userBd,
+                    role: client.roleBd
+                }))
                 setRegisteredUserHandle({
                     success: true,
                     id: client.id,
