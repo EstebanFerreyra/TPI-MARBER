@@ -94,6 +94,9 @@ const AddBeer = ({ handleAddBeer, beers }) => {
         nameRef.current.value = "";
         styleRef.current.value = "";
         priceRef.current.value = "";
+        const newError = [...error]
+        newError[0].isError = false;
+        setError(newError);
     }
 
     return (
