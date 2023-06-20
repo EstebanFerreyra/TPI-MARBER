@@ -17,6 +17,7 @@ import CustomersContextProvider, {
   CustomersContext,
 } from "./components/context/CustomersContext/CustomersContext";
 import CartItems from "./components/CartItems/CartItems";
+import ViewRegister from "./components/ViewRegister/ViewRegister";
 
 function App() {
   const router = createBrowserRouter([
@@ -51,6 +52,10 @@ function App() {
     {
       path: "/login",
       element: <ViewLogin />,
+    },
+    {
+      path: "/register",
+      element: <ViewRegister />,
     },
     {
       path: "/orders",

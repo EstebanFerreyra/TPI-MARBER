@@ -11,7 +11,7 @@ const ViewSuperAdmin = () => {
     const navigation = useNavigate();
 
     const seeLoginHandle = () => {
-        navigation("/login");
+        navigation("/register");
     }
 
     return (
