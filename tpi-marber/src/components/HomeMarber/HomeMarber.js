@@ -1,14 +1,16 @@
-import React from "react";
-import NavBar from "../NavBar/Navbar";
-import Carousel from "../Carousel/Carousel";
+import React from 'react'
+import NavBar from '../NavBar/NavBar'
+import Carousel from '../Carousel/Carousel'
+import Footer from '../Footer/Footer'
 
 const HomeMarber = () => {
   return (
-    <div>
-      <NavBar />
-      <Carousel />
-    </div>
-  );
-};
+    <>
+        <NavBar/>
+        <Carousel/>
+        <Footer/>
+    </>
+  )
+}
 
-export default HomeMarber;
+export default HomeMarber

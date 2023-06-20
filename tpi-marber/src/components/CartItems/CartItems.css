@@ -1,0 +1,30 @@
+.bin-button {
+  background-color: rgba(246, 246, 245, 0.864);
+  width: 37px;
+  height: 37px;
+  border-width: 0px;
+}
+
+.quant-button {
+  color: rgb(0, 0, 0);
+  font-size: larger;
+  font-weight: bolder;
+  background-color: rgba(246, 246, 245, 0.864);
+  width: 37px;
+  height: 37px;
+  border-width: 0px;
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: end;
+}
+
+.cart-text {
+  color: teal;
+}
+
+.checkout {
+  font-size: larger;
+  background-color: teal;
+}
