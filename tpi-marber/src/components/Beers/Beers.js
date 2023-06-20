@@ -1,4 +1,3 @@
-
 import React, { useEffect, useContext } from "react";
 import BeerItem from "../BeerItem/BeerItem";
 import { APIContext } from "../context/Api/api.context";

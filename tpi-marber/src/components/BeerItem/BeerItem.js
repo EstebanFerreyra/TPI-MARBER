@@ -1,4 +1,3 @@
-
 import React, { useContext, useState } from "react";
 import CardBeer from "../CardBeer/CardBeer";
 import { Button } from "react-bootstrap";
