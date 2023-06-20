@@ -6,6 +6,7 @@ const Carousel = () => {
       <div id="carouselExample" className="carousel slide">
         <div className="carousel-inner">
           <div className="carousel-item active">
+
             <img src="https://www.ngenespanol.com/wp-content/uploads/2018/08/7-buenas-razones-para-tomar-cerveza.png" className="d-block w-100" alt="..." />          </div>
           <div className="carousel-item">
             <img src="https://www.clarin.com/img/2022/05/28/iMvDsusQJ_1256x620__1.jpg" className="d-block w-100" alt="..." />

@@ -7,11 +7,13 @@ const AboutUs = () => {
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+
                             De donde venimos
                         </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
+
                             Somos un apasionado emprendimiento familiar que se dedica a la cuidadosa elaboración de cerveza artesanal. Nuestra historia comenzó en la encantadora localidad de San Jorge, en la provincia de Santa Fe, en el año 2018. Desde entonces, hemos invertido innumerables horas, esfuerzo y dedicación en perfeccionar nuestras recetas y técnicas, con el objetivo de crear una cerveza única y excepcional.
                             Durante estos años, hemos experimentado un crecimiento significativo y un aumento en la demanda de nuestros productos. La pasión que ponemos en cada lote de cerveza ha conquistado los corazones de muchos amantes de esta bebida milenaria. A medida que hemos evolucionado y perfeccionado nuestros sabores, nos hemos dado cuenta de que era el momento adecuado para compartir nuestra cerveza artesanal con una audiencia más amplia.
                             Es por eso que este año hemos tomado la emocionante decisión de lanzar nuestra cerveza al mercado y ponerla a disposición de todos los amantes de la cerveza que desean degustar algo verdaderamente especial. Creemos firmemente que cada sorbo de nuestra cerveza artesanal es una experiencia única que merece ser compartida. Queremos brindarles a nuestros clientes la oportunidad de disfrutar de la misma pasión y dedicación que ponemos en cada etapa de la elaboración de nuestra cerveza.
@@ -22,6 +24,7 @@ const AboutUs = () => {
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+
                             Nuestro nombre                        </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -36,11 +39,13 @@ const AboutUs = () => {
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
                             Nuestra mision
                         </button>
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
+
 
                             Estamos emocionados de poder brindarles una experiencia excepcional, llena de calidad y deleite, a través del irresistible sabor de nuestros productos. Nos esforzamos constantemente para asegurar que cada trago sea una explosión de sabores y texturas que deleite sus sentidos. Con cada producto que ofrecemos, deseamos que disfruten de una experiencia única y gratificante, donde cada ingrediente cuidadosamente seleccionado se combina en armonía para crear una sinfonía culinaria inigualable. Estamos comprometidos en garantizar que cada uno de nuestros clientes pueda saborear la pasión y el amor que ponemos en cada etapa de la elaboración de nuestros productos. Confiamos en que, al probarlos, podrán sumergirse en un mundo de deliciosos sabores que los transportarán a momentos de felicidad y satisfacción. Su satisfacción es nuestra prioridad y esperamos sinceramente que puedan disfrutar cada momento con nosotros, descubriendo la excelencia y el cuidado que ponemos en cada detalle.                        </div>
                     </div>
