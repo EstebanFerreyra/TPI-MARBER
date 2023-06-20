@@ -86,7 +86,7 @@ const CartItems = () => {
               cart.map((item) => (
                 <div key={item.id} id={item.id}>
                   <p>
-                    Producto: {item.name} x{item.quantity}
+                    {item.name} x{item.quantity}
                   </p>
                   <p>${item.price * item.quantity}</p>
                   <div className="cart-buttons">

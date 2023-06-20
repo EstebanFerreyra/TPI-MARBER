@@ -8,7 +8,7 @@ import SideCart from "../SideCart/SideCart";
 const NavBar = () => {
   const [click, setClick] = useState(false);
   const [sideCart, setSideCart] = useState(false);
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
 
   const quantity = cart.length;
 
@@ -56,6 +56,7 @@ const NavBar = () => {
       user: "",
       role: "",
     });
+    clearCart();
     navigation("/login");
   };
 
