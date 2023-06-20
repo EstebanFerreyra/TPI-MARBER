@@ -85,9 +85,12 @@ const AddBeer = ({ handleAddBeer, beers }) => {
             body: JSON.stringify(beer)
         })
             .then(response => response.json())
-            .then(handleAddBeer(beer))
+            .then((beerData) => handleAddBeer(beerData))
             
             .catch((error) => console.log(error));
+        setName("");
+        setStyle("");
+        setPrice("");
         nameRef.current.value = "";
         styleRef.current.value = "";
         priceRef.current.value = "";
