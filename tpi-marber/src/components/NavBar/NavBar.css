@@ -5,3 +5,35 @@
 .btn-outline-success{
     margin: 5px;
 }
+
+.cart-icon {
+    margin-right: 5px;
+    border: 0;
+}
+
+.cart-icon:hover {
+    background-color: teal;
+}
+
+.cart-count {
+    position: absolute;
+    top: 6px;
+    right: 138px;
+    background-color: teal;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  .log-button {
+    border-color: teal;
+  }
+
+  .log-button.log-button:hover{
+    background-color: teal;
+  }
