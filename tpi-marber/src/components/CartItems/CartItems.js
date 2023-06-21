@@ -17,7 +17,7 @@ const CartItems = () => {
 
     if (cart.length === 0) {
       alert("Aún no has seleccionado un producto.");
-      navigation("/beers"); //para admin o superadmn debe ser /beersadmin
+      navigation("/beersadmin"); //para admin o superadmn debe ser /beersadmin
     } else {
       cart.map((order) => {
         fetch(url, {
