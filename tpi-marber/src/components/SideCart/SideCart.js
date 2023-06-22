@@ -16,7 +16,15 @@ const SideCart = ({ onClose }) => {
   };
 
   return (
-    <div className="side-cart" ref={ref}>
+    <div id="side-cart" ref={ref}>
+      <button
+        class="side-cart.active"
+        className="nav-link active"
+        onClick={onClose}
+      >
+        X
+      </button>
+      {/* Agregar que si no hay pedido que muestre no hay pedido */}
       <p>Detalle de la compra</p>
       {cart.map((item) => (
         <div>
