@@ -30,7 +30,7 @@ const SideCart = ({ onClose }) => {
         <div>
           <div key={item.id}>
             <p>
-              Producto: {item.name} x{item.quantity}
+              {item.name} x{item.quantity}
             </p>
             <p>${item.price * item.quantity}</p>
           </div>

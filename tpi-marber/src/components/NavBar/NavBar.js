@@ -8,7 +8,7 @@ import SideCart from "../SideCart/SideCart";
 const NavBar = () => {
   const [click, setClick] = useState(false);
   const [sideCart, setSideCart] = useState(false);
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
 
   const quantity = cart.length;
 
@@ -57,6 +57,7 @@ const NavBar = () => {
       user: "",
       role: "",
     });
+    clearCart();
     navigation("/login");
   };
 
@@ -170,7 +171,7 @@ const NavBar = () => {
               {sideCart && <SideCart onClose={sideCartHandler} />}
 
               <button
-                className="btn btn-outline-success"
+                className="cart-icon btn btn-outline-success"
                 type="submit"
                 onClick={sideCartHandler}
               >
@@ -182,15 +183,16 @@ const NavBar = () => {
                   width="15px"
                   height="15px"
                 />
-              </button>
-
-              <span className="cart-count">
+                <span className="cart-count">
                 <b>{quantity}</b>
               </span>
+              </button>
+
+              
 
               {registeredUser.success === false && (
                 <button
-                  className="btn btn-outline-success"
+                  className="log-button btn btn-outline-success"
                   type="submit"
                   onClick={goToLoginHandler}
                 >
@@ -199,7 +201,7 @@ const NavBar = () => {
               )}
               {registeredUser.success === true && (
                 <button
-                  className="btn btn-outline-success"
+                  className="log-button btn btn-outline-success"
                   type="submit"
                   onClick={logOutHandle}
                 >

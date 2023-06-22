@@ -6,12 +6,14 @@ const log = {
   id: 0,
   user: "",
   role: "",
-}
+};
 
 const userLocalStorage = JSON.parse(localStorage.getItem("registeredUser"));
 
 const RegisteredUserContextProvider = ({ children }) => {
-  const [registeredUser, setRegisteredUser] = useState(userLocalStorage === null ? log : userLocalStorage);
+  const [registeredUser, setRegisteredUser] = useState(
+    userLocalStorage === null ? log : userLocalStorage
+  );
 
   const setRegisteredUserHandle = (obj) => {
     setRegisteredUser(obj);

@@ -63,7 +63,6 @@ const BeerItem = ({
         quantity: 0,
       };
       addToCart(item);
-      console.log(item);
     } else {
       alert("PRIMERO DEBES INICIAR SESION");
       navigation("/login");
@@ -74,12 +73,12 @@ const BeerItem = ({
     setModify(true);
   };
 
-  const removeItemHandler = (event) => {
-    const item = {
-      id: id,
-    };
-    removeItem(item);
-  };
+  // const removeItemHandler = (event) => {
+  //   const item = {
+  //     id: id,
+  //   };
+  //   removeItem(item);
+  // };
 
   const setModifyPriceHandle = (bool, newPrice) => {
     setPriceActually(newPrice);
