@@ -4,7 +4,6 @@ import { RegisteredUserContext } from "../context/RegisteredUserContext/Register
 import "./NavBar.css";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import SideCart from "../SideCart/SideCart";
-import { BsFillMoonStarsFill } from "react-icons/bs";
 
 const NavBar = () => {
   const [click, setClick] = useState(false);
@@ -16,22 +15,6 @@ const NavBar = () => {
   const { registeredUser, setRegisteredUserHandle } = useContext(
     RegisteredUserContext
   );
-
-  const DarkTheme = () => {
-    document.querySelector("body").setAttribute("data-bs-theme", "dark");
-    document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill");
-  };
-
-  const LigthTheme = () => {
-    document.querySelector("body").setAttribute("data-bs-theme", "light");
-    document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill");
-  };
-
-  const ChangeTheme = () => {
-    document.querySelector("body").setAttribute("data-bs-theme") === "light"
-      ? DarkTheme()
-      : LigthTheme();
-  };
 
   const clickHandler = () => {
     setClick(true);
@@ -86,7 +69,7 @@ const NavBar = () => {
   };
 
   return (
-    <div data-bs-theme="light">
+    <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <button
@@ -124,6 +107,7 @@ const NavBar = () => {
                   Sobre nosotros
                 </button>
               </li>
+
               <li className="nav-item dropdown">
                 <button
                   className="nav-link active"
@@ -134,6 +118,7 @@ const NavBar = () => {
                   Productos
                 </button>
               </li>
+
               <li className="nav-item dropdown">
                 {registeredUser.success === true &&
                   registeredUser.role === "client" && (
@@ -221,15 +206,6 @@ const NavBar = () => {
                   Cerrar sesion
                 </button>
               )}
-
-              <button
-                className="nav-item dropdown"
-                class="btn rounded-fill"
-                onClick={DarkTheme}
-              >
-                {" "}
-                <BsFillMoonStarsFill />
-              </button>
             </div>
             {click ? <></> : <></>}
           </div>
