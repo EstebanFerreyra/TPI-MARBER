@@ -73,3 +73,7 @@
   transition-duration: 400ms;
   transition-property: width, left;
 }
+
+#nav {
+  min-height: 10vh;
+}

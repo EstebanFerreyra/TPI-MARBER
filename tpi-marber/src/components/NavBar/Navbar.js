@@ -71,7 +71,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav id="nav" className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <button
             className="navbar-brand"

@@ -2,22 +2,12 @@ import React from "react";
 
 import "./Footer.css";
 
-import { AiFillHome } from "react-icons/ai";
-import { IoLogoWhatsapp } from "react-icons/io";
+import { AiFillHome, AiOutlineWhatsApp } from "react-icons/ai";
 import { BsInstagram } from "react-icons/bs";
 
 const Footer = () => (
   <div class="footer">
     <footer className="text-center text-lg-start bg-light text-muted">
-      <section
-        className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-        style={{ background: "grey" }}
-      >
-        <div className="me-5 d-none d-lg-block">
-          <span>Conéctate con nosotros:</span>
-        </div>
-      </section>
-
       <section className="">
         <div className="container text-center text-md-start mt-5">
           <div className="row mt-3">
@@ -38,17 +28,17 @@ const Footer = () => (
                   href="https://www.instagram.com/cervezamarber.sj/"
                   target="_blank"
                 >
-                  <img src={{ BsInstagram }} width="30px"></img>
+                  <BsInstagram id="img" />
                 </a>
               </p>
               <p>
                 <a href="https://wa.me/5493406462025" target="_blank">
-                  <img src={{ IoLogoWhatsapp }} width="50"></img>
+                  <AiOutlineWhatsApp id="img" />
                 </a>
               </p>
               <p>
                 <a href="https://goo.gl/maps/Mv1pqKGsmodxfjDTA" target="_blank">
-                  <img src={{ AiFillHome }} width="50px"></img>
+                  <AiFillHome id="img" />
                 </a>
               </p>
             </div>
