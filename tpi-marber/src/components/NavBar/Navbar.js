@@ -8,7 +8,7 @@ import SideCart from "../SideCart/SideCart";
 const NavBar = () => {
   const [click, setClick] = useState(false);
   const [sideCart, setSideCart] = useState(false);
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
 
   const quantity = cart.length;
 
@@ -57,6 +57,7 @@ const NavBar = () => {
       user: "",
       role: "",
     });
+    clearCart();
     navigation("/login");
   };
 
@@ -81,7 +82,7 @@ const NavBar = () => {
             <img
               src={require("./logonav.png")}
               height="30px"
-              width="80px"
+              width="100px"
             ></img>
           </button>
           <button
@@ -98,23 +99,13 @@ const NavBar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <button
-                  className="nav-link active"
-                  aria-current="page"
-                  href="#"
-                  onClick={goToAboutUsHandler}
-                >
+                <button id="btn" onClick={goToAboutUsHandler}>
                   Sobre nosotros
                 </button>
               </li>
 
               <li className="nav-item dropdown">
-                <button
-                  className="nav-link active"
-                  aria-current="page"
-                  href="#"
-                  onClick={goToBeersHandler}
-                >
+                <button id="btn" onClick={goToBeersHandler}>
                   Productos
                 </button>
               </li>
@@ -122,12 +113,7 @@ const NavBar = () => {
               <li className="nav-item dropdown">
                 {registeredUser.success === true &&
                   registeredUser.role === "client" && (
-                    <button
-                      className="nav-link active"
-                      aria-current="page"
-                      href="#"
-                      onClick={goToAllBuys}
-                    >
+                    <button id="btn" aria-current="page" onClick={goToAllBuys}>
                       Mis compras
                     </button>
                   )}
@@ -137,7 +123,7 @@ const NavBar = () => {
                 {registeredUser.success === true &&
                   registeredUser.role !== "client" && (
                     <button
-                      className="nav-link active"
+                      id="btn"
                       aria-current="page"
                       href="#"
                       onClick={goToOrdersHandler}
@@ -170,7 +156,7 @@ const NavBar = () => {
               {sideCart && <SideCart onClose={sideCartHandler} />}
 
               <button
-                className="btn btn-outline-success"
+                className="cart-icon btn btn-outline-success"
                 type="submit"
                 onClick={sideCartHandler}
               >
@@ -182,15 +168,15 @@ const NavBar = () => {
                   width="15px"
                   height="15px"
                 />
+                <span className="cart-count">
+                  <b>{quantity}</b>
+                </span>
               </button>
-
-              <span className="cart-count">
-                <b>{quantity}</b>
-              </span>
 
               {registeredUser.success === false && (
                 <button
-                  className="btn btn-outline-success"
+                  id="bt"
+                  className="log-button btn btn-outline-success"
                   type="submit"
                   onClick={goToLoginHandler}
                 >
@@ -199,7 +185,8 @@ const NavBar = () => {
               )}
               {registeredUser.success === true && (
                 <button
-                  className="btn btn-outline-success"
+                  id="bt"
+                  className="log-button btn btn-outline-success"
                   type="submit"
                   onClick={logOutHandle}
                 >

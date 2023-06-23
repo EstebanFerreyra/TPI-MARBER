@@ -1,7 +1,13 @@
 import React from "react";
 
+import "./Footer.css";
+
+import { AiFillHome } from "react-icons/ai";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { BsInstagram } from "react-icons/bs";
+
 const Footer = () => (
-  <div>
+  <div class="footer">
     <footer className="text-center text-lg-start bg-light text-muted">
       <section
         className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
@@ -32,17 +38,17 @@ const Footer = () => (
                   href="https://www.instagram.com/cervezamarber.sj/"
                   target="_blank"
                 >
-                  <img src={require("./instagram.ico")} width="30px"></img>
+                  <img src={{ BsInstagram }} width="30px"></img>
                 </a>
               </p>
               <p>
                 <a href="https://wa.me/5493406462025" target="_blank">
-                  <img src={require("./WhatsApp.ico")} width="50"></img>
+                  <img src={{ IoLogoWhatsapp }} width="50"></img>
                 </a>
               </p>
               <p>
                 <a href="https://goo.gl/maps/Mv1pqKGsmodxfjDTA" target="_blank">
-                  <img src={require("./home2.ico")} width="50px"></img>
+                  <img src={{ AiFillHome }} width="50px"></img>
                 </a>
               </p>
             </div>
