@@ -6,7 +6,6 @@ import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext"
 import SideCart from "../SideCart/SideCart";
 
 const NavBar = () => {
-  const [click, setClick] = useState(false);
   const [sideCart, setSideCart] = useState(false);
   const { cart, clearCart } = useContext(CartContext);
 
@@ -15,10 +14,6 @@ const NavBar = () => {
   const { registeredUser, setRegisteredUserHandle } = useContext(
     RegisteredUserContext
   );
-
-  const clickHandler = () => {
-    setClick(true);
-  };
 
   const navigation = useNavigate();
 
@@ -166,7 +161,6 @@ const NavBar = () => {
                 ¡Bienvenido <strong>{registeredUser.user}</strong>!
               </span>
             )}
-
             <div className="d-flex" role="search">
               {sideCart && <SideCart onClose={sideCartHandler} />}
 
@@ -187,9 +181,6 @@ const NavBar = () => {
                 <b>{quantity}</b>
               </span>
               </button>
-
-              
-
               {registeredUser.success === false && (
                 <button
                   className="log-button btn btn-outline-success"
@@ -209,7 +200,6 @@ const NavBar = () => {
                 </button>
               )}
             </div>
-            {click ? <></> : <></>}
           </div>
         </div>
       </nav>

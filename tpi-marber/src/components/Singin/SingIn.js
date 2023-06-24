@@ -93,9 +93,6 @@ const SingIn = ({ setLogStatusHandle }) => {
                 alert("NO SE ENCUENTRA REGISTRADO")
             }, "1000");
         }
-
-        // ACA NOSE PORQUE HAY QUE INICIAR DOS VECES PARA QUE ME TOME BIEN EL ESTADO
-        //console.log(context.registeredUser);
     }
 
     const goToPage = () => {
@@ -116,13 +113,11 @@ const SingIn = ({ setLogStatusHandle }) => {
                         <div className="mb-3">
                             <label for="exampleInputEmail1" className="form-label">Usuario</label>
                             <input type="text" className="form-control" aria-describedby="emailHelp" onChange={changeUserHandle} ref={userRef} />
-                            {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
                         </div>
                         <div className="mb-3">
                             <label for="exampleInputPassword1" className="form-label">Contraseña</label>
                             <input type="password" className="form-control" id="exampleInputPassword1" onChange={changePasswordHandle} ref={passwordRef} />
                         </div>
-                        {/* {userRegisteredLocal.registeredUser.success !== true && <p>El usuario o la contraseña son incorrectos</p>} */}
                         <button type="submit" className="btn btn-primary" onClick={singInHandle}>Iniciar sesion</button>
                         <button type="submit" className="btn btn-info" onClick={goToLoginHandler} >Ir a registrarme</button>
                     </form>

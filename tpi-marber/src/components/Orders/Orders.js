@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import NavBar from "../NavBar/NavBar";
 import OrderRow from "../OrderRow/OrderRow";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
+import Footer from "../Footer/Footer";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -19,7 +20,6 @@ const Orders = () => {
   }
 
   useEffect(() => {
-    //toggleLoading(true);
     fetch(url, {
       method: "GET",
       mode: "cors",
@@ -31,9 +31,7 @@ const Orders = () => {
       .then((data) => {
         setOrdersHandle(data);
       })
-      // .then(data => console.log(data))
       .catch((error) => console.log(error));
-    //toggleLoading(false);
   }, []);
 
   return (
@@ -43,7 +41,7 @@ const Orders = () => {
       </div>
 
       <div className="d-flex justify-content-center">
-        <h2>Estado de pedidos</h2>
+        <h2>Pedidos</h2>
       </div>
       <div class="container">
         <table class="table table-hover">
@@ -117,8 +115,6 @@ const Orders = () => {
               </>
             ) : (
               orders.map((order) => {
-                // let user = customers.find(f => f.id === order.idUser);
-                // console.log(user) ;
                 return (
                   <OrderRow
                     key={order.id}
@@ -134,6 +130,7 @@ const Orders = () => {
           </tbody>
         </table>
       </div>
+      <Footer/>
     </div>
   );
 };

@@ -3,7 +3,6 @@ import "../AddBeer/AddBeer.css"
 
 const ModifyBeer = ({ id, setModifyPriceHandle }) => {
     const [price, setPrice] = useState("");
-
     const [error, setError] = useState([{ text: "Ninguno de los campos puede ser vacio", isError: false }]);
 
     const priceRef = useRef(null);

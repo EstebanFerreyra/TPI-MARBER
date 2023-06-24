@@ -10,14 +10,14 @@ const CartItems = () => {
   const { cart, clearCart, increaseQuantity, decreaseQuantity, removeItem } =
     useContext(CartContext);
   const { registeredUser } = useContext(RegisteredUserContext);
+
   const navigation = useNavigate();
 
   const checkoutHandler = () => {
     const url = "https://localhost:7160/marber/OrderController/AddOrder";
-
     if (cart.length === 0) {
       alert("Aún no has seleccionado un producto.");
-      navigation("/beersadmin"); //para admin o superadmn debe ser /beersadmin
+      navigation("/beersadmin"); 
     } else {
       cart.map((order) => {
         fetch(url, {
@@ -40,18 +40,8 @@ const CartItems = () => {
 
       clearCart();
       alert("¡Compra realizada con éxito!");
-      //y que salte el boton de mercadopago
     }
 
-    // const newInvoice = {
-    //   userId del contexto
-    //   details: cart.map((item) => ({
-    //     productId: item.id,
-    //     quantity: item.quantity,
-    //     unitPrice: item.price,
-    //     subtotal: item.price * item.quantity,
-    //   })),
-    // };
   };
 
   const increaseHandler = (id) => {

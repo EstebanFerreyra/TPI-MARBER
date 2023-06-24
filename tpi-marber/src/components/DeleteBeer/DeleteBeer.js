@@ -1,4 +1,3 @@
-// es custom hook? si es cambiar el name
 export const DeleteBeer = (id, handleDeleteBeer3) => {
     console.log(id);
     console.log("delete");

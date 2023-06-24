@@ -75,17 +75,8 @@ function App() {
     },
   ]);
 
-  //return <RouterProvider router={router}/>
   return (
-    <CustomersContextProvider CustomersContext={CustomersContext}>
-      <RegisteredUserContextProvider
-        RegisteredUserContext={RegisteredUserContext}
-      >
-        <ShoppingCartProvider>
-          <RouterProvider router={router} />
-        </ShoppingCartProvider>
-      </RegisteredUserContextProvider>
-    </CustomersContextProvider>
+    <RouterProvider router={router} />
   );
 }
 

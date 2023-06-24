@@ -15,22 +15,17 @@ const BeerItem = ({
 }) => {
   const [priceActually, setPriceActually] = useState(beerPrice);
   const [modify, setModify] = useState(false);
-  const navigation = useNavigate();
-  const { addToCart, removeItem } = useContext(CartContext);
 
+  const navigation = useNavigate();
+
+  const { addToCart} = useContext(CartContext);
   const { registeredUser } = useContext(RegisteredUserContext);
 
   const type = registeredUser.role;
   const success = registeredUser.success;
 
-  // const handleDeleteBeer3 = (beersValue) => {
-  //   console.log("beersitem");
-  //   handleDeleteBeer2(beersValue);
-  // }
-
   const deleteBeerHandle = () => {
     const url = `https://localhost:7160/marber/BeerController/deletebeerbyid/${id}`;
-
     fetch(url, {
       method: "DELETE",
       mode: "cors",
@@ -42,15 +37,6 @@ const BeerItem = ({
       .then((response) => handleDeleteBeer2(response))
       .catch((error) => console.log(error));
   };
-
-  // const addToCarryHandle = () => {
-  //   if (success === true) {
-  //     alert("Todo lo que hace neri");
-  //   } else {
-  //     alert("PRIMERO DEBES INICIAR SESION");
-  //     navigation("/login");
-  //   }
-  // };
 
   const addToCartHandler = (event) => {
     if (success === true) {
@@ -72,13 +58,6 @@ const BeerItem = ({
     setModify(true);
   };
 
-  // const removeItemHandler = (event) => {
-  //   const item = {
-  //     id: id,
-  //   };
-  //   removeItem(item);
-  // };
-
   const setModifyPriceHandle = (bool, newPrice) => {
     setPriceActually(newPrice);
     setModify(bool);
@@ -91,7 +70,6 @@ const BeerItem = ({
           X
         </button>
       )}
-      {/* <button type="button" class="btn btn-danger">X</button> */}
       <h2>{beerName}</h2>
       <img
         src="https://cdn-icons-png.flaticon.com/512/106/106564.png"
@@ -104,11 +82,7 @@ const BeerItem = ({
         <Button className="btn btn-success m-2" onClick={addToCartHandler}>
           Agregar al carrito
         </Button>
-        {/* <Button className="btn btn-danger m-2" onClick={removeItemHandler}>
-          -
-        </Button> */}
       </div>
-      {/* <button type="button" class="btn btn-info">Modificar</button> */}
       {(type === "admin" || type === "superadmin") && modify === false && (
         <button type="button" class="btn btn-info" onClick={seeModifyBeer}>
           Modificar
