@@ -117,14 +117,16 @@ const Orders = () => {
               </>
             ) : (
               orders.map((order) => {
+                // let user = customers.find(f => f.id === order.idUser);
+                // console.log(user) ;
                 return (
                   <OrderRow
                     key={order.id}
                     id={order.id}
-                    idUser={order.idUser}
-                    idBeer={order.idBeer}
+                    userBuy={order.userBuy}
+                    beerBuy={order.beerBuy}
                     quantity={order.quantity}
-                    beerPrice={order.beerPrice}
+                    subTotal={order.subTotal}
                   />
                 );
               })

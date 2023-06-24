@@ -28,9 +28,10 @@ const CartItems = () => {
           },
           body: JSON.stringify({
             idUser: registeredUser.id,
-            idBeer: order.id,
+            userBuy: registeredUser.user,
+            beerBuy: order.name,
             quantity: order.quantity,
-            beerPrice: order.price,
+            subTotal: order.price,
           }),
         })
           .then((response) => response)
