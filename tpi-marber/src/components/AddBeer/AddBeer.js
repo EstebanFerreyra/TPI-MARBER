@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react';
+import { ToastContainer, toast } from "react-toastify";
 import "./AddBeer.css"
 
 const AddBeer = ({ handleAddBeer, beers }) => {
@@ -35,11 +36,21 @@ const AddBeer = ({ handleAddBeer, beers }) => {
         beerPrice: price
     }
 
-    const url = 'https://localhost:7160/marber/BeerController/AddBeer';
+    const url = 'http://www.apimarber.somee.com/marber/BeerController/AddBeer';
 
     const addBeerHandler = (event) => {
         event.preventDefault();
         if (name.length === 0 || style.length === 0 || price.length === 0) {
+            toast.error("Error no se inicio sesion  Ingrese sesion primero", {
+                position: "top-left",
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
             if (name.length === 0) {
                 nameRef.current.focus();
                 nameRef.current.style.borderColor = "red";
@@ -55,9 +66,7 @@ const AddBeer = ({ handleAddBeer, beers }) => {
                 priceRef.current.style.borderColor = "red";
                 priceRef.current.style.outline = "none";
             }
-            const newError = [...error]
-            newError[0].isError = true;
-            setError(newError);
+
             return;
         }
 
@@ -89,37 +98,40 @@ const AddBeer = ({ handleAddBeer, beers }) => {
         <>
             <form>
                 <div className="form-add-beer">
-                    <div className="form-add-beers">
-                        <label>Nombre</label>
-                        <input
-                            onChange={changeNameHandler}
-                            type="text"
-                            className="input-control"
-                            ref={nameRef}
-                        />
-                    </div>
-                    <div className="form-add-beers">
-                        <label>Estilo</label>
-                        <input
-                            onChange={changeStyleHandler}
-                            type="text"
-                            className="input-control"
-                            ref={styleRef}
-                        />
-                    </div>
-                    <div className="form-add-beers">
-                        <label>Precio</label>
-                        <input
-                            onChange={changePriceHandler}
-                            type="text"
-                            className="input-control"
-                            min="1"
-                            ref={priceRef}
-                        />
+                    <div className="card">
+                        <div className="form-add-beers">
+                            <input
+                                onChange={changeNameHandler}
+                                type="text"
+                                className="input-control"
+                                placeholder="Nombre"
+                                ref={nameRef}
+                            />
+                        </div>
+                        <div className="form-add-beers">
+                            <input
+                                onChange={changeStyleHandler}
+                                type="text"
+                                className="input-control"
+                                ref={styleRef}
+                                placeholder="Estilo"
+
+                            />
+                        </div>
+                        <div className="form-add-beers">
+                            <input
+                                onChange={changePriceHandler}
+                                type="number"
+                                className="input-control"
+                                min="1"
+                                ref={priceRef}
+                                placeholder="Precio"
+
+                            />
+                        </div>
                     </div>
                 </div>
-                {error[0].isError && <p>{error[0].text}</p>}
-                <button type="button" class="btn btn-success" onClick={addBeerHandler}>Agregar</button>
+                <button type="button" class="btn btn-success" onClick={addBeerHandler} id='button-add'>Agregar</button>
             </form>
         </>
     )

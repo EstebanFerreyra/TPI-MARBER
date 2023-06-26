@@ -3,6 +3,7 @@ import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext"
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import NavBar from "../NavBar/NavBar";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"
 
 import "./CartItems.css";
 
@@ -14,9 +15,18 @@ const CartItems = () => {
   const navigation = useNavigate();
 
   const checkoutHandler = () => {
-    const url = "https://localhost:7160/marber/OrderController/AddOrder";
+    const url = "http://www.apimarber.somee.com/marber/OrderController/AddOrder";
     if (cart.length === 0) {
-      alert("Aún no has seleccionado un producto.");
+      toast.error("Aun no ha seleccionado ningun producto", {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       navigation("/beersadmin"); 
     } else {
       cart.map((order) => {
@@ -39,7 +49,16 @@ const CartItems = () => {
       });
 
       clearCart();
-      alert("¡Compra realizada con éxito!");
+      toast.success("Compra realizada con éxito", {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
 
   };

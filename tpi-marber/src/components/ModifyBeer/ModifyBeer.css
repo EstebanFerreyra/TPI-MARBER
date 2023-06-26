@@ -1,0 +1,17 @@
+#button-modify {
+  background-color: #5494a7a5;
+  border-radius: 80px;
+  border: none;
+  color: black;
+  font-weight: 500;
+}
+
+#button-modify:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 black;
+}
+
+#button-modify:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 black;
+}

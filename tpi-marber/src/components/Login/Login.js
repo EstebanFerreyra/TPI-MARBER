@@ -2,12 +2,16 @@ import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import { CustomersContext } from "../context/CustomersContext/CustomersContext";
+import { toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css";
+import "./Login.css"
 
 const Login = ({ setLogStatusHandle }) => {
   const [email, setEmail] = useState("");
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("client");
+  const [isValid, setIsValid] = useState(true);
 
   const emalRef = useRef(null);
   const userRef = useRef(null);
@@ -26,6 +30,8 @@ const Login = ({ setLogStatusHandle }) => {
   };
 
   const changeEmailHandle = (event) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    setIsValid(emailRegex.test(email));
     setEmail(event.target.value);
   };
 
@@ -46,11 +52,34 @@ const Login = ({ setLogStatusHandle }) => {
     navigation("/singin");
   };
 
-  const urlPost = "https://localhost:7160/marber/ClientController/AddClient";
+  const urlPost = "http://www.apimarber.somee.com/marber/ClientController/AddClient";
 
   const loginHandle = (event) => {
     event.preventDefault();
-    if (user.length === 0 || password.length === 0 || email.length === 0) {
+    if (user.length === 0 || password.length === 0 || email.length === 0 || isValid === false) {
+      toast.error("Error Complete los campos marcados", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      if (isValid === false){
+        emalRef.current.focus();
+        toast.error("Debe ingresar un email valido", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
       if (email.length === 0) {
         emalRef.current.focus();
         emalRef.current.style.borderColor = "red";
@@ -110,77 +139,66 @@ const Login = ({ setLogStatusHandle }) => {
   };
 
   return (
-    <div>
-      <div className="card d-flex justify-content-center w-75 p-2 m-5">
-        <div className="card d-flex justify-content-center">
-          <form>
+    <div className="container">
+      <form className="form">
+        <div className="form_back">
+          <div className="form_details">Registrarse</div>
+          <input
+            type="email"
+            className="input"
+            aria-describedby="emailHelp"
+            onChange={changeEmailHandle}
+            ref={emalRef}
+            placeholder="Email"
+          />
+          <input
+            type="text"
+            className="input"
+            aria-describedby="emailHelp"
+            onChange={changeUserHandle}
+            ref={userRef}
+            placeholder="Nombre"
+          />
+          <input
+            type="password"
+            className="input"
+            id="exampleInputPassword1"
+            onChange={changePasswordHandle}
+            ref={passwordRef}
+            placeholder="Contraseña"
+          />
+          {registeredUser.role === "superadmin" && (
             <div className="mb-3">
-              <label for="exampleInputEmail1" className="form-label">
-                Email
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                aria-describedby="emailHelp"
-                onChange={changeEmailHandle}
-                ref={emalRef}
-              />
+              <label className="selec-label">Tipo de usuario</label>
+              <select
+                name="selec-label"
+                id="selec-label"
+                onChange={changeRoleHandle}
+              >
+                <option value="client">Cliente</option>
+                <option value="admin">Administrador</option>
+                <option value="superadmin">Super administrador</option>
+              </select>
             </div>
-            <div className="mb-3">
-              <label for="exampleInputEmail1" className="form-label">
-                Usuario
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                aria-describedby="emailHelp"
-                onChange={changeUserHandle}
-                ref={userRef}
-              />
-            </div>
-            <div className="mb-3">
-              <label for="exampleInputPassword1" className="form-label">
-                Contraseña
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="exampleInputPassword1"
-                onChange={changePasswordHandle}
-                ref={passwordRef}
-              />
-            </div>
-            {registeredUser.role === "superadmin" && (
-              <div className="mb-3">
-                <label className="selec-label">Tipo de usuario</label>
-                <select
-                  name="selec-label"
-                  id="selec-label"
-                  onChange={changeRoleHandle}
-                >
-                  <option value="client">Cliente</option>
-                  <option value="admin">Administrador</option>
-                  <option value="superadmin">Super administrador</option>
-                </select>
-              </div>
-            )}
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={loginHandle}
-            >
-              Registrarse
-            </button>
-            <button
-              type="submit"
-              className="btn btn-info"
-              onClick={goToSingInHandle}
-            >
-              Volver al inicio de sesion
-            </button>
-          </form>
+          )}
+
+          <button
+            type="submit"
+            className="button"
+            onClick={loginHandle}
+          >
+            Registrarse
+          </button>
+          <span className="quest">
+            ¿Ya tienes cuenta?
+            <label onClick={goToSingInHandle} for="signup_toggle" className="signup_tog">
+              Iniciar sesion
+            </label>
+          </span>
+
         </div>
-      </div>
+      </form>
+
     </div>
   );
 };

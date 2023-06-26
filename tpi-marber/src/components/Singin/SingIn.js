@@ -4,7 +4,7 @@ import { RegisteredUserContext } from '../context/RegisteredUserContext/Register
 import { APIContext } from '../context/Api/api.context'
 import Loader from '../ui/Loader';
 import { CustomersContext } from '../context/CustomersContext/CustomersContext';
-
+import { toast } from "react-toastify";
 
 const SingIn = ({ setLogStatusHandle }) => {
     const [user, setUser] = useState("");
@@ -39,6 +39,16 @@ const SingIn = ({ setLogStatusHandle }) => {
     const singInHandle = (event) => {
         event.preventDefault();
         if (user.length === 0 || password.length === 0) {
+            toast.error("Error Complete los campos marcados", {
+                position: "top-left",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
             if (user.length === 0) {
                 userRef.current.focus();
                 userRef.current.style.borderColor = "red";
@@ -90,7 +100,16 @@ const SingIn = ({ setLogStatusHandle }) => {
             setTimeout(() => {
                 userRef.current.value = "";
                 passwordRef.current.value = "";
-                alert("NO SE ENCUENTRA REGISTRADO")
+                toast.error("No se encuentra registrado", {
+                    position: "top-left",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
             }, "1000");
         }
     }
@@ -106,24 +125,30 @@ const SingIn = ({ setLogStatusHandle }) => {
     }
 
     return (
-        <div>
-            <div className='card d-flex justify-content-center w-75 p-2 m-5'>
-                <div className='card d-flex justify-content-center'>
-                    <form>
-                        <div className="mb-3">
-                            <label for="exampleInputEmail1" className="form-label">Usuario</label>
-                            <input type="text" className="form-control" aria-describedby="emailHelp" onChange={changeUserHandle} ref={userRef} />
-                        </div>
-                        <div className="mb-3">
-                            <label for="exampleInputPassword1" className="form-label">Contraseña</label>
-                            <input type="password" className="form-control" id="exampleInputPassword1" onChange={changePasswordHandle} ref={passwordRef} />
-                        </div>
-                        <button type="submit" className="btn btn-primary" onClick={singInHandle}>Iniciar sesion</button>
-                        <button type="submit" className="btn btn-info" onClick={goToLoginHandler} >Ir a registrarme</button>
-                    </form>
+        <div className='container'>
+            <form className='form'>
+                <div className="form_front">
+                    <div className='form_details'>Iniciar sesion</div>
+                    <input type="text" className="input" onChange={changeUserHandle} ref={userRef} placeholder='Nombre' />
+                    <input type="password" className="input" onChange={changePasswordHandle} ref={passwordRef} placeholder='Contraseña' />
+
+                    <button class="button" onClick={singInHandle}>
+                        Login
+                    </button>
+                    <span class="quest">
+                        No tienes una cuenta?
+                        <label
+                            for="signup_toggle"
+                            class="signup_tog"
+                            onClick={goToLoginHandler}
+                        >
+                            Registrarse
+                        </label>
+                    </span>
                 </div>
-                {isLoading === true && <Loader />}
-            </div>
+            </form>
+            {isLoading === true && <Loader />}
+
         </div>
     )
 }

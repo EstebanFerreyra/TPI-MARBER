@@ -1,5 +1,7 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react';
+import { ToastContainer, toast } from "react-toastify";
 import "../AddBeer/AddBeer.css"
+import "./ModifyBeer.css"
 
 const ModifyBeer = ({ id, setModifyPriceHandle }) => {
     const [price, setPrice] = useState("");
@@ -11,11 +13,21 @@ const ModifyBeer = ({ id, setModifyPriceHandle }) => {
         setPrice(event.target.value);
     };
 
-    const url = `https://localhost:7160/marber/BeerController/ModifyBeerById/${id}`;
+    const url = `http://www.apimarber.somee.com/marber/BeerController/ModifyBeerById/${id}`;
 
     const modifyBeerHandler = (event) => {
         event.preventDefault();
         if (price.length === 0) {
+            toast.error("Porfavor complete el campo", {
+                position: "top-left",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
             if (price.length === 0) {
                 priceRef.current.focus();
                 priceRef.current.style.borderColor = "red";
@@ -42,16 +54,17 @@ const ModifyBeer = ({ id, setModifyPriceHandle }) => {
     return (
         <>
 
-            <label>Nuevo Precio</label>
+           
             <input
                 onChange={changePriceHandler}
-                type="text"
+                type="number"
                 className="input-control"
                 min="1"
                 ref={priceRef}
+                placeholder='Nuevo precio'
             />
 
-            <button onClick={modifyBeerHandler}>MODIFICAR</button>
+            <button onClick={modifyBeerHandler} id='button-modify'>Modificar</button>
         </>
     )
 }

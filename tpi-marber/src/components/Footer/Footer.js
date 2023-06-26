@@ -1,4 +1,5 @@
 import React from "react";
+import "./Footer.css"
 
 const Footer = () => (
   <div>
@@ -8,7 +9,7 @@ const Footer = () => (
         style={{ background: "grey" }}
       >
         <div className="me-5 d-none d-lg-block">
-          <span>Conéctate con nosotros:</span>
+          <span className="footer-text">.</span>
         </div>
       </section>
 

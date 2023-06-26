@@ -17,8 +17,8 @@ const ViewSuperAdmin = () => {
     return (
         <>
             <NavBar />
+            {registeredUser.role === "superadmin" && <li> <button type="button" className="btn btn-primary" onClick={seeLoginHandle} id='button-add'>Agregar usuario</button></li>}
             <ListUsers />
-            {registeredUser.role === "superadmin" && <li> <button type="button" className="btn btn-primary" onClick={seeLoginHandle}>Agregar usuario</button></li>}
             <Footer />
         </>
     )

@@ -1,7 +1,7 @@
 export const DeleteBeer = (id, handleDeleteBeer3) => {
     console.log(id);
     console.log("delete");
-    const url = `https://localhost:7160/marber/BeerController/deletebeerbyid/${id}`;
+    const url = `http://www.apimarber.somee.com/marber/BeerController/deletebeerbyid/${id}`;
 
     fetch(url, {
         method: 'DELETE',

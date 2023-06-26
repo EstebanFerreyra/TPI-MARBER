@@ -13,10 +13,10 @@ const Orders = () => {
     setOrders(obj);
   };
 
-  let url = `https://localhost:7160/marber/OrderController/GetOrder/${registeredUser.id}`;
+  let url = `http://www.apimarber.somee.com/marber/OrderController/GetOrder/${registeredUser.id}`;
 
   if (registeredUser.role === "superadmin") {
-    url = "https://localhost:7160/marber/OrderController/GetOrder";
+    url = "http://www.apimarber.somee.com/marber/OrderController/GetOrder";
   }
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const Orders = () => {
       </div>
 
       <div className="d-flex justify-content-center">
-        <h2>Pedidos</h2>
+        <h2 className="title-list">Pedidos</h2>
       </div>
       <div class="container">
         <table class="table table-hover">

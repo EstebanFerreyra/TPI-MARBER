@@ -1,0 +1,174 @@
+#danger {
+  margin-left: 230px;
+  bottom: 5px;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: #e62222;
+}
+
+#danger,
+#danger span {
+  transition: 200ms;
+}
+
+#danger .text {
+  transform: translateX(6px);
+  color: white;
+  font-weight: bold;
+}
+
+#danger .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(60px);
+  height: 25px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#danger svg {
+  width: 15px;
+  fill: #eee;
+}
+
+#danger:hover {
+  background: #ff3636;
+}
+
+#danger:hover .text {
+  color: transparent;
+}
+
+#danger:hover .icon {
+  width: 90px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+#danger:focus {
+  outline: none;
+}
+
+#danger:active .icon svg {
+  transform: scale(0.8);
+}
+
+#img {
+  position: relative;
+}
+
+#buy {
+  display: inline-block;
+  color: #000000;
+  border: none;
+  background-color: #5494a7;
+  text-align: center;
+  transition: all 0.5s;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+#buy span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#buy span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#buy:hover span {
+  padding-right: 25px;
+}
+
+#buy:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#modify {
+  position: relative;
+  right: 115px;
+  bottom: 33px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 80px;
+  background-color: #5494a79e;
+  border: none;
+  color: black;
+  border-radius: 10em;
+  font-size: 13px;
+  padding: 1em 2em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 0 0 black;
+}
+
+#modify:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 black;
+}
+
+#modify:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 black;
+}
+
+#info {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  color: #000000;
+  border: none;
+  background-color: rgb(248, 196, 128);
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: #5494a7;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  transition: all 0.5s;
+}
+#info span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#info span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#info:hover span {
+  padding-right: 25px;
+}
+
+#info:hover span:after {
+  opacity: 1;
+  right: 0;
+}

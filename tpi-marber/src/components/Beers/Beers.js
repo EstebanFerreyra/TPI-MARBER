@@ -7,7 +7,7 @@ import "./Beers.css";
 const Beers = ({ beers, getBeers, handleDeleteBeer1 }) => {
   const { toggleLoading } = useContext(APIContext);
 
-  const url = "https://localhost:7160/marber/BeerController/GetBeers";
+  const url = "http://www.apimarber.somee.com/marber/BeerController/GetBeers";
 
   const handleDeleteBeer2 = (beersValue) => {
     handleDeleteBeer1(beersValue);
@@ -19,6 +19,7 @@ const Beers = ({ beers, getBeers, handleDeleteBeer1 }) => {
     fetch(url, {
       method: "GET",
       mode: "cors",
+      refer: "*",
       headers: {
         "Content-Type": "application/json",
       },

@@ -3,6 +3,7 @@ import AddBeer from '../AddBeer/AddBeer'
 import Beers from '../Beers/Beers'
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
+import "./ViewBeerAdmin.css"
 
 const ViewBeerAdmin = () => {
   const [beers, setBeers] = useState([]);
@@ -33,8 +34,8 @@ const ViewBeerAdmin = () => {
     <>
       <NavBar />
       <ul>
-        {addBeer === false && <li><button type="button" className="btn btn-primary" onClick={seeAddBeerHandle}>Nueva cerveza</button></li>}
-        {addBeer === true && <li><button type="button" className="btn btn-secondary" onClick={hideAddBeerHandle}>Volver</button></li>}
+        {addBeer === false && <li><button type="button" className="btn btn-primary" onClick={seeAddBeerHandle} id='button-add'>Nueva cerveza</button></li>}
+        {addBeer === true && <li><button type="button" className="btn btn-secondary" onClick={hideAddBeerHandle} id='button-add'>Cerrar</button></li>}
       </ul>
       {addBeer === true && <AddBeer handleAddBeer={handleAddBeer} beers={beers} />}
       <Beers beers={beers} getBeers={getBeers} handleDeleteBeer1={handleDeleteBeer} />

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
-import "./NavBar.css";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import SideCart from "../SideCart/SideCart";
+import "./NavBar.css";
 
 const NavBar = () => {
   const [sideCart, setSideCart] = useState(false);
@@ -65,7 +65,7 @@ const NavBar = () => {
   };
 
   return (
-    <div>
+    <div className="nav-main">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <button
@@ -95,6 +95,7 @@ const NavBar = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <button
+                  id="btn"
                   className="nav-link active"
                   aria-current="page"
                   href="#"
@@ -106,6 +107,7 @@ const NavBar = () => {
 
               <li className="nav-item dropdown">
                 <button
+                  id="btn"
                   className="nav-link active"
                   aria-current="page"
                   href="#"
@@ -119,6 +121,7 @@ const NavBar = () => {
                 {registeredUser.success === true &&
                   registeredUser.role === "client" && (
                     <button
+                      id="btn"
                       className="nav-link active"
                       aria-current="page"
                       href="#"
@@ -133,6 +136,7 @@ const NavBar = () => {
                 {registeredUser.success === true &&
                   registeredUser.role !== "client" && (
                     <button
+                      id="btn"
                       className="nav-link active"
                       aria-current="page"
                       href="#"
@@ -146,6 +150,7 @@ const NavBar = () => {
                 {registeredUser.success === true &&
                   registeredUser.role === "superadmin" && (
                     <button
+                      id="btn"
                       className="nav-link active"
                       aria-current="page"
                       href="#"
@@ -157,7 +162,7 @@ const NavBar = () => {
               </li>
             </ul>
             {registeredUser.success === true && (
-              <span className="navbar-text" style={{ "margin-right": "10px" }}>
+              <span className="navbar-text" style={{ "margin-right": "10px" }} >
                 ¡Bienvenido <strong>{registeredUser.user}</strong>!
               </span>
             )}
@@ -178,11 +183,12 @@ const NavBar = () => {
                   height="15px"
                 />
                 <span className="cart-count">
-                <b>{quantity}</b>
-              </span>
+                  <b>{quantity}</b>
+                </span>
               </button>
               {registeredUser.success === false && (
                 <button
+                  id="button-log-id"
                   className="log-button btn btn-outline-success"
                   type="submit"
                   onClick={goToLoginHandler}
@@ -192,6 +198,7 @@ const NavBar = () => {
               )}
               {registeredUser.success === true && (
                 <button
+                  id="button-log-id"
                   className="log-button btn btn-outline-success"
                   type="submit"
                   onClick={logOutHandle}

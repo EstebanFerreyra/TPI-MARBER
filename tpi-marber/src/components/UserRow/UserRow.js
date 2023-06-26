@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { CustomersContext } from '../context/CustomersContext/CustomersContext';
+import "./UserRow.css"
 
 const UserRow = ({ id, user, email, role}) => {
     const { setCustomersHandle } = useContext(CustomersContext)
-    const url = `https://localhost:7160/marber/ClientController/DeleteClient/${id}`;
+    const url = `http://www.apimarber.somee.com/marber/ClientController/DeleteClient/${id}`;
 
     const delteUserHandle = () => {
         fetch(url, {
@@ -24,7 +25,7 @@ const UserRow = ({ id, user, email, role}) => {
             <td>{user}</td>
             <td>{email}</td>
             <td>{role}</td>
-            <td><button onClick={delteUserHandle}>X</button></td>
+            <td><button onClick={delteUserHandle} className='button-delete'>X</button></td>
         </tr>
     )
 }

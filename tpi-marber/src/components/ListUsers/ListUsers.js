@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import UserRow from '../UserRow/UserRow';
 import { CustomersContext } from '../context/CustomersContext/CustomersContext';
+import "./ListUsers.css"
 
 const ListUsers = () => {
     const {customers} = useContext(CustomersContext)
@@ -8,7 +9,7 @@ const ListUsers = () => {
     return (
         <>
             <div className="d-flex justify-content-center">
-                <h2>Listado de clientes</h2>
+                <h2 className='title-list'>Listado de clientes</h2>
             </div>
             <div class="container">
                 <table class="table table-hover">
