@@ -13,7 +13,7 @@ const ModifyBeer = ({ id, setModifyPriceHandle }) => {
         setPrice(event.target.value);
     };
 
-    const url = `http://www.apimarber.somee.com/marber/BeerController/ModifyBeerById/${id}`;
+    const url = `https://www.apimarber.somee.com/marber/BeerController/ModifyBeerById/${id}`;
 
     const modifyBeerHandler = (event) => {
         event.preventDefault();
@@ -42,6 +42,8 @@ const ModifyBeer = ({ id, setModifyPriceHandle }) => {
         fetch(url, {
             method: 'PUT',
             mode: 'cors',
+            refer: "*",
+
             headers: {
                 'Content-Type': 'application/json'
             },

@@ -5,12 +5,13 @@ export const CustomersContext = React.createContext([]);
 const CustomersContextProvider = ({children}) => {
     const [customers, setCustomers] = useState([]);
 
-    const url = 'http://www.apimarber.somee.com/marber/ClientController/GetCustomers';
+    const url = 'https://www.apimarber.somee.com/marber/ClientController/GetCustomers';
 
     useEffect(() => {
         fetch(url, {
             method: 'GET',
             mode: 'cors',
+            refer: "*",
             headers: {
                 'Content-Type': 'application/json'
             }

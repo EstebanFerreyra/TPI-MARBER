@@ -52,7 +52,7 @@ const Login = ({ setLogStatusHandle }) => {
     navigation("/singin");
   };
 
-  const urlPost = "http://www.apimarber.somee.com/marber/ClientController/AddClient";
+  const urlPost = "https://www.apimarber.somee.com/marber/ClientController/AddClient";
 
   const loginHandle = (event) => {
     event.preventDefault();
@@ -120,6 +120,7 @@ const Login = ({ setLogStatusHandle }) => {
     fetch(urlPost, {
       method: "POST",
       mode: "cors",
+      refer: "*",
       headers: {
         "Content-Type": "application/json",
       },

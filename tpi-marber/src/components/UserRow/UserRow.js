@@ -4,12 +4,13 @@ import "./UserRow.css"
 
 const UserRow = ({ id, user, email, role}) => {
     const { setCustomersHandle } = useContext(CustomersContext)
-    const url = `http://www.apimarber.somee.com/marber/ClientController/DeleteClient/${id}`;
+    const url = `https://www.apimarber.somee.com/marber/ClientController/DeleteClient/${id}`;
 
     const delteUserHandle = () => {
         fetch(url, {
             method: 'DELETE',
             mode: 'cors',
+            refer: "*",
             headers: {
                 'Content-Type': 'application/json'
             }

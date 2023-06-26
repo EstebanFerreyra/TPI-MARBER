@@ -15,7 +15,7 @@ const CartItems = () => {
   const navigation = useNavigate();
 
   const checkoutHandler = () => {
-    const url = "http://www.apimarber.somee.com/marber/OrderController/AddOrder";
+    const url = "https://www.apimarber.somee.com/marber/OrderController/AddOrder";
     if (cart.length === 0) {
       toast.error("Aun no ha seleccionado ningun producto", {
         position: "top-left",
@@ -33,6 +33,7 @@ const CartItems = () => {
         fetch(url, {
           method: "POST",
           mode: "cors",
+          refer: "*",
           headers: {
             "Content-Type": "application/json",
           },

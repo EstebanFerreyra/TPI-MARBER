@@ -7,7 +7,7 @@ import "./Beers.css";
 const Beers = ({ beers, getBeers, handleDeleteBeer1 }) => {
   const { toggleLoading } = useContext(APIContext);
 
-  const url = "http://www.apimarber.somee.com/marber/BeerController/GetBeers";
+  const url = "https://www.apimarber.somee.com/marber/BeerController/GetBeers";
 
   const handleDeleteBeer2 = (beersValue) => {
     handleDeleteBeer1(beersValue);

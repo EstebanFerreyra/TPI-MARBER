@@ -13,16 +13,17 @@ const Orders = () => {
     setOrders(obj);
   };
 
-  let url = `http://www.apimarber.somee.com/marber/OrderController/GetOrder/${registeredUser.id}`;
+  let url = `https://www.apimarber.somee.com/marber/OrderController/GetOrder/${registeredUser.id}`;
 
   if (registeredUser.role === "superadmin") {
-    url = "http://www.apimarber.somee.com/marber/OrderController/GetOrder";
+    url = "https://www.apimarber.somee.com/marber/OrderController/GetOrder";
   }
 
   useEffect(() => {
     fetch(url, {
       method: "GET",
       mode: "cors",
+      refer: "*",
       headers: {
         "Content-Type": "application/json",
       },

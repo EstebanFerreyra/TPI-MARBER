@@ -36,7 +36,7 @@ const AddBeer = ({ handleAddBeer, beers }) => {
         beerPrice: price
     }
 
-    const url = 'http://www.apimarber.somee.com/marber/BeerController/AddBeer';
+    const url = 'https://www.apimarber.somee.com/marber/BeerController/AddBeer';
 
     const addBeerHandler = (event) => {
         event.preventDefault();
@@ -73,6 +73,7 @@ const AddBeer = ({ handleAddBeer, beers }) => {
         fetch(url, {
             method: 'POST',
             mode: 'cors',
+            refer: "*",
             headers: {
                 'Content-Type': 'application/json'
             },
