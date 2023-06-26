@@ -1,15 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
-import App from './App';
-import { APIContextProvider } from './components/context/Api/api.context';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import App from "./App";
+import { APIContextProvider } from "./components/context/Api/api.context";
+import { ThemeContextProvider } from "./components/context/Themes/Themes.Context";
+import { ToastContainer } from "react-toastify";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode >
-    <APIContextProvider>
-      <App />
-    </APIContextProvider>
+  <React.StrictMode>
+    <ThemeContextProvider>
+      <APIContextProvider>
+        <ToastContainer
+          position="top-left"
+          autoClose={5000}
+          limit={5}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+        <App />
+      </APIContextProvider>
+    </ThemeContextProvider>
   </React.StrictMode>
 );
 

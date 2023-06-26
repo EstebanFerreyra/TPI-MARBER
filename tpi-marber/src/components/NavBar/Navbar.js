@@ -4,8 +4,12 @@ import { RegisteredUserContext } from "../context/RegisteredUserContext/Register
 import "./NavBar.css";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import SideCart from "../SideCart/SideCart";
+import { BsFillSunFill, BsFillMoonStarsFill } from "react-icons/bs";
+
+import { ThemeContext } from "../context/Themes/Themes.Context";
 
 const NavBar = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [click, setClick] = useState(false);
   const [sideCart, setSideCart] = useState(false);
   const { cart, clearCart } = useContext(CartContext);
@@ -63,6 +67,7 @@ const NavBar = () => {
 
   const goToAllBuys = () => {
     navigation("/orders");
+    debugger;
   };
 
   const sideCartHandler = () => {
@@ -70,8 +75,8 @@ const NavBar = () => {
   };
 
   return (
-    <div>
-      <nav id="nav" className="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="nav-main">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <button
             className="navbar-brand"
@@ -136,7 +141,7 @@ const NavBar = () => {
                 {registeredUser.success === true &&
                   registeredUser.role === "superadmin" && (
                     <button
-                      className="nav-link active"
+                      id="btn"
                       aria-current="page"
                       href="#"
                       onClick={goToUsers}
@@ -146,6 +151,7 @@ const NavBar = () => {
                   )}
               </li>
             </ul>
+
             {registeredUser.success === true && (
               <span className="navbar-text" style={{ "margin-right": "10px" }}>
                 ¡Bienvenido <strong>{registeredUser.user}</strong>!
@@ -194,6 +200,25 @@ const NavBar = () => {
                 </button>
               )}
             </div>
+            <div>
+              <label class="switch">
+                <input
+                  type="checkbox"
+                  class="cb"
+                  onChange={toggleTheme}
+                  variant={theme === "dark" ? "light" : "dark"}
+                />
+                <span class="toggle">
+                  <span class="left">
+                    <BsFillSunFill />
+                  </span>
+                  <span class="right">
+                    <BsFillMoonStarsFill />
+                  </span>
+                </span>
+              </label>
+            </div>
+
             {click ? <></> : <></>}
           </div>
         </div>

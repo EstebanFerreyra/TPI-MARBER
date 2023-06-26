@@ -1,10 +1,55 @@
-.container {
-  min-height: 50vh;
+.foot {
   width: 100%;
-  height: 50%;
+  background-color: rgb(196, 193, 193);
+  bottom: -200px;
+}
+.foot .group-1 {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+  padding: 45px 0px;
+}
+.foot .group-1 .box h2 {
+  color: #242323;
+  margin-bottom: 25px;
+  font-size: 20px;
 }
 
-#img {
-  align-items: center;
-  width: 130px;
+.foot .group-1 .box p {
+  color: #383838;
+  margin-bottom: 10px;
+}
+
+.foot .group-1 .social-network a {
+  display: inline-block;
+  text-decoration: none;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  color: #fff;
+  margin-right: 10px;
+  background-color: rgb(158, 154, 154);
+  text-align: center;
+  transition: all 300ms ease;
+}
+
+.foot .group-1 .social-network a:hover {
+  color: aqua;
+}
+.foot .group-2 {
+  background-color: darkgoldenrod;
+  padding: 15px 10px;
+  text-align: center;
+}
+@media screen and (max-width: 800px) {
+  .foot .group-1 {
+    width: 90%;
+    grid-template-columns: repeat(1, 1fr);
+    bottom: 0;
+    grid-gap: 30px;
+    padding: 35px 0px;
+  }
 }

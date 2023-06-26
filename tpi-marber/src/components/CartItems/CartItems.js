@@ -5,6 +5,7 @@ import NavBar from "../NavBar/NavBar";
 import { useNavigate } from "react-router-dom";
 
 import "./CartItems.css";
+import { toast } from "react-toastify";
 
 const CartItems = () => {
   const { cart, clearCart, increaseQuantity, decreaseQuantity, removeItem } =
@@ -16,7 +17,26 @@ const CartItems = () => {
     const url = "https://localhost:7160/marber/OrderController/AddOrder";
 
     if (cart.length === 0) {
-      alert("Aún no has seleccionado un producto.");
+      toast.error("Aún no has seleccionado un producto.", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      toast.info("Ingrese un Producto", {
+        position: "top-left",
+        autoClose: 7000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       navigation("/beersadmin"); //para admin o superadmn debe ser /beersadmin
     } else {
       cart.map((order) => {
@@ -38,7 +58,16 @@ const CartItems = () => {
       });
 
       clearCart();
-      alert("¡Compra realizada con éxito!");
+      toast.success("¡Compra realizada con éxito!", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       //y que salte el boton de mercadopago
     }
 

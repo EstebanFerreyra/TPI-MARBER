@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+.up {
+  font-family: "Abril Fatface";
+}
+
+.us {
+  margin: 30px;
+  font-family: "Abril Fatface", cursive;
+  -webkit-text-stroke: 1px rgb(167, 165, 165);
+  font-weight: 400;
+  font-size: x-large;
+  text-align: justify;
+  color: rgb(197, 164, 19);
+}

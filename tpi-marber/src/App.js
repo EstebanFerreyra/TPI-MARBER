@@ -18,8 +18,12 @@ import CustomersContextProvider, {
 } from "./components/context/CustomersContext/CustomersContext";
 import CartItems from "./components/CartItems/CartItems";
 import ViewRegister from "./components/ViewRegister/ViewRegister";
+import { useContext } from "react";
+import { ThemeContext } from "./components/context/Themes/Themes.Context";
 
 function App() {
+  const { theme } = useContext(ThemeContext);
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -77,15 +81,17 @@ function App() {
 
   //return <RouterProvider router={router}/>
   return (
-    <CustomersContextProvider CustomersContext={CustomersContext}>
-      <RegisteredUserContextProvider
-        RegisteredUserContext={RegisteredUserContext}
-      >
-        <ShoppingCartProvider>
-          <RouterProvider router={router} />
-        </ShoppingCartProvider>
-      </RegisteredUserContextProvider>
-    </CustomersContextProvider>
+    <div className={`${theme === "dark" && "dark-theme"}`}>
+      <CustomersContextProvider CustomersContext={CustomersContext}>
+        <RegisteredUserContextProvider
+          RegisteredUserContext={RegisteredUserContext}
+        >
+          <ShoppingCartProvider>
+            <RouterProvider router={router} />
+          </ShoppingCartProvider>
+        </RegisteredUserContextProvider>
+      </CustomersContextProvider>
+    </div>
   );
 }
 

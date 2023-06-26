@@ -5,9 +5,9 @@ import { RegisteredUserContext } from "../context/RegisteredUserContext/Register
 import { useNavigate } from "react-router";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import ModifyBeer from "../ModifyBeer/ModifyBeer";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 import "./BeerItem.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const BeerItem = ({
   id,
@@ -55,18 +55,6 @@ const BeerItem = ({
   //   }
   // };
 
-  // const notify = () =>
-  //   toast.error("Error no se inicio sesion", {
-  //     position: "top-left",
-  //     autoClose: 5000,
-  //     hideProgressBar: true,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: "colored",
-  //   });
-
   const addToCartHandler = (event) => {
     if (success === true) {
       const item = {
@@ -76,9 +64,29 @@ const BeerItem = ({
         price: beerPrice,
         quantity: 0,
       };
+      toast.success("Producto agregado con éxito", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       addToCart(item);
     } else {
-      // notify();
+      toast.error("Error no se inicio sesion  Ingrese sesion primero", {
+        position: "top-left",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+
       navigation("/login");
     }
   };

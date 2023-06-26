@@ -4,6 +4,7 @@ import { RegisteredUserContext } from "../context/RegisteredUserContext/Register
 import { APIContext } from "../context/Api/api.context";
 import Loader from "../ui/Loader";
 import { CustomersContext } from "../context/CustomersContext/CustomersContext";
+import { toast } from "react-toastify";
 
 const SingIn = ({ setLogStatusHandle }) => {
   const [user, setUser] = useState("");
@@ -44,6 +45,16 @@ const SingIn = ({ setLogStatusHandle }) => {
         userRef.current.focus();
         userRef.current.style.borderColor = "red";
         userRef.current.style.outline = "none";
+        toast.error("Error Complete los campos marcados", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       } else {
         userRef.current.style.borderColor = "";
         userRef.current.style.outline = "";
@@ -156,7 +167,7 @@ const SingIn = ({ setLogStatusHandle }) => {
           <button class="button" onClick={singInHandle}>
             Login
           </button>
-          <span class="switch">
+          <span class="quest">
             No tienes una cuenta?
             <label
               for="signup_toggle"

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./ModifyBeer.css";
 import "../AddBeer/AddBeer.css";
+import { toast } from "react-toastify";
 
 const ModifyBeer = ({ id, setModifyPriceHandle }) => {
   const [price, setPrice] = useState("");
@@ -24,6 +25,16 @@ const ModifyBeer = ({ id, setModifyPriceHandle }) => {
         priceRef.current.focus();
         priceRef.current.style.borderColor = "red";
         priceRef.current.style.outline = "none";
+        toast.error("Error Compelete los campos", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       }
       const newError = [...error];
       newError[0].isError = true;

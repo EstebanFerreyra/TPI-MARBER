@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import { CustomersContext } from "../context/CustomersContext/CustomersContext";
 import "./Login.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = ({ setLogStatusHandle }) => {
   const [email, setEmail] = useState("");
@@ -56,6 +58,16 @@ const Login = ({ setLogStatusHandle }) => {
         emalRef.current.focus();
         emalRef.current.style.borderColor = "red";
         emalRef.current.style.outline = "none";
+        toast.error("Error Complete los campos marcados", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       } else {
         emalRef.current.style.borderColor = "";
         emalRef.current.style.outline = "";
@@ -112,7 +124,6 @@ const Login = ({ setLogStatusHandle }) => {
 
   return (
     <div class="container">
-      <input id="signup_toggle" type="checkbox" />
       <form class="form">
         <div class="form_back">
           <div class="form_details">Registrarse</div>
@@ -154,14 +165,14 @@ const Login = ({ setLogStatusHandle }) => {
           <button class="button" onClick={loginHandle}>
             Registrarse
           </button>
-          <span class="switch">
+          <span class="quest">
             Tienes ya una Cuenta?
             <label
               for="signup_toggle"
               class="signup_tog"
               onClick={goToSingInHandle}
             >
-              Sign In
+              Iniciar Sesion
             </label>
           </span>
         </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import NavBar from "../NavBar/NavBar";
 import OrderRow from "../OrderRow/OrderRow";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
+import "./Orders.css";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -63,11 +64,11 @@ const Orders = () => {
                 <tr>
                   <td> </td>
                   <td> </td>
-                  <td className="d-flex justify-content-center">
+                  <td className="">
                     <p className="d-flex justify-content-center position-fixed">
                       No hay pedidos para mostrar
                     </p>
-                    <div className="d-flex justify-content-center w-25 mt-4">
+                    <div className="d-flex justify-content-center w-25 mt-4  ">
                       <svg
                         viewBox="0 0 64.005 64.005"
                         data-name="Low Beer Glass"
