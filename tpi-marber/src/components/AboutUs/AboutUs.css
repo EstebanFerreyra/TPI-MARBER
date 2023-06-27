@@ -11,13 +11,29 @@
 
 #us {
   margin: 30px;
-  -webkit-text-stroke: 1px rgb(167, 165, 165);
-  font-weight: 400;
+  font-weight: 16px;
   font-size: x-large;
   text-align: justify;
   color: rgb(0, 0, 0);
 }
 
 .accordion-button {
-    background-color: #5494a79e;
+  background-color: #5494a79e;
+}
+
+.accordion-button-dark {
+  background-color:   #001C30;
+}
+
+.text-acordion-dark{
+  color: #d8c4b6;
+}
+
+.accordion-item-dark{
+  background-color: #808b94;
+  color: #d8c4b6;
+}
+
+.accordion-header{
+
 }

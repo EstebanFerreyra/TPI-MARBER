@@ -5,6 +5,7 @@ import { CustomersContext } from "../context/CustomersContext/CustomersContext";
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css"
+import { ThemeContext } from "../context/Theme/Theme";
 
 const Login = ({ setLogStatusHandle }) => {
   const [email, setEmail] = useState("");
@@ -20,7 +21,9 @@ const Login = ({ setLogStatusHandle }) => {
   const navigation = useNavigate();
 
   const { registeredUser } = useContext(RegisteredUserContext);
-  const { setCustomersHandle } = useContext(CustomersContext);
+  const { setCustomersHandle } = useContext(CustomersContext); 
+  const { theme } = useContext(ThemeContext);
+
 
   const client = {
     emailBd: email,
@@ -30,9 +33,9 @@ const Login = ({ setLogStatusHandle }) => {
   };
 
   const changeEmailHandle = (event) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setIsValid(emailRegex.test(email));
     setEmail(event.target.value);
+    const emailRegex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    setIsValid(emailRegex.test(email));
   };
 
   const changeUserHandle = (event) => {
@@ -140,13 +143,16 @@ const Login = ({ setLogStatusHandle }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container-login">
       <form className="form">
-        <div className="form_back">
-          <div className="form_details">Registrarse</div>
+        <div className={`form_back ${theme === "dark" && "form-back-dark"
+          }`} >
+          <div className={`form_details ${theme === "dark" && "form_details-dark"
+            }`} >Registrarse</div>
           <input
             type="email"
-            className="input"
+            className={`input ${theme === "dark" && "input-dark"
+              }`}
             aria-describedby="emailHelp"
             onChange={changeEmailHandle}
             ref={emalRef}
@@ -154,7 +160,8 @@ const Login = ({ setLogStatusHandle }) => {
           />
           <input
             type="text"
-            className="input"
+            className={`input ${theme === "dark" && "input-dark"
+              }`}            
             aria-describedby="emailHelp"
             onChange={changeUserHandle}
             ref={userRef}
@@ -162,7 +169,8 @@ const Login = ({ setLogStatusHandle }) => {
           />
           <input
             type="password"
-            className="input"
+            className={`input ${theme === "dark" && "input-dark"
+              }`}            
             id="exampleInputPassword1"
             onChange={changePasswordHandle}
             ref={passwordRef}
@@ -185,12 +193,15 @@ const Login = ({ setLogStatusHandle }) => {
 
           <button
             type="submit"
-            className="button"
+            // className="button"
+            className={`button ${theme === "dark" && "button-dark"
+              }`}
             onClick={loginHandle}
           >
             Registrarse
           </button>
-          <span className="quest">
+          <span className={`quest ${theme === "dark" && "quest-dark"
+            }`}>
             ¿Ya tienes cuenta?
             <label onClick={goToSingInHandle} for="signup_toggle" className="signup_tog">
               Iniciar sesion

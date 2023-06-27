@@ -263,3 +263,30 @@
   background-color: rgb(36, 39, 41);
   color: #fff;
 }
+
+.container-fluid-dark{
+  background-color: #d8c4b6;
+  max-height: 100%;
+}
+
+code{
+  --bs-bg-opacity: none;
+  background-color: #d8c4b6;
+  padding: 0%;
+}
+
+.bg-body-tertiary{
+  padding: 0%;
+  background-color:  #d8c4b6;
+  padding: 3px;
+}
+
+.bg-light {
+  --bs-bg-opacity: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .bg-light {
+    --bs-bg-opacity: none;
+  }
+}

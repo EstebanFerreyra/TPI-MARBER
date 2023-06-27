@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./AboutUs.css"
+import { ThemeContext } from '../context/Theme/Theme';
 
 const AboutUs = () => {
+    const { theme } = useContext(ThemeContext);
+
     return (
         <div>
             <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
+                <div className={`accordion-item ${theme === "dark" && "accordion-item-dark"
+                    }`}>
                     <h2 class="accordion-header" >
-                        <button class="accordion-button" id='up' type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
-                            De donde venimos
+                        <button className={`accordion-button ${theme === "dark" && "accordion-button-dark"
+                            }`} id='up' type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                            <p className={` ${theme === "dark" && "text-acordion-dark"
+                                }`}> De donde venimos</p>
                         </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -20,10 +26,13 @@ const AboutUs = () => {
                             Estamos emocionados de embarcarnos en esta nueva etapa de nuestro emprendimiento familiar y de compartir nuestra cerveza artesanal con todos ustedes. Esperamos que cada vez que levanten una copa de nuestra cerveza, puedan apreciar el resultado de años de dedicación, pasión y un inmenso amor por lo que hacemos. Agradecemos profundamente su apoyo y confianza en nosotros, y esperamos que disfruten cada sorbo de nuestra cerveza artesanal tanto como nosotros disfrutamos creándola. ¡Salud!                      </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div className={`accordion-item ${theme === "dark" && "accordion-item-dark"
+                    }`}>
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" id='up' type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Nuestro nombre                        </button>
+                        <button className={`accordion-button ${theme === "dark" && "accordion-button-dark"
+                            }`} id='up' type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <p className={` ${theme === "dark" && "text-acordion-dark"
+                                }`}> Nuestro nombre</p>                        </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body" id='us'>
@@ -34,10 +43,13 @@ const AboutUs = () => {
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div className={`accordion-item ${theme === "dark" && "accordion-item-dark"
+                    }`}>
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" id='up' type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Nuestra mision
+                        <button className={`accordion-button ${theme === "dark" && "accordion-button-dark"
+                            }`} id='up' type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <p className={` ${theme === "dark" && "text-acordion-dark"
+                                }`}>Nuestra mision</p>
                         </button>
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">

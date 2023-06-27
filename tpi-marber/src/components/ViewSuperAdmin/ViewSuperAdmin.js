@@ -4,9 +4,13 @@ import { RegisteredUserContext } from '../context/RegisteredUserContext/Register
 import NavBar from '../NavBar/NavBar'
 import Footer from '../Footer/Footer'
 import ListUsers from '../ListUsers/ListUsers'
+import { ThemeContext } from '../context/Theme/Theme';
+import "./ViewSuperAdmin.css"
 
 const ViewSuperAdmin = () => {
     const { registeredUser } = useContext(RegisteredUserContext);
+
+    const { theme } = useContext(ThemeContext);
 
     const navigation = useNavigate();
 
@@ -15,12 +19,14 @@ const ViewSuperAdmin = () => {
     }
 
     return (
-        <>
-            <NavBar />
-            {registeredUser.role === "superadmin" && <li> <button type="button" className="btn btn-primary" onClick={seeLoginHandle} id='button-add'>Agregar usuario</button></li>}
+        <div className={` ${theme === "dark" && "container-view"
+            }`}>           
+             <NavBar />
+            {registeredUser.role === "superadmin" && <li> <button type="button" className={`button-add-user ${theme === "dark" && "button-add-user-dark"
+                }`} onClick={seeLoginHandle} >Agregar usuario</button></li>}
             <ListUsers />
             <Footer />
-        </>
+        </div>
     )
 }
 
