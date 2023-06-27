@@ -4,18 +4,21 @@ import { RegisteredUserContext } from "../context/RegisteredUserContext/Register
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import SideCart from "../SideCart/SideCart";
 import "./NavBar.css";
+import ToggleTheme from "../ui/ToggleTheme";
+import { ThemeContext } from "../context/Theme/Theme";
 
 const NavBar = () => {
   const [sideCart, setSideCart] = useState(false);
+
   const { cart, clearCart } = useContext(CartContext);
-
-  const quantity = cart.length;
-
+  const { theme } = useContext(ThemeContext);
   const { registeredUser, setRegisteredUserHandle } = useContext(
     RegisteredUserContext
-  );
-
+  ); 
+  
   const navigation = useNavigate();
+
+  const quantity = cart.length;
 
   const goToBeersHandler = () => {
     if (registeredUser.role !== "client") {
@@ -66,8 +69,10 @@ const NavBar = () => {
 
   return (
     <div className="nav-main">
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
+      <nav className={`navbar navbar-expand-lg bg-body-tertiary ${theme === "dark" && "navbar navbar-expand-lg bg-body-tertiary-dark "
+        }`}>
+        <div className={`container-fluid ${theme === "dark" && "container-fluid-dark"
+          }`}>
           <button
             className="navbar-brand"
             href="#"
@@ -206,6 +211,7 @@ const NavBar = () => {
                   Cerrar sesion
                 </button>
               )}
+              <ToggleTheme/>
             </div>
           </div>
         </div>

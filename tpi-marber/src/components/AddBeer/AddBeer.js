@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import "./AddBeer.css"
+import { ThemeContext } from '../context/Theme/Theme';
 
 const AddBeer = ({ handleAddBeer, beers }) => {
     const [name, setName] = useState("");
@@ -11,6 +12,8 @@ const AddBeer = ({ handleAddBeer, beers }) => {
     const nameRef = useRef(null);
     const styleRef = useRef(null);
     const priceRef = useRef(null);
+
+    const { theme } = useContext(ThemeContext);
 
     const changeNameHandler = (event) => {
         nameRef.current.style.borderColor = "";
@@ -132,7 +135,8 @@ const AddBeer = ({ handleAddBeer, beers }) => {
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-success" onClick={addBeerHandler} id='button-add'>Agregar</button>
+                <button type="button" className={`button-add-beer ${theme === "dark" && "button-add-beer-dark"
+                    }`} onClick={addBeerHandler} >Agregar</button>
             </form>
         </>
     )

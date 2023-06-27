@@ -65,7 +65,7 @@
   position: relative;
 }
 
-#buy {
+.buy {
   display: inline-block;
   color: #000000;
   border: none;
@@ -78,14 +78,14 @@
   cursor: pointer;
 }
 
-#buy span {
+.buy span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-#buy span:after {
+.buy span:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -94,11 +94,11 @@
   transition: 0.5s;
 }
 
-#buy:hover span {
+.buy:hover span {
   padding-right: 25px;
 }
 
-#buy:hover span:after {
+.buy:hover span:after {
   opacity: 1;
   right: 0;
 }
@@ -131,7 +131,7 @@
   box-shadow: 0 0 0 0 black;
 }
 
-#info {
+.info {
   cursor: pointer;
   display: inline-block;
   font-weight: 700;
@@ -147,15 +147,16 @@
   align-items: center;
   font-size: 15px;
   transition: all 0.5s;
+  margin:13px;
 }
-#info span {
+.info span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-#info span:after {
+.info span:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -164,11 +165,38 @@
   transition: 0.5s;
 }
 
-#info:hover span {
+.info:hover span {
   padding-right: 25px;
 }
 
-#info:hover span:after {
+.info:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+@media only screen and (max-width: 500px) {
+    #modify {
+      padding: 5px;
+      margin-top: 40px;
+      margin-left: 30px;
+      font-size: 14px;
+    }
+
+    #danger {
+      margin-right: 30px;
+    }
+}
+
+.buy-dark{
+  background-color: #d8c4b6;
+}
+
+.info-dark{
+  background-color: #d8c4b6;
+}
+
+.info-dark:hover{
+  background-color: #d8c4b6;
+  color: #000000;
+  border: none;
 }

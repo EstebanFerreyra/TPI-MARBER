@@ -3,10 +3,13 @@ import NavBar from "../NavBar/NavBar";
 import OrderRow from "../OrderRow/OrderRow";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import Footer from "../Footer/Footer";
+import "./Orders.css"
+import { ThemeContext } from "../context/Theme/Theme";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
 
+  const { theme } = useContext(ThemeContext);
   const { registeredUser } = useContext(RegisteredUserContext);
 
   const setOrdersHandle = (obj) => {
@@ -36,30 +39,35 @@ const Orders = () => {
   }, []);
 
   return (
-    <div>
+    <div className={` ${theme === "dark" && "container-view"
+      }`}> 
       <div>
         <NavBar />
       </div>
 
       <div className="d-flex justify-content-center">
-        <h2 className="title-list">Pedidos</h2>
+        <h2 className={`title-list ${theme === "dark" && "title-list-dark"
+          }`}>Pedidos</h2>
       </div>
+      <div className="container-tables">
       <div class="container">
         <table class="table table-hover">
           <thead style={{ backgroundColor: "lightsteelblue" }}>
-            <tr>
-              <th>Id Orden</th>
-              <th>Cliente</th>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th>Monto</th>
-              <th>TOTAL</th>
+              <tr  className={` ${theme === "dark" && "tr"
+                }`}>
+                <th scope="col">Id Orden</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Monto</th>
+                <th scope="col">TOTAL</th>
             </tr>
           </thead>
           <tbody>
             {orders.length === 0 ? (
               <>
-                <tr>
+                  <tr className={` ${theme === "dark" && "tr"
+                    }`}>
                   <td> </td>
                   <td> </td>
                   <td className="d-flex justify-content-center">
@@ -130,6 +138,7 @@ const Orders = () => {
             )}
           </tbody>
         </table>
+      </div>
       </div>
       <Footer/>
     </div>

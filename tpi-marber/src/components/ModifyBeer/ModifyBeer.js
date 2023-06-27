@@ -66,7 +66,7 @@ const ModifyBeer = ({ id, setModifyPriceHandle }) => {
                 placeholder='Nuevo precio'
             />
 
-            <button onClick={modifyBeerHandler} id='button-modify'>Modificar</button>
+            <button className="button-modify-class" onClick={modifyBeerHandler} id='button-modify'>Modificar</button>
         </>
     )
 }

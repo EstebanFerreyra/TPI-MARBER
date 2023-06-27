@@ -5,6 +5,7 @@ import { APIContext } from '../context/Api/api.context'
 import Loader from '../ui/Loader';
 import { CustomersContext } from '../context/CustomersContext/CustomersContext';
 import { toast } from "react-toastify";
+import { ThemeContext } from '../context/Theme/Theme';
 
 const SingIn = ({ setLogStatusHandle }) => {
     const [user, setUser] = useState("");
@@ -17,6 +18,8 @@ const SingIn = ({ setLogStatusHandle }) => {
     const { isLoading } = useContext(APIContext);
     const { registeredUser, setRegisteredUserHandle } = useContext(RegisteredUserContext);
     const { customers } = useContext(CustomersContext);
+    const { theme } = useContext(ThemeContext);
+
 
     const navigation = useNavigate();
 
@@ -125,17 +128,23 @@ const SingIn = ({ setLogStatusHandle }) => {
     }
 
     return (
-        <div className='container'>
+        <div className='container-login'>
             <form className='form'>
-                <div className="form_front">
-                    <div className='form_details'>Iniciar sesion</div>
-                    <input type="text" className="input" onChange={changeUserHandle} ref={userRef} placeholder='Nombre' />
-                    <input type="password" className="input" onChange={changePasswordHandle} ref={passwordRef} placeholder='Contraseña' />
+                <div className={`form_back ${theme === "dark" && "form-back-dark"
+                    }`} >
+                    <div className={`form_details ${theme === "dark" && "form_details-dark"
+                        }`}>Iniciar sesion</div>
+                    <input type="text" className={`input ${theme === "dark" && "input-dark"
+                        }`} onChange={changeUserHandle} ref={userRef} placeholder='Nombre' />
+                    <input type="password" className={`input ${theme === "dark" && "input-dark"
+                        }`} onChange={changePasswordHandle} ref={passwordRef} placeholder='Contraseña' />
 
-                    <button class="button" onClick={singInHandle}>
+                    <button className={`button ${theme === "dark" && "button-dark"
+                        }`} onClick={singInHandle}>
                         Login
                     </button>
-                    <span class="quest">
+                    <span className={`quest ${theme === "dark" && "quest-dark"
+                        }`}>
                         No tienes una cuenta?
                         <label
                             for="signup_toggle"

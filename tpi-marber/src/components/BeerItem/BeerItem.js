@@ -5,8 +5,9 @@ import { RegisteredUserContext } from "../context/RegisteredUserContext/Register
 import { useNavigate } from "react-router";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import ModifyBeer from "../ModifyBeer/ModifyBeer";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "./BeerItem.css"
+import { ThemeContext } from "../context/Theme/Theme";
 
 const BeerItem = ({
   id,
@@ -22,15 +23,17 @@ const BeerItem = ({
 
   const { addToCart } = useContext(CartContext);
   const { registeredUser } = useContext(RegisteredUserContext);
+  const { theme } = useContext(ThemeContext);
 
   const type = registeredUser.role;
   const success = registeredUser.success;
 
   const deleteBeerHandle = () => {
-    const url = `https://localhost:7160/marber/BeerController/deletebeerbyid/${id}`;
+    const url = `https://www.apimarber.somee.com/marber/BeerController/deletebeerbyid/${id}`;
     fetch(url, {
       method: "DELETE",
       mode: "cors",
+      refer: "*",
       headers: {
         "Content-Type": "application/json",
       },
@@ -111,11 +114,13 @@ const BeerItem = ({
         <h3>{beerStyle}</h3>
         <p><strong>$ {priceActually}</strong></p>
         <div >
-          <Button className="btn btn-success m-2" onClick={addToCartHandler} id="buy">
-            <span>Agregar al carrito</span>
-          </Button>
+          <button className={`buy ${theme === "dark" && "buy-dark"
+            }`} onClick={addToCartHandler} >
+            <span c>Agregar al carrito</span>
+          </button>
         </div>
-        <Button className="btn btn-info m-2" id="info">
+        <Button className={`info ${theme === "dark" && "info-dark"
+          }`} >
           <span>+ Info</span>
         </Button>
         {modify === true && (
