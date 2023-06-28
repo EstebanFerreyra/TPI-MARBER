@@ -30,9 +30,9 @@ const CartItems = () => {
   const createPreference = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/create_preference",
+        "https://0b89-181-105-78-11.ngrok-free.app/create_preference",
         {
-          description: "Total",
+          description: "Cervecería Marber",
           price: total,
           quantity: 1,
           currency_id: "ARS",
@@ -208,8 +208,8 @@ const CartItems = () => {
             >
               Finalizar compra
             </button>
-            {preferenceId && <Wallet initialization={{ preferenceId }} />}
           </div>
+          {preferenceId && <Wallet initialization={{ preferenceId }} />}
         </div>
       </div>
       <Footer />
