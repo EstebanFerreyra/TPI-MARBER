@@ -1,15 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import NavBar from "../NavBar/NavBar";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import axios from "axios";
 
 import "./CartItems.css";
 import Footer from "../Footer/Footer";
 import { ThemeContext } from "../context/Theme/Theme";
 
 const CartItems = () => {
+  const [preferenceId, setPreferenceId] = useState(null);
   const { cart, clearCart, increaseQuantity, decreaseQuantity, removeItem } =
     useContext(CartContext);
   const { registeredUser } = useContext(RegisteredUserContext);
@@ -17,7 +20,33 @@ const CartItems = () => {
 
   const navigation = useNavigate();
 
-  const checkoutHandler = () => {
+  initMercadoPago("APP_USR-5f09a6a7-04f2-4dd8-9fc7-b8fc09ca3fcf");
+
+  const total = cart.reduce(
+    (totalPrice, item) => totalPrice + item.quantity * item.price,
+    0
+  );
+
+  const createPreference = async () => {
+    try {
+      const response = await axios.post(
+        "https://b733-181-105-78-11.ngrok-free.app/create_preference",
+        {
+          description: "Cervecería Marber",
+          price: total,
+          quantity: 1,
+          currency_id: "ARS",
+        }
+      );
+
+      const { id } = response.data;
+      return id;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const checkoutHandler = async () => {
     const url =
       "https://www.apimarber.somee.com/marber/OrderController/AddOrder";
     if (cart.length === 0) {
@@ -53,6 +82,11 @@ const CartItems = () => {
           .catch((error) => console.log(error));
       });
 
+      const id = await createPreference();
+      if (id) {
+        setPreferenceId(id);
+      }
+
       clearCart();
       toast.success("Compra realizada con éxito", {
         position: "top-left",
@@ -81,11 +115,6 @@ const CartItems = () => {
     };
     removeItem(item);
   };
-
-  const total = cart.reduce(
-    (totalPrice, item) => totalPrice + item.quantity * item.price,
-    0
-  );
 
   return (
     <div>
@@ -180,6 +209,7 @@ const CartItems = () => {
               Finalizar compra
             </button>
           </div>
+          {preferenceId && <Wallet initialization={{ preferenceId }} />}
         </div>
       </div>
       <Footer />
