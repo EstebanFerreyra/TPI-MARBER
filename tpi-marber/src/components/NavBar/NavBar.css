@@ -65,6 +65,8 @@
   display: block;
   width: 24px;
   height: 24px;
+  margin-right: 2px;
+  margin-top: 5px;
 }
 
 .cart-count {
@@ -72,11 +74,13 @@
   background-color: #043151;
   color: white;
   border-radius: 50%;
-  width: 17px;
-  height: 24px;
+  width: 18px;
+  height: 22px;
   display: inline-flex;
   justify-content: center;
   opacity: 78%;
+  margin-left: 4px;
+  padding-bottom: 15px;
 }
 
 .cart-count:hover {
