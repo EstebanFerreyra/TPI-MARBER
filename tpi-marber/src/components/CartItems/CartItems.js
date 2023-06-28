@@ -30,7 +30,7 @@ const CartItems = () => {
   const createPreference = async () => {
     try {
       const response = await axios.post(
-        "https://0b89-181-105-78-11.ngrok-free.app/create_preference",
+        "https://b733-181-105-78-11.ngrok-free.app/create_preference",
         {
           description: "Cervecería Marber",
           price: total,
