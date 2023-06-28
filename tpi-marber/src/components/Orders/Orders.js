@@ -11,6 +11,8 @@ import "./Orders.css";
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [orderProduct, setOrderProduct] = useState("");
+  const [filterUser, setFilterUser] = useState("");
+
 
   const { theme } = useContext(ThemeContext);
   const { registeredUser } = useContext(RegisteredUserContext);
@@ -22,6 +24,10 @@ const Orders = () => {
   const orderByProductHandler = (prod) => {
     setOrderProduct(prod);
   };
+
+  const filterUserHandle = (user) => {
+    setFilterUser(user);
+  }
 
   let url = `https://www.apimarber.somee.com/marber/OrderController/GetOrder/${registeredUser.id}`;
 
@@ -58,6 +64,7 @@ const Orders = () => {
         <OrderFilter
           orderProduct={orderProduct}
           onChangeOrderFilter={orderByProductHandler}
+          onChangeFilterUser={filterUserHandle}
         />
       </div>
       <div className="container-tables">
@@ -74,8 +81,8 @@ const Orders = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.length === 0 ? (
-                <>
+              {orders.length === 0 &&
+
                   <tr className={` ${theme === "dark" && "tr"}`}>
                     <td> </td>
                     <td> </td>
@@ -130,9 +137,22 @@ const Orders = () => {
                     <td> </td>
                     <td> </td>
                   </tr>
-                </>
-              ) : (
-                orders
+                }
+              {orderProduct === "" && filterUser === "" && orders
+                .map((order) => {
+                  return (
+                    <OrderRow
+                      key={order.id}
+                      id={order.id}
+                      userBuy={order.userBuy}
+                      beerBuy={order.beerBuy}
+                      quantity={order.quantity}
+                      subTotal={order.subTotal}
+                    />
+                  );
+                })
+              }
+                {registeredUser.role === "client" && orders
                   .filter((order) => order.beerBuy === orderProduct)
                   .map((order) => {
                     return (
@@ -146,7 +166,23 @@ const Orders = () => {
                       />
                     );
                   })
-              )}
+              }
+              {registeredUser.role !== "client" && orders
+                .filter((order) => order.userBuy === filterUser)
+                .map((order) => {
+                  return (
+                    <OrderRow
+                      key={order.id}
+                      id={order.id}
+                      userBuy={order.userBuy}
+                      beerBuy={order.beerBuy}
+                      quantity={order.quantity}
+                      subTotal={order.subTotal}
+                    />
+                  );
+                })
+              }
+              
             </tbody>
           </table>
         </div>

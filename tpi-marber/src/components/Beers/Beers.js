@@ -2,8 +2,6 @@ import React, { useEffect, useContext } from "react";
 import BeerItem from "../BeerItem/BeerItem";
 import { APIContext } from "../context/Api/api.context";
 import Loader from "../ui/Loader";
-import { toast } from "react-toastify";
-
 import "./Beers.css";
 
 const Beers = ({
@@ -22,17 +20,6 @@ const Beers = ({
     handleDeleteBeer1(beersValue);
     console.log("beers");
   };
-
-  const alertMessage = toast.error("No hay resultados para su busqueda", {
-    position: "top-left",
-    autoClose: 1000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-  });
 
   useEffect(() => {
     toggleLoading(true);
@@ -86,7 +73,7 @@ const Beers = ({
 
   return (
     <div className="beers">
-      {beersMapped.length === 0 ? <Loader /> && alertMessage : beersMapped}
+      {beersMapped.length === 0 ? <Loader />: beersMapped}
     </div>
   );
 };
