@@ -7,12 +7,14 @@ import RegisteredUserContextProvider, { RegisteredUserContext } from './componen
 import { ShoppingCartProvider } from './components/context/ShoppingCartContext/ShoppingCartContext';
 import { ToastContainer } from "react-toastify";
 import "./index.css";
+import { ThemeContextProvider } from './components/context/Theme/Theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode >
     <APIContextProvider>
       <CustomersContextProvider CustomersContext={CustomersContext}>
+        <ThemeContextProvider>
         <RegisteredUserContextProvider
           RegisteredUserContext={RegisteredUserContext}
         >
@@ -33,6 +35,7 @@ root.render(
               <App />
           </ShoppingCartProvider>
         </RegisteredUserContextProvider>
+        </ThemeContextProvider>
       </CustomersContextProvider>
     </APIContextProvider>
   </React.StrictMode>

@@ -3,6 +3,12 @@
   gap: 1rem;
   margin-bottom: 1rem;
   text-align: center;
+  margin-left: 50px;
+}
+
+.card-inputs {
+  border: none;
+  background: 0;
 }
 
 .form-add-beers label {
@@ -16,7 +22,74 @@
   font: inherit;
   padding: 0.5rem;
   border-radius: 6px;
+  color: #3b3b3b;
+  background-color: #e1e0e0;
   border: 1px solid #ccc;
   width: 20rem;
   max-width: 100%;
+}
+
+.input-control {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #3b3b3b;
+  background-color: #e1e0e0;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.input-control-dark {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #3b3b3b;
+  background-color: #808b94;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.input-control-dark::placeholder {
+  color: #043151;
+  font-weight: 500;
+}
+
+.button-add-beer {
+  margin-left: 50px;
+  background-color: #5494a7a5;
+  border-radius: 80px;
+  border: none;
+  color: black;
+  font-weight: 700;
+}
+
+.button-add-beer:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 black;
+}
+
+.button-add-beer:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 black;
+}
+
+.button-add-beer-dark {
+  margin-left: 50px;
+  background-color: #d8c4b6;
+  border-radius: 80px;
+  border: none;
+  color: black;
+  font-weight: 900;
+}
+
+.button-add-beer-dark:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 black;
+}
+
+.button-add-beer-dark:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 black;
 }

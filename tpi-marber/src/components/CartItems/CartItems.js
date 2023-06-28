@@ -8,12 +8,15 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
 
 import "./CartItems.css";
+import Footer from "../Footer/Footer";
+import { ThemeContext } from "../context/Theme/Theme";
 
 const CartItems = () => {
   const [preferenceId, setPreferenceId] = useState(null);
   const { cart, clearCart, increaseQuantity, decreaseQuantity, removeItem } =
     useContext(CartContext);
   const { registeredUser } = useContext(RegisteredUserContext);
+  const { theme } = useContext(ThemeContext);
 
   const navigation = useNavigate();
 
@@ -118,31 +121,39 @@ const CartItems = () => {
       <div>
         <NavBar />
       </div>
-      <div className="d-flex justify-content-center">
-        <div className="card m-5 p-1 w-50 shadow p-3 bg-body rounded">
-          <div className="card d-flex justify-content-end p-3 mb-2 bg-body rounded">
+      <div className={`cart-items ${theme === "dark" && "cart-items-dark"}`}>
+        <div
+          className={`cart-outside ${theme === "dark" && "cart-outside-dark"}`}
+        >
+          <div
+            className={`cart-inside ${theme === "dark" && "cart-inside-dark"}`}
+          >
             <p className="cart-text">Detalle de la compra</p>
             {cart.length === 0 ? (
-              <p>
+              <p className="cart-text">
                 <i>Carrito vacío</i>
               </p>
             ) : (
               cart.map((item) => (
                 <div key={item.id} id={item.id}>
-                  <p>
+                  <p className="cart-text">
                     {item.name} x{item.quantity}
                   </p>
-                  <p>${item.price * item.quantity}</p>
+                  <p className="cart-text">${item.price * item.quantity}</p>
                   <div className="cart-buttons">
                     <button
-                      className="quant-button"
+                      className={`quant-button ${
+                        theme === "dark" && "quant-button-dark"
+                      }`}
                       onClick={() => increaseHandler(item.id)}
                     >
                       +
                     </button>
                     {
                       <button
-                        className="quant-button"
+                        className={`quant-button ${
+                          theme === "dark" && "quant-button-dark"
+                        }`}
                         onClick={() => decreaseHandler(item.id)}
                         disabled={item.quantity === 1}
                       >
@@ -150,7 +161,9 @@ const CartItems = () => {
                       </button>
                     }
                     <button
-                      className="bin-button"
+                      className={`bin-button ${
+                        theme === "dark" && "bin-button-dark"
+                      }`}
                       onClick={() => removeItemHandler(item.id)}
                     >
                       <svg
@@ -188,7 +201,9 @@ const CartItems = () => {
           </div>
           <div className="d-flex justify-content-center">
             <button
-              className="checkout btn btn-secondary"
+              className={`checkout-button-cart ${
+                theme === "dark" && "checkout-button-cart-dark"
+              }`}
               onClick={checkoutHandler}
             >
               Finalizar compra
@@ -197,6 +212,7 @@ const CartItems = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

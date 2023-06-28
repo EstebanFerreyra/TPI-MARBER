@@ -1,3 +1,8 @@
-.title-list{
-     font-weight: 700;
+.title-list {
+  font-weight: 700;
+}
+
+.sort-button {
+  border: none;
+  background: none;
 }

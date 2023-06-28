@@ -1,3 +1,27 @@
-.footer-text{
-    color: grey;
+.footer-text {
+  color: grey;
+}
+
+.section-footer-dark {
+  background-color: #001c30;
+}
+
+.dark {
+  color: #d8c4b6;
+}
+
+.dark-title-section {
+  color: #d8c4b6;
+  text-transform: uppercase;
+}
+
+.title-section {
+  text-transform: uppercase;
+}
+
+.footer-position {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }

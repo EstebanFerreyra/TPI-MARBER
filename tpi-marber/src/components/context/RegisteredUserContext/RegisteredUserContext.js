@@ -6,6 +6,7 @@ const log = {
   id: 0,
   user: "",
   role: "",
+  preferenceThemeUser: "light"
 };
 
 const userLocalStorage = JSON.parse(localStorage.getItem("registeredUser"));
