@@ -118,28 +118,42 @@
   transform: rotateY(-180deg);
 }
 
-.input-dark{
+.input-dark {
   color: black;
   background-color: #d8c4b6;
 }
 
-.button-dark{
+.button-dark {
   color: black;
   background-color: #d8c4b6;
 }
 
-.quest-dark{
+.quest-dark {
   color: #d8c4b6;
 }
 
-.form_details-dark{
+.form_details-dark {
   color: #d8c4b6;
 }
 
-.form-back-dark{
+.form-back-dark {
   background-color: #043151;
 }
 
-.form_details-dark{
-    color: #d8c4b6;
+.form_details-dark {
+  color: #d8c4b6;
+}
+
+.selec-text {
+  color: #808b94;
+}
+
+.selec-label {
+  background-color: #e1e0e0;
+  border: none;
+  border-radius: 4px;
+  margin: 2px;
+  width: 120px;
+  height: 40px;
+  padding: 4px;
 }

@@ -14,8 +14,8 @@ const NavBar = () => {
   const { theme } = useContext(ThemeContext);
   const { registeredUser, setRegisteredUserHandle } = useContext(
     RegisteredUserContext
-  ); 
-  
+  );
+
   const navigation = useNavigate();
 
   const quantity = cart.length;
@@ -69,10 +69,16 @@ const NavBar = () => {
 
   return (
     <div className="nav-main">
-      <nav className={`navbar navbar-expand-lg bg-body-tertiary ${theme === "dark" && "navbar navbar-expand-lg bg-body-tertiary-dark "
-        }`}>
-        <div className={`container-fluid ${theme === "dark" && "container-fluid-dark"
-          }`}>
+      <nav
+        className={`navbar navbar-expand-lg bg-body-tertiary ${
+          theme === "dark" && "navbar navbar-expand-lg bg-body-tertiary-dark "
+        }`}
+      >
+        <div
+          className={`container-fluid ${
+            theme === "dark" && "container-fluid-dark"
+          }`}
+        >
           <button
             className="navbar-brand"
             href="#"
@@ -167,30 +173,30 @@ const NavBar = () => {
               </li>
             </ul>
             {registeredUser.success === true && (
-              <span className="navbar-text" style={{ "margin-right": "10px" }} >
+              <span className="navbar-text" style={{ "margin-right": "10px" }}>
                 ¡Bienvenido <strong>{registeredUser.user}</strong>!
               </span>
             )}
             <div className="d-flex" role="search">
               {sideCart && <SideCart onClose={sideCartHandler} />}
 
-              <button
-                className="cart-icon btn btn-outline-success"
-                type="submit"
-                onClick={sideCartHandler}
-              >
-                {" "}
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/107/107831.png"
-                  className="d-block w-100"
-                  alt="..."
-                  width="15px"
-                  height="15px"
-                />
-                <span className="cart-count">
-                  <b>{quantity}</b>
-                </span>
-              </button>
+              <div className="cart-and-count">
+                <button
+                  className="cart-icon btn"
+                  type="submit"
+                  onClick={sideCartHandler}
+                >
+                  <b className="cart-count">{quantity}</b>{" "}
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/107/107831.png"
+                    className="cart-icon-pic"
+                    alt="..."
+                    width="15px"
+                    height="15px"
+                  />
+                </button>
+              </div>
+
               {registeredUser.success === false && (
                 <button
                   id="button-log-id"
@@ -211,9 +217,9 @@ const NavBar = () => {
                   Cerrar sesion
                 </button>
               )}
-              <ToggleTheme/>
             </div>
           </div>
+          {<ToggleTheme />}
         </div>
       </nav>
     </div>

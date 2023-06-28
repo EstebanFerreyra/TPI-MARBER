@@ -1,10 +1,13 @@
-import React from 'react'
-import "./Loader.css"
+import React, { useContext } from "react";
+import "./Loader.css";
+import { ThemeContext } from "../context/Theme/Theme";
 
 const Loader = () => {
-  return (
- <span className="loader"></span> 
-  )
-}
+  const { theme } = useContext(ThemeContext);
 
-export default Loader
+  return (
+    <span className={`loader ${theme === "dark" && "loader-dark"}`}></span>
+  );
+};
+
+export default Loader;

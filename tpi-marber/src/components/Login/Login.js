@@ -2,9 +2,9 @@ import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import { CustomersContext } from "../context/CustomersContext/CustomersContext";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Login.css"
+import "./Login.css";
 import { ThemeContext } from "../context/Theme/Theme";
 
 const Login = ({ setLogStatusHandle }) => {
@@ -21,9 +21,10 @@ const Login = ({ setLogStatusHandle }) => {
   const navigation = useNavigate();
 
   const { registeredUser } = useContext(RegisteredUserContext);
-  const { setCustomersHandle } = useContext(CustomersContext); 
+  const { setCustomersHandle } = useContext(CustomersContext);
   const { theme } = useContext(ThemeContext);
 
+  const type = registeredUser.role;
 
   const client = {
     emailBd: email,
@@ -55,11 +56,17 @@ const Login = ({ setLogStatusHandle }) => {
     navigation("/singin");
   };
 
-  const urlPost = "https://www.apimarber.somee.com/marber/ClientController/AddClient";
+  const urlPost =
+    "https://www.apimarber.somee.com/marber/ClientController/AddClient";
 
   const loginHandle = (event) => {
     event.preventDefault();
-    if (user.length === 0 || password.length === 0 || email.length === 0 || isValid === false) {
+    if (
+      user.length === 0 ||
+      password.length === 0 ||
+      email.length === 0 ||
+      isValid === false
+    ) {
       toast.error("Error Complete los campos marcados", {
         position: "top-left",
         autoClose: 5000,
@@ -70,7 +77,7 @@ const Login = ({ setLogStatusHandle }) => {
         progress: undefined,
         theme: "colored",
       });
-      if (isValid === false){
+      if (isValid === false) {
         emalRef.current.focus();
         toast.error("Debe ingresar un email valido", {
           position: "top-left",
@@ -145,14 +152,17 @@ const Login = ({ setLogStatusHandle }) => {
   return (
     <div className="container-login">
       <form className="form">
-        <div className={`form_back ${theme === "dark" && "form-back-dark"
-          }`} >
-          <div className={`form_details ${theme === "dark" && "form_details-dark"
-            }`} >Registrarse</div>
+        <div className={`form_back ${theme === "dark" && "form-back-dark"}`}>
+          <div
+            className={`form_details ${
+              theme === "dark" && "form_details-dark"
+            }`}
+          >
+            {type !== "superadmin" ? "Registrarse" : "Nuevo usuario"}
+          </div>
           <input
             type="email"
-            className={`input ${theme === "dark" && "input-dark"
-              }`}
+            className={`input ${theme === "dark" && "input-dark"}`}
             aria-describedby="emailHelp"
             onChange={changeEmailHandle}
             ref={emalRef}
@@ -160,8 +170,7 @@ const Login = ({ setLogStatusHandle }) => {
           />
           <input
             type="text"
-            className={`input ${theme === "dark" && "input-dark"
-              }`}            
+            className={`input ${theme === "dark" && "input-dark"}`}
             aria-describedby="emailHelp"
             onChange={changeUserHandle}
             ref={userRef}
@@ -169,19 +178,19 @@ const Login = ({ setLogStatusHandle }) => {
           />
           <input
             type="password"
-            className={`input ${theme === "dark" && "input-dark"
-              }`}            
+            className={`input ${theme === "dark" && "input-dark"}`}
             id="exampleInputPassword1"
             onChange={changePasswordHandle}
             ref={passwordRef}
             placeholder="Contraseña"
           />
           {registeredUser.role === "superadmin" && (
-            <div className="mb-3">
-              <label className="selec-label">Tipo de usuario</label>
+            <div className="mb-4 d-flex align-items-center">
+              <label className="selec-text">Tipo de usuario</label>
               <select
                 name="selec-label"
                 id="selec-label"
+                className="selec-label"
                 onChange={changeRoleHandle}
               >
                 <option value="client">Cliente</option>
@@ -194,23 +203,25 @@ const Login = ({ setLogStatusHandle }) => {
           <button
             type="submit"
             // className="button"
-            className={`button ${theme === "dark" && "button-dark"
-              }`}
+            className={`button ${theme === "dark" && "button-dark"}`}
             onClick={loginHandle}
           >
-            Registrarse
+            {type !== "superadmin" ? "Registrarse" : "Agregar usuario"}
           </button>
-          <span className={`quest ${theme === "dark" && "quest-dark"
-            }`}>
-            ¿Ya tienes cuenta?
-            <label onClick={goToSingInHandle} for="signup_toggle" className="signup_tog">
-              Iniciar sesion
-            </label>
-          </span>
-
+          {type !== "superadmin" && (
+            <span className={`quest ${theme === "dark" && "quest-dark"}`}>
+              ¿Ya tienes cuenta?
+              <label
+                onClick={goToSingInHandle}
+                for="signup_toggle"
+                className="signup_tog"
+              >
+                Iniciar sesion
+              </label>
+            </span>
+          )}
         </div>
       </form>
-
     </div>
   );
 };

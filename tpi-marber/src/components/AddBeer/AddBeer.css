@@ -6,6 +6,11 @@
   margin-left: 50px;
 }
 
+.card-inputs {
+  border: none;
+  background: 0;
+}
+
 .form-add-beers label {
   font-weight: bold;
   color: #3b3b3b;
@@ -17,9 +22,38 @@
   font: inherit;
   padding: 0.5rem;
   border-radius: 6px;
+  color: #3b3b3b;
+  background-color: #e1e0e0;
   border: 1px solid #ccc;
   width: 20rem;
   max-width: 100%;
+}
+
+.input-control {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #3b3b3b;
+  background-color: #e1e0e0;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.input-control-dark {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #3b3b3b;
+  background-color: #808b94;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.input-control-dark::placeholder {
+  color: #043151;
+  font-weight: 500;
 }
 
 .button-add-beer {
@@ -29,7 +63,6 @@
   border: none;
   color: black;
   font-weight: 700;
-
 }
 
 .button-add-beer:hover {
