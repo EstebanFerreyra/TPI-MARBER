@@ -15,3 +15,18 @@
   transform: translateY(2px) translateX(1px);
   box-shadow: 0 0 0 0 black;
 }
+
+#select-style{
+  margin-top: 50px;
+  margin-right: 50px;
+  height: 28px;
+}
+
+.container-buttons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.div-add-beer{
+  margin-top: 50px;
+}

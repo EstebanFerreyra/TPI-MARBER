@@ -18,7 +18,7 @@ const Orders = () => {
 
   let url = `https://www.apimarber.somee.com/marber/OrderController/GetOrder/${registeredUser.id}`;
 
-  if (registeredUser.role === "superadmin") {
+  if (registeredUser.role === "superadmin" || registeredUser.role === "admin") {
     url = "https://www.apimarber.somee.com/marber/OrderController/GetOrder";
   }
 
