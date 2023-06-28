@@ -2,9 +2,18 @@ import React, { useEffect, useContext } from "react";
 import BeerItem from "../BeerItem/BeerItem";
 import { APIContext } from "../context/Api/api.context";
 import Loader from "../ui/Loader";
+import { toast } from "react-toastify";
+
 import "./Beers.css";
 
-const Beers = ({ beers, filter, maxPrice, minPrice, getBeers, handleDeleteBeer1 }) => {
+const Beers = ({
+  beers,
+  filter,
+  maxPrice,
+  minPrice,
+  getBeers,
+  handleDeleteBeer1,
+}) => {
   const { toggleLoading } = useContext(APIContext);
 
   const url = "https://www.apimarber.somee.com/marber/BeerController/GetBeers";
@@ -13,6 +22,17 @@ const Beers = ({ beers, filter, maxPrice, minPrice, getBeers, handleDeleteBeer1 
     handleDeleteBeer1(beersValue);
     console.log("beers");
   };
+
+  const alertMessage = toast.error("No hay resultados para su busqueda", {
+    position: "top-left",
+    autoClose: 1000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
 
   useEffect(() => {
     toggleLoading(true);
@@ -31,22 +51,22 @@ const Beers = ({ beers, filter, maxPrice, minPrice, getBeers, handleDeleteBeer1 
       .catch((error) => console.log(error));
     toggleLoading(false);
   }, []);
- 
+
   let beersMapped = "";
-  if (filter === ""){
+  if (filter === "") {
     beersMapped = beers
-    .filter((beer) => beer.beerPrice < maxPrice)
-    .filter((beer) => beer.beerPrice > minPrice)
-    .map((beer) => (
-      <BeerItem
-        key={beer.id}
-        id={beer.id}
-        beerName={beer.beerName}
-        beerStyle={beer.beerStyle}
-        beerPrice={beer.beerPrice}
-        handleDeleteBeer2={handleDeleteBeer2}
-      />
-    ));
+      .filter((beer) => beer.beerPrice < maxPrice)
+      .filter((beer) => beer.beerPrice > minPrice)
+      .map((beer) => (
+        <BeerItem
+          key={beer.id}
+          id={beer.id}
+          beerName={beer.beerName}
+          beerStyle={beer.beerStyle}
+          beerPrice={beer.beerPrice}
+          handleDeleteBeer2={handleDeleteBeer2}
+        />
+      ));
   } else {
     beersMapped = beers
       .filter((beer) => beer.beerStyle === filter)
@@ -63,11 +83,10 @@ const Beers = ({ beers, filter, maxPrice, minPrice, getBeers, handleDeleteBeer1 
         />
       ));
   }
-  
 
   return (
     <div className="beers">
-      {beersMapped.length === 0 ? <Loader /> : beersMapped}
+      {beersMapped.length === 0 ? <Loader /> && alertMessage : beersMapped}
     </div>
   );
 };
