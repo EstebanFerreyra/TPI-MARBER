@@ -155,14 +155,16 @@ const Login = ({ setLogStatusHandle }) => {
 
   return (
     <>
-      <button
-        onClick={goBackToUsersHandler}
-        className={`button-add-user ${
-          theme === "dark" && "button-add-user-dark"
-        }`}
-      >
-        VOLVER
-      </button>
+      {type === "superadmin" && (
+        <button
+          onClick={goBackToUsersHandler}
+          className={`button-add-user ${
+            theme === "dark" && "button-add-user-dark"
+          }`}
+        >
+          VOLVER
+        </button>
+      )}
       <div className="container-login">
         <form className="form">
           <div className={`form_back ${theme === "dark" && "form-back-dark"}`}>
