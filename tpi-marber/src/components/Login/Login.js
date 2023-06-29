@@ -149,80 +149,94 @@ const Login = ({ setLogStatusHandle }) => {
     navigation("/singin");
   };
 
-  return (
-    <div className="container-login">
-      <form className="form">
-        <div className={`form_back ${theme === "dark" && "form-back-dark"}`}>
-          <div
-            className={`form_details ${
-              theme === "dark" && "form_details-dark"
-            }`}
-          >
-            {type !== "superadmin" ? "Registrarse" : "Nuevo usuario"}
-          </div>
-          <input
-            type="email"
-            className={`input ${theme === "dark" && "input-dark"}`}
-            aria-describedby="emailHelp"
-            onChange={changeEmailHandle}
-            ref={emalRef}
-            placeholder="Email"
-          />
-          <input
-            type="text"
-            className={`input ${theme === "dark" && "input-dark"}`}
-            aria-describedby="emailHelp"
-            onChange={changeUserHandle}
-            ref={userRef}
-            placeholder="Nombre"
-          />
-          <input
-            type="password"
-            className={`input ${theme === "dark" && "input-dark"}`}
-            id="exampleInputPassword1"
-            onChange={changePasswordHandle}
-            ref={passwordRef}
-            placeholder="Contraseña"
-          />
-          {registeredUser.role === "superadmin" && (
-            <div className="mb-4 d-flex align-items-center">
-              <label className="selec-text">Tipo de usuario</label>
-              <select
-                name="selec-label"
-                id="selec-label"
-                className="selec-label"
-                onChange={changeRoleHandle}
-              >
-                <option value="client">Cliente</option>
-                <option value="admin">Administrador</option>
-                <option value="superadmin">Super administrador</option>
-              </select>
-            </div>
-          )}
+  const goBackToUsersHandler = () => {
+    navigation("/users");
+  };
 
-          <button
-            type="submit"
-            // className="button"
-            className={`button ${theme === "dark" && "button-dark"}`}
-            onClick={loginHandle}
-          >
-            {type !== "superadmin" ? "Registrarse" : "Agregar usuario"}
-          </button>
-          {type !== "superadmin" && (
-            <span className={`quest ${theme === "dark" && "quest-dark"}`}>
-              ¿Ya tienes cuenta?
-              <label
-                onClick={goToSingInHandle}
-                for="signup_toggle"
-                className="signup_tog"
-              >
-                Iniciar sesion
-              </label>
-            </span>
-          )}
-        </div>
-      </form>
-    </div>
+  return (
+    <>
+      <button
+        onClick={goBackToUsersHandler}
+        className={`button-add-user ${
+          theme === "dark" && "button-add-user-dark"
+        }`}
+      >
+        VOLVER
+      </button>
+      <div className="container-login">
+        <form className="form">
+          <div className={`form_back ${theme === "dark" && "form-back-dark"}`}>
+            <div
+              className={`form_details ${
+                theme === "dark" && "form_details-dark"
+              }`}
+            >
+              {type !== "superadmin" ? "Registrarse" : "Nuevo usuario"}
+            </div>
+            <input
+              type="email"
+              className={`input ${theme === "dark" && "input-dark"}`}
+              aria-describedby="emailHelp"
+              onChange={changeEmailHandle}
+              ref={emalRef}
+              placeholder="Email"
+            />
+            <input
+              type="text"
+              className={`input ${theme === "dark" && "input-dark"}`}
+              aria-describedby="emailHelp"
+              onChange={changeUserHandle}
+              ref={userRef}
+              placeholder="Nombre"
+            />
+            <input
+              type="password"
+              className={`input ${theme === "dark" && "input-dark"}`}
+              id="exampleInputPassword1"
+              onChange={changePasswordHandle}
+              ref={passwordRef}
+              placeholder="Contraseña"
+            />
+            {registeredUser.role === "superadmin" && (
+              <div className="mb-4 d-flex align-items-center">
+                <label className="selec-text">Tipo de usuario</label>
+                <select
+                  name="selec-label"
+                  id="selec-label"
+                  className="selec-label"
+                  onChange={changeRoleHandle}
+                >
+                  <option value="client">Cliente</option>
+                  <option value="admin">Administrador</option>
+                  <option value="superadmin">Super administrador</option>
+                </select>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              // className="button"
+              className={`button ${theme === "dark" && "button-dark"}`}
+              onClick={loginHandle}
+            >
+              {type !== "superadmin" ? "Registrarse" : "Agregar usuario"}
+            </button>
+            {type !== "superadmin" && (
+              <span className={`quest ${theme === "dark" && "quest-dark"}`}>
+                ¿Ya tienes cuenta?
+                <label
+                  onClick={goToSingInHandle}
+                  for="signup_toggle"
+                  className="signup_tog"
+                >
+                  Iniciar sesion
+                </label>
+              </span>
+            )}
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 

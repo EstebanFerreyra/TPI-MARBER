@@ -46,7 +46,7 @@ const AddBeer = ({ handleAddBeer, beers }) => {
   const addBeerHandler = (event) => {
     event.preventDefault();
     if (name.length === 0 || style.length === 0 || price.length === 0) {
-      toast.error("Error no se inicio sesion  Ingrese sesion primero", {
+      toast.error("Ningún campo debe estar vacío", {
         position: "top-left",
         autoClose: 1000,
         hideProgressBar: true,
