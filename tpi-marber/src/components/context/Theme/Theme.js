@@ -4,7 +4,7 @@ export const ThemeContext = createContext();
 const preferenceTheme = localStorage.getItem("theme-preference");
 
 export const ThemeContextProvider = ({ children }) => {
-  const [theme, setTheme] = useState(preferenceTheme);
+  const [theme, setTheme] = useState(preferenceTheme || "light");
 
   const toggleTheme = () => {
     if (theme === "light") {
