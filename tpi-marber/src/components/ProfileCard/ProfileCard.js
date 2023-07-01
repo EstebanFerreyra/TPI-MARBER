@@ -5,10 +5,12 @@ import DeleteUserPrompt from "../DeleteUserPrompt/DeleteUserPrompt";
 import { CustomersContext } from "../context/CustomersContext/CustomersContext";
 
 import "./ProfileCard.css";
+import ModifyUser from "../ModifyUser/ModifyUser";
 
 const ProfileCard = () => {
   const [userInfo, setUserInfo] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
+  const [userModify, setUserModify] = useState(false);
 
   const { theme } = useContext(ThemeContext);
   const { customers } = useContext(CustomersContext);
@@ -43,6 +45,10 @@ const ProfileCard = () => {
     setOpenAlert(true);
   };
 
+  const modifyUserHandler = () => {
+    setUserModify(true);
+  };
+
   return (
     <div className={`profile-card ${theme === "dark" && "profile-card-dark"}`}>
       {openAlert && <DeleteUserPrompt onCancelAlert={setOpenAlert} />}
@@ -56,7 +62,22 @@ const ProfileCard = () => {
       </div>
       <div className="card-p-body">
         <h3>Mis datos</h3>
-        <h5>{registeredUser.user}</h5>
+        <div className="card-username">
+          <h5>{registeredUser.user}</h5>
+          <button
+            className={`username-button ${
+              theme === "dark" && "username-button-dark"
+            }`}
+            onClick={modifyUserHandler}
+          >
+            <img
+              src="https://img.icons8.com/?size=512&id=DOy2O4PRHgbL&format=png"
+              width={20}
+              height={20}
+            />
+          </button>
+          {userModify && <ModifyUser onModified={setUserModify} />}
+        </div>
         {customers
           .filter((user) => user.id === idp)
           .map((user) => ((<h5>{user.userBd}</h5>), (<h5>{user.emailBd}</h5>)))}
@@ -67,7 +88,7 @@ const ProfileCard = () => {
             onClick={deleteUserHandler}
             className="delete-account"
           >
-            <span className="text">Borrar</span>
+            <span className="text">Eliminar cuenta</span>
             <span class="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
