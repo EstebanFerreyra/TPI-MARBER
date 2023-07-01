@@ -3,9 +3,9 @@ import { ThemeContext } from "../context/Theme/Theme";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import DeleteUserPrompt from "../DeleteUserPrompt/DeleteUserPrompt";
 import { CustomersContext } from "../context/CustomersContext/CustomersContext";
+import ModifyUser from "../ModifyUser/ModifyUser";
 
 import "./ProfileCard.css";
-import ModifyUser from "../ModifyUser/ModifyUser";
 
 const ProfileCard = () => {
   const [userInfo, setUserInfo] = useState("");
@@ -80,7 +80,9 @@ const ProfileCard = () => {
         </div>
         {customers
           .filter((user) => user.id === idp)
-          .map((user) => ((<h5>{user.userBd}</h5>), (<h5>{user.emailBd}</h5>)))}
+          .map((user, index) => (
+            <h5 key={index}>{user.emailBd}</h5>
+          ))}
         {/* no mapea el userBd */}
         <div>
           <button
@@ -89,7 +91,7 @@ const ProfileCard = () => {
             className="delete-account"
           >
             <span className="text">Eliminar cuenta</span>
-            <span class="icon">
+            <span className="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
