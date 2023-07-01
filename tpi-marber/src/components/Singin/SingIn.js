@@ -123,10 +123,8 @@ const SingIn = ({ setLogStatusHandle }) => {
 
   const goToPage = () => {
     if (existUser === true && registeredUser.role !== "client") {
-      console.log(registeredUser);
       navigation("/beersadmin");
     } else {
-      console.log(registeredUser);
       navigation("/beers");
     }
   };

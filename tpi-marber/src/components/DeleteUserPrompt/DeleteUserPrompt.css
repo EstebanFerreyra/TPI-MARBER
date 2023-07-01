@@ -1,0 +1,28 @@
+.prompt-container {
+  background-color: #ad998b;
+  padding: 5px;
+  position: absolute;
+  width: 400px;
+  height: 150px;
+  z-index: 9999;
+}
+
+.prompt-header {
+  background-color: #d8c4b6;
+  height: 90px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.alert-button {
+  border: none;
+  margin: 1px;
+}
+
+.alert-button:hover {
+  border: none;
+  margin: 1px;
+  background-color: rgba(128, 128, 128, 0.534);
+}
