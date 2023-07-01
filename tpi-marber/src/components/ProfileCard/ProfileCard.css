@@ -15,6 +15,7 @@
   border-radius: 20px;
   align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 /* .profile-card:hover {
@@ -26,6 +27,9 @@
   .profile-card {
     width: 300px;
     height: 400px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 }
 
@@ -52,6 +56,7 @@
 
 .delete-account {
   margin-top: 70px;
+  margin-left: 30px;
   bottom: 5px;
   width: 170px;
   height: 30px;
@@ -128,4 +133,22 @@
 .username-button-dark {
   border: none;
   background-color: #808b94;
+}
+
+.card-p-body{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 500px) {
+  .delete-account {
+  margin-left: 43px;
+}
+}
+
+@media only screen and (max-width: 400px) {
+  .delete-account {
+  margin-left: 30px;
+}
 }

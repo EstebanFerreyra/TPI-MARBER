@@ -3,9 +3,9 @@ import { RegisteredUserContext } from '../context/RegisteredUserContext/Register
 import { Navigate } from 'react-router-dom';
 
 const Protected = ({children}) => {
-    const userRegisteredLocal = useContext(RegisteredUserContext);
+    const {registeredUser} = useContext(RegisteredUserContext);
 
-    if(userRegisteredLocal.registeredUser.role !== "client" && userRegisteredLocal.registeredUser.success === true){
+    if(registeredUser.role !== "client" && registeredUser.success === true){
         return children;
     } else {
         return <Navigate to="/beers"/>

@@ -12,6 +12,7 @@ import ViewSuperAdmin from "./components/ViewSuperAdmin/ViewSuperAdmin";
 import CartItems from "./components/CartItems/CartItems";
 import ViewRegister from "./components/ViewRegister/ViewRegister";
 import Profile from "./components/Profile/Profile";
+import ProtectedSession from "./components/ProtectedSession/ProtectedSession";
 
 function App() {
   const router = createBrowserRouter([
@@ -53,7 +54,10 @@ function App() {
     },
     {
       path: "/orders",
-      element: <Orders />,
+      element: 
+      <ProtectedSession>
+        <Orders />
+      </ProtectedSession>,
     },
     {
       path: "/buying",
@@ -61,7 +65,10 @@ function App() {
     },
     {
       path: "/profile",
-      element: <Profile />,
+      element: 
+      <ProtectedSession>
+        <Profile />
+      </ProtectedSession>,
     },
     {
       path: "/singin",

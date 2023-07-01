@@ -6,43 +6,25 @@ import { CustomersContext } from "../context/CustomersContext/CustomersContext";
 import ModifyUser from "../ModifyUser/ModifyUser";
 
 import "./ProfileCard.css";
+import ModifyPassword from "../ModifyPassword/ModifyPassword";
 
 const ProfileCard = () => {
-  const [userInfo, setUserInfo] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
   const [userModify, setUserModify] = useState(false);
+  const [passModify, setPassModify] = useState(false);
 
   const { theme } = useContext(ThemeContext);
   const { customers } = useContext(CustomersContext);
   const { registeredUser } = useContext(RegisteredUserContext);
 
-  const setUserInfoHandler = (data) => {
-    setUserInfo(data);
-    console.log(userInfo);
-  };
-
   const idp = registeredUser.id;
-
-  let url = `https://www.apimarber.somee.com/marber/ClientController/GetCustomers`;
-
-  useEffect(() => {
-    fetch(url, {
-      method: "GET",
-      mode: "cors",
-      refer: "*",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setUserInfoHandler(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   const deleteUserHandler = () => {
     setOpenAlert(true);
+  };
+
+  const modifyPassHandler = () => {
+    setPassModify(true);
   };
 
   const modifyUserHandler = () => {
@@ -63,8 +45,13 @@ const ProfileCard = () => {
       <div className="card-p-body">
         <h3>Mis datos</h3>
         <div className="card-username">
-          <h5>{registeredUser.user}</h5>
-          <button
+          {/* {userModify === false && <h5>{registeredUser.user}</h5>} */}
+          {userModify === false && customers
+            .filter((user) => user.id === idp)
+            .map((user, index) => (
+              <h5 key={index}>{user.userBd}</h5>
+            ))}
+          {userModify === false && <button
             className={`username-button ${
               theme === "dark" && "username-button-dark"
             }`}
@@ -75,15 +62,16 @@ const ProfileCard = () => {
               width={20}
               height={20}
             />
-          </button>
-          {userModify && <ModifyUser onModified={setUserModify} />}
+          </button>}
+          {userModify && <ModifyUser id={idp} onModified={setUserModify} />}
         </div>
         {customers
           .filter((user) => user.id === idp)
           .map((user, index) => (
             <h5 key={index}>{user.emailBd}</h5>
           ))}
-        {/* no mapea el userBd */}
+        {passModify === false && <p onClick={modifyPassHandler}><u>Modificar contraseña</u></p>}
+        {passModify && <ModifyPassword id={idp} onModified={setPassModify} />}
         <div>
           <button
             type="button"

@@ -6,6 +6,7 @@ import SideCart from "../SideCart/SideCart";
 import "./NavBar.css";
 import ToggleTheme from "../ui/ToggleTheme";
 import { ThemeContext } from "../context/Theme/Theme";
+import { CustomersContext } from "../context/CustomersContext/CustomersContext";
 
 const NavBar = () => {
   const [sideCart, setSideCart] = useState(false);
@@ -15,6 +16,7 @@ const NavBar = () => {
   const { registeredUser, removeRegisteredUser } = useContext(
     RegisteredUserContext
   );
+  const {customers} = useContext(CustomersContext);
 
   const navigation = useNavigate();
 
@@ -178,7 +180,11 @@ const NavBar = () => {
                 className="navbar-text"
                 style={{ "margin-right": "10px" }}
               >
-                ¡Bienvenido <strong>{registeredUser.user}</strong>!
+                ¡Bienvenido {customers
+                  .filter((user) => user.id === registeredUser.id)
+                  .map((user, index) => (
+                    <strong key={index}>{user.userBd}</strong>
+                  ))}!
               </span>
             )}
             <div className="d-flex" role="search">
