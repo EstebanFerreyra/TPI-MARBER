@@ -11,8 +11,8 @@ const NavBar = () => {
   const [sideCart, setSideCart] = useState(false);
 
   const { cart, clearCart } = useContext(CartContext);
-  const { theme } = useContext(ThemeContext);
-  const { registeredUser, setRegisteredUserHandle } = useContext(
+  const { theme, clearPreference } = useContext(ThemeContext);
+  const { registeredUser, removeRegisteredUser } = useContext(
     RegisteredUserContext
   );
 
@@ -49,13 +49,9 @@ const NavBar = () => {
   };
 
   const logOutHandle = () => {
-    localStorage.removeItem("registeredUser");
-    setRegisteredUserHandle({
-      success: false,
-      user: "",
-      role: "",
-    });
+    removeRegisteredUser();
     clearCart();
+    clearPreference();
     navigation("/login");
   };
 
@@ -65,6 +61,10 @@ const NavBar = () => {
 
   const sideCartHandler = () => {
     setSideCart(!sideCart);
+  };
+
+  const goToProfileHandler = () => {
+    navigation("/profile");
   };
 
   return (
@@ -173,7 +173,11 @@ const NavBar = () => {
               </li>
             </ul>
             {registeredUser.success === true && (
-              <span className="navbar-text" style={{ "margin-right": "10px" }}>
+              <span
+                onClick={goToProfileHandler}
+                className="navbar-text"
+                style={{ "margin-right": "10px" }}
+              >
                 ¡Bienvenido <strong>{registeredUser.user}</strong>!
               </span>
             )}

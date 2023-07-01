@@ -11,6 +11,7 @@ import Orders from "./components/Orders/Orders";
 import ViewSuperAdmin from "./components/ViewSuperAdmin/ViewSuperAdmin";
 import CartItems from "./components/CartItems/CartItems";
 import ViewRegister from "./components/ViewRegister/ViewRegister";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   const router = createBrowserRouter([
@@ -59,6 +60,10 @@ function App() {
       element: <CartItems />,
     },
     {
+      path: "/profile",
+      element: <Profile />,
+    },
+    {
       path: "/singin",
       element: <ViewLogin />,
     },
@@ -68,9 +73,7 @@ function App() {
     },
   ]);
 
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

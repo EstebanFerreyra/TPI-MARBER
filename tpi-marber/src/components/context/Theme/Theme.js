@@ -14,8 +14,13 @@ export const ThemeContextProvider = ({ children }) => {
     }
   };
 
+  const clearPreference = () => {
+    setTheme("light");
+    localStorage.removeItem("theme-preference");
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, clearPreference }}>
       {children}
     </ThemeContext.Provider>
   );
