@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const useClickOutside = (handler) => {
+const useClickOutside = ({ handler }) => {
   const ref = useRef(null);
 
   useEffect(() => {

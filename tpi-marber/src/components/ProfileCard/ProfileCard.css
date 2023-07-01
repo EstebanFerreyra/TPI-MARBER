@@ -1,0 +1,115 @@
+.profile-card {
+  width: 450px;
+  height: 500px;
+  margin: 35px;
+  background: #e1e0e0;
+  transition: all 300ms;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  /* box-shadow: 3px 3px 14px; */
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
+    1px 1px 10px rgba(196, 191, 178, 0.575);
+  display: flex;
+  padding: auto;
+  flex-direction: column;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .profile-card:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+} */
+
+@media only screen and (max-width: 500px) {
+  .profile-card {
+    width: 300px;
+    height: 400px;
+  }
+}
+
+.profile-card-dark {
+  background: #808b94;
+}
+
+/* .profile-card-dark:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+} */
+
+.card-p-header {
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+}
+
+.user-icon {
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+}
+
+.delete-account {
+  margin-top: 70px;
+  bottom: 5px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: #e62222;
+}
+
+.delete-account,
+.delete-account span {
+  transition: 200ms;
+}
+
+.delete-account .text {
+  transform: translateX(6px);
+  color: white;
+  font-weight: bold;
+}
+
+.delete-account .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(60px);
+  height: 25px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-account svg {
+  width: 15px;
+  fill: #eee;
+}
+
+.delete-account:hover {
+  background: #ff3636;
+}
+
+.delete-account:hover .text {
+  color: transparent;
+}
+
+.delete-account:hover .icon {
+  width: 90px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+.delete-account:focus {
+  outline: none;
+}
+
+.delete-account:active .icon svg {
+  transform: scale(0.8);
+}

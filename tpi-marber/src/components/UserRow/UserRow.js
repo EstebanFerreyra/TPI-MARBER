@@ -8,7 +8,7 @@ const UserRow = ({ id, user, email, role }) => {
   const { theme } = useContext(ThemeContext);
   const url = `https://www.apimarber.somee.com/marber/ClientController/DeleteClient/${id}`;
 
-  const delteUserHandle = () => {
+  const deleteUserHandle = () => {
     fetch(url, {
       method: "DELETE",
       mode: "cors",
@@ -28,7 +28,7 @@ const UserRow = ({ id, user, email, role }) => {
       <td data-label="Email">{email}</td>
       <td data-label="Rol">{role}</td>
       <td data-label="Eliminar">
-        <button onClick={delteUserHandle} className="button-delete">
+        <button onClick={deleteUserHandle} className="button-delete">
           X
         </button>
       </td>

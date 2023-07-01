@@ -6,7 +6,7 @@ const log = {
   id: 0,
   user: "",
   role: "",
-  preferenceThemeUser: "light"
+  preferenceThemeUser: "light",
 };
 
 const userLocalStorage = JSON.parse(localStorage.getItem("registeredUser"));
@@ -20,9 +20,18 @@ const RegisteredUserContextProvider = ({ children }) => {
     setRegisteredUser(obj);
   };
 
+  const removeRegisteredUser = () => {
+    localStorage.removeItem("registeredUser");
+    setRegisteredUserHandle({
+      success: false,
+      user: "",
+      role: "",
+    });
+  };
+
   return (
     <RegisteredUserContext.Provider
-      value={{ registeredUser, setRegisteredUserHandle }}
+      value={{ registeredUser, removeRegisteredUser, setRegisteredUserHandle }}
     >
       {children}
     </RegisteredUserContext.Provider>
