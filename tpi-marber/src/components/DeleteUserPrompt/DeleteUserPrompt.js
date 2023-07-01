@@ -1,19 +1,39 @@
 import React, { useContext } from "react";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import { useNavigate } from "react-router-dom";
+import { CustomersContext } from "../context/CustomersContext/CustomersContext";
 
 import "./DeleteUserPrompt.css";
 
 const DeleteUserPrompt = ({ onCancelAlert }) => {
-  const { removeRegisteredUser } = useContext(RegisteredUserContext);
+  const { registeredUser, removeRegisteredUser } = useContext(
+    RegisteredUserContext
+  );
+  const { setCustomersHandle } = useContext(CustomersContext);
 
   const navigation = useNavigate();
 
+  const id = registeredUser.id;
+
+  const url = `https://www.apimarber.somee.com/marber/ClientController/DeleteClient/${id}`;
+
   const closeAlertHandler = () => {
     onCancelAlert(false);
+    console.log(id);
   };
 
   const deleteAccountHandler = () => {
+    fetch(url, {
+      method: "DELETE",
+      mode: "cors",
+      refer: "*",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => setCustomersHandle(response))
+      .catch((error) => console.log(error));
     removeRegisteredUser();
     onCancelAlert(false);
     navigation("/");

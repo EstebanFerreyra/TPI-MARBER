@@ -1,20 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../context/Theme/Theme";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
+import DeleteUserPrompt from "../DeleteUserPrompt/DeleteUserPrompt";
+import { CustomersContext } from "../context/CustomersContext/CustomersContext";
 
 import "./ProfileCard.css";
-import DeleteUserPrompt from "../DeleteUserPrompt/DeleteUserPrompt";
 
 const ProfileCard = () => {
   const [userInfo, setUserInfo] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
 
   const { theme } = useContext(ThemeContext);
+  const { customers } = useContext(CustomersContext);
+  const { registeredUser } = useContext(RegisteredUserContext);
 
   const setUserInfoHandler = (data) => {
     setUserInfo(data);
     console.log(userInfo);
   };
+
+  const idp = registeredUser.id;
 
   let url = `https://www.apimarber.somee.com/marber/ClientController/GetCustomers`;
 
@@ -51,8 +56,11 @@ const ProfileCard = () => {
       </div>
       <div className="card-p-body">
         <h3>Mis datos</h3>
-        <h5>UserName</h5>
-        <h5>UserEmail</h5>
+        <h5>{registeredUser.user}</h5>
+        {customers
+          .filter((user) => user.id === idp)
+          .map((user) => ((<h5>{user.userBd}</h5>), (<h5>{user.emailBd}</h5>)))}
+        {/* no mapea el userBd */}
         <div>
           <button
             type="button"
