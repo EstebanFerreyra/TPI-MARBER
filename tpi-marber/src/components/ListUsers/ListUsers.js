@@ -41,8 +41,8 @@ const ListUsers = () => {
           />
         </div>
       </div>
-      <div class="container">
-        <table class="table table-hover">
+      <div className="container">
+        <table className="table table-hover">
           <thead style={{ backgroundColor: "lightsteelblue" }}>
             <tr className={` ${theme === "dark" && "tr"}`}>
               <th scope="col">

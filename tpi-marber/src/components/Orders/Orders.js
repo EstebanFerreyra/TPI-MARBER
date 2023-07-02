@@ -68,8 +68,8 @@ const Orders = () => {
         />
       </div>
       <div className="container-tables">
-        <div class="container">
-          <table class="table table-hover">
+        <div className="container">
+          <table className="table table-hover">
             <thead style={{ backgroundColor: "lightsteelblue" }}>
               <tr className={` ${theme === "dark" && "tr"}`}>
                 <th scope="col">Id Orden</th>

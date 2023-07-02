@@ -99,7 +99,7 @@ const BeerItem = ({
         {(type === "admin" || type === "superadmin") && (
           <button type="button" onClick={deleteBeerHandle} id="danger">
             <span className="text">Borrar</span>
-            <span class="icon">
+            <span className="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

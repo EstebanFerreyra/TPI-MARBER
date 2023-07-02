@@ -165,7 +165,7 @@ const SingIn = ({ setLogStatusHandle }) => {
             ¿No tienes una cuenta?
             <label
               for="signup_toggle"
-              class="signup_tog"
+              className="signup_tog"
               onClick={goToLoginHandler}
             >
               Registrate
