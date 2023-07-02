@@ -1,0 +1,134 @@
+.beerinfo-container {
+  background-color: white;
+  height: 80vh;
+}
+
+.beerinfo-container-dark {
+  background-color: #001c30;
+  height: 80vh;
+}
+
+.beerinfo-card {
+  width: 450px;
+  height: 500px;
+  margin-top: 10px;
+  margin-left: 40%;
+  background: #e1e0e0;
+  transition: all 300ms;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  /* box-shadow: 3px 3px 14px; */
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
+    1px 1px 10px rgba(196, 191, 178, 0.575);
+  display: flex;
+  padding: 50px;
+  text-align: center;
+  flex-direction: column;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.beerinfo-card-dark {
+  width: 450px;
+  height: 500px;
+  margin-top: 10px;
+  margin-left: 40%;
+  background: #808b94;
+  transition: all 300ms;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  /* box-shadow: 3px 3px 14px; */
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
+    1px 1px 10px rgba(196, 191, 178, 0.575);
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.beerinfo-text {
+  margin: 10px;
+  font-weight: 400;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.beerinfo-text-dark {
+  margin: 10px;
+  font-weight: 400;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+@media only screen and (max-width: 500px) {
+  .beerinfo-card {
+    width: 250px;
+    height: 300px;
+    margin-top: 20px;
+    margin-left: 20%;
+    background: #e1e0e0;
+    transition: all 300ms;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    /* box-shadow: 3px 3px 14px; */
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
+      1px 1px 10px rgba(196, 191, 178, 0.575);
+    display: flex;
+    padding: 30px;
+    text-align: center;
+    flex-direction: column;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .beerinfo-icon {
+    width: 120px;
+    height: 120px;
+  }
+  .beerinfo-text {
+    margin: 5px;
+    font-size: small;
+    font-weight: 100;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .beerinfo-card {
+    width: 250px;
+    height: 300px;
+    margin-top: 30px;
+    margin-left: 15%;
+    background: #e1e0e0;
+    transition: all 300ms;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    /* box-shadow: 3px 3px 14px; */
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 1),
+      1px 1px 10px rgba(196, 191, 178, 0.575);
+    display: flex;
+    padding: 30px;
+    text-align: center;
+    flex-direction: column;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .beerinfo-icon {
+    width: 120px;
+    height: 120px;
+  }
+  .beerinfo-text {
+    margin: 1px;
+    font-size: small;
+    font-weight: 10;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+}

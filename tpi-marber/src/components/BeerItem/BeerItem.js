@@ -6,8 +6,10 @@ import { useNavigate } from "react-router";
 import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext";
 import ModifyBeer from "../ModifyBeer/ModifyBeer";
 import { toast } from "react-toastify";
-import "./BeerItem.css"
 import { ThemeContext } from "../context/Theme/Theme";
+import BeerInfo from "../BeerInfo/BeerInfo";
+
+import "./BeerItem.css";
 
 const BeerItem = ({
   id,
@@ -87,11 +89,15 @@ const BeerItem = ({
     setModify(bool);
   };
 
+  const beerInfoHandler = () => {
+    navigation("/beerinfo");
+  };
+
   return (
     <div>
       <CardBeer>
         {(type === "admin" || type === "superadmin") && (
-          <button type="button"  onClick={deleteBeerHandle} id="danger">
+          <button type="button" onClick={deleteBeerHandle} id="danger">
             <span className="text">Borrar</span>
             <span class="icon">
               <svg
@@ -112,17 +118,23 @@ const BeerItem = ({
           height="100px"
         ></img>
         <h3>{beerStyle}</h3>
-        <p><strong>$ {priceActually}</strong></p>
-        <div >
-          <button className={`buy ${theme === "dark" && "buy-dark"
-            }`} onClick={addToCartHandler} >
-            <span c>Agregar al carrito</span>
+        <p>
+          <strong>$ {priceActually}</strong>
+        </p>
+        <div>
+          <button
+            className={`buy ${theme === "dark" && "buy-dark"}`}
+            onClick={addToCartHandler}
+          >
+            <span>Agregar al carrito</span>
           </button>
         </div>
-        <Button className={`info ${theme === "dark" && "info-dark"
-          }`} >
-          <span>+ Info</span>
+
+        <Button className={`info ${theme === "dark" && "info-dark"}`}>
+          <span onClick={beerInfoHandler}>+ Info</span>
         </Button>
+
+        {/* {infoBeer && <BeerInfo />} */}
         {modify === true && (
           <ModifyBeer id={id} setModifyPriceHandle={setModifyPriceHandle} />
         )}
@@ -131,7 +143,6 @@ const BeerItem = ({
             Modificar
           </button>
         )}
-        
       </CardBeer>
     </div>
   );
