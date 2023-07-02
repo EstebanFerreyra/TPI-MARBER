@@ -13,6 +13,7 @@ import CartItems from "./components/CartItems/CartItems";
 import ViewRegister from "./components/ViewRegister/ViewRegister";
 import Profile from "./components/Profile/Profile";
 import ProtectedSession from "./components/ProtectedSession/ProtectedSession";
+import BeerInfo from "./components/BeerInfo/BeerInfo";
 
 function App() {
   const router = createBrowserRouter([
@@ -54,10 +55,11 @@ function App() {
     },
     {
       path: "/orders",
-      element: 
-      <ProtectedSession>
-        <Orders />
-      </ProtectedSession>,
+      element: (
+        <ProtectedSession>
+          <Orders />
+        </ProtectedSession>
+      ),
     },
     {
       path: "/buying",
@@ -65,14 +67,19 @@ function App() {
     },
     {
       path: "/profile",
-      element: 
-      <ProtectedSession>
-        <Profile />
-      </ProtectedSession>,
+      element: (
+        <ProtectedSession>
+          <Profile />
+        </ProtectedSession>
+      ),
     },
     {
       path: "/singin",
       element: <ViewLogin />,
+    },
+    {
+      path: "/beerinfo",
+      element: <BeerInfo />,
     },
     {
       path: "*",
