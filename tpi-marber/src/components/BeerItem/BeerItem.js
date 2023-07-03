@@ -7,7 +7,6 @@ import { CartContext } from "../context/ShoppingCartContext/ShoppingCartContext"
 import ModifyBeer from "../ModifyBeer/ModifyBeer";
 import { toast } from "react-toastify";
 import { ThemeContext } from "../context/Theme/Theme";
-import BeerInfo from "../BeerInfo/BeerInfo";
 
 import "./BeerItem.css";
 
@@ -116,6 +115,7 @@ const BeerItem = ({
           src="https://cdn-icons-png.flaticon.com/512/106/106564.png"
           width="100px"
           height="100px"
+          alt="beer"
         ></img>
         <h3>{beerStyle}</h3>
         <p>
@@ -133,8 +133,6 @@ const BeerItem = ({
         <Button className={`info ${theme === "dark" && "info-dark"}`}>
           <span onClick={beerInfoHandler}>+ Info</span>
         </Button>
-
-        {/* {infoBeer && <BeerInfo />} */}
         {modify === true && (
           <ModifyBeer id={id} setModifyPriceHandle={setModifyPriceHandle} />
         )}

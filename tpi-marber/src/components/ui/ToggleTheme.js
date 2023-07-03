@@ -60,7 +60,7 @@ const ToggleTheme = () => {
           className="theme-toggle-button"
           onClick={toggleTheme}
           variant={themee === "light" ? "dark" : "light"}
-          //id="theme-toggle"
+          id="theme-toggle"
           title="Toggles light & dark"
           aria-label="auto"
           aria-live="polite"
@@ -69,11 +69,13 @@ const ToggleTheme = () => {
           <img
             className="mmm"
             src="https://cdn-icons-png.flaticon.com/512/66/66275.png"
+            alt="sun"
           />
         ) : (
           <img
             className="mmm"
             src="https://cdn-icons-png.flaticon.com/512/702/702471.png"
+            alt="moon"
           />
         )}
       </div>

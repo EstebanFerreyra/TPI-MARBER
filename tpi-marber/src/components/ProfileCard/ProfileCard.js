@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { ThemeContext } from "../context/Theme/Theme";
 import { RegisteredUserContext } from "../context/RegisteredUserContext/RegisteredUserContext";
 import DeleteUserPrompt from "../DeleteUserPrompt/DeleteUserPrompt";
@@ -40,29 +40,32 @@ const ProfileCard = () => {
           className="user-icon"
           width={110}
           height={110}
+          alt="profile"
         />
       </div>
       <div className="card-p-body">
         <h3>Mis datos</h3>
         <div className="card-username">
           {/* {userModify === false && <h5>{registeredUser.user}</h5>} */}
-          {userModify === false && customers
-            .filter((user) => user.id === idp)
-            .map((user, index) => (
-              <h5 key={index}>{user.userBd}</h5>
-            ))}
-          {userModify === false && <button
-            className={`username-button ${
-              theme === "dark" && "username-button-dark"
-            }`}
-            onClick={modifyUserHandler}
-          >
-            <img
-              src="https://img.icons8.com/?size=512&id=DOy2O4PRHgbL&format=png"
-              width={20}
-              height={20}
-            />
-          </button>}
+          {userModify === false &&
+            customers
+              .filter((user) => user.id === idp)
+              .map((user, index) => <h5 key={index}>{user.userBd}</h5>)}
+          {userModify === false && (
+            <button
+              className={`username-button ${
+                theme === "dark" && "username-button-dark"
+              }`}
+              onClick={modifyUserHandler}
+            >
+              <img
+                src="https://img.icons8.com/?size=512&id=DOy2O4PRHgbL&format=png"
+                width={20}
+                height={20}
+                alt="pencil"
+              />
+            </button>
+          )}
           {userModify && <ModifyUser id={idp} onModified={setUserModify} />}
         </div>
         {customers
@@ -70,7 +73,11 @@ const ProfileCard = () => {
           .map((user, index) => (
             <h5 key={index}>{user.emailBd}</h5>
           ))}
-        {passModify === false && <p onClick={modifyPassHandler}><u>Modificar contraseña</u></p>}
+        {passModify === false && (
+          <p onClick={modifyPassHandler}>
+            <u>Modificar contraseña</u>
+          </p>
+        )}
         {passModify && <ModifyPassword id={idp} onModified={setPassModify} />}
         <div>
           <button

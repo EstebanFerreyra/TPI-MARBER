@@ -50,7 +50,7 @@ const CartItems = () => {
     const url =
       "https://www.apimarber.somee.com/marber/OrderController/AddOrder";
     if (cart.length === 0) {
-      toast.error("Aun no ha seleccionado ningun producto", {
+      toast.error("Aun no ha seleccionado ningún producto", {
         position: "top-left",
         autoClose: 2000,
         hideProgressBar: true,

@@ -91,6 +91,7 @@ const NavBar = () => {
               src={require("./logonav.png")}
               height="30px"
               width="80px"
+              alt="logo"
             ></img>
           </button>
           <button
@@ -216,7 +217,7 @@ const NavBar = () => {
                   type="submit"
                   onClick={goToLoginHandler}
                 >
-                  Iniciar sesion
+                  Iniciar sesión
                 </button>
               )}
               {registeredUser.success === true && (
@@ -226,7 +227,7 @@ const NavBar = () => {
                   type="submit"
                   onClick={logOutHandle}
                 >
-                  Cerrar sesion
+                  Cerrar sesión
                 </button>
               )}
               {<ToggleTheme />}

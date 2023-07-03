@@ -2,17 +2,19 @@ import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { CustomersContext } from "../context/CustomersContext/CustomersContext";
 
-const ModifyUser = ({ id, onModified}) => {
+import "./ModifyUser.css";
+
+const ModifyUser = ({ id, onModified }) => {
   const [newUser, SetNewUser] = useState("");
 
   const { setCustomersHandle } = useContext(CustomersContext);
 
   const changeNewUserHandler = (event) => {
     SetNewUser(event.target.value);
-  }
+  };
 
   const onModifiedHandler = () => {
-    if(newUser === ""){
+    if (newUser === "") {
       toast.error("Por favor, complete el campo", {
         position: "top-left",
         autoClose: 2000,
@@ -25,23 +27,23 @@ const ModifyUser = ({ id, onModified}) => {
       });
       return;
     }
-    
+
     onModified(false);
     console.log(id);
     let url = `https://www.apimarber.somee.com/marber/ClientController/ModifyUserById/${id}`;
-      fetch(url, {
-        method: "PUT",
-        mode: "cors",
-        refer: "*",
-        body: JSON.stringify(newUser),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((response) => setCustomersHandle(response))
-        .catch((error) => console.log(error));
-      
+    fetch(url, {
+      method: "PUT",
+      mode: "cors",
+      refer: "*",
+      body: JSON.stringify(newUser),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => setCustomersHandle(response))
+      .catch((error) => console.log(error));
+
     toast.success("Nombre modificado con éxito", {
       position: "top-left",
       autoClose: 2000,
@@ -52,12 +54,14 @@ const ModifyUser = ({ id, onModified}) => {
       progress: undefined,
       theme: "colored",
     });
-    }
+  };
 
   return (
     <div>
-      <input placeholder="nuevo user" onChange={changeNewUserHandler}/>
-      <button onClick={onModifiedHandler}>Confirmar user</button>
+      <input placeholder="nuevo user" onChange={changeNewUserHandler} />
+      <button className="mfy-user-btn" onClick={onModifiedHandler}>
+        Confirmar user
+      </button>
     </div>
   );
 };

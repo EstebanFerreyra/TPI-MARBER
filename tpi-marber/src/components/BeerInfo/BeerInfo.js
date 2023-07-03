@@ -44,6 +44,7 @@ const BeerInfo = () => {
             <img
               className="beerinfo-icon"
               src="https://images.vexels.com/media/users/3/190406/isolated/lists/c1c5347da679f53b3be1b888cf069506-icon-beer-bottles-design.png"
+              alt="beer info"
             />
             <p>
               La Cerveza Roja Irlandesa se caracteriza por su color rojo

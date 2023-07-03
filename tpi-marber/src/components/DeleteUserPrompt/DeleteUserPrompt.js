@@ -19,7 +19,6 @@ const DeleteUserPrompt = ({ onCancelAlert }) => {
 
   const closeAlertHandler = () => {
     onCancelAlert(false);
-    console.log(id);
   };
 
   const deleteAccountHandler = () => {
@@ -44,8 +43,8 @@ const DeleteUserPrompt = ({ onCancelAlert }) => {
       <div className="prompt-header">
         <h5>¿Está seguro de que desea eliminar su cuenta?</h5>
       </div>
-      <div>
-        <button className="alert-button" onClick={deleteAccountHandler}>
+      <div className="buttons-container">
+        <button className="alert-button-danger" onClick={deleteAccountHandler}>
           Confirmar
         </button>
         <button className="alert-button" onClick={closeAlertHandler}>

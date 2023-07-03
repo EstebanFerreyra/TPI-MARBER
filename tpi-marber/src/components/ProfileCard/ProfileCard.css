@@ -122,7 +122,7 @@
 
 .card-username {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .username-button {
@@ -135,7 +135,7 @@
   background-color: #808b94;
 }
 
-.card-p-body{
+.card-p-body {
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -143,12 +143,12 @@
 
 @media only screen and (max-width: 500px) {
   .delete-account {
-  margin-left: 43px;
-}
+    margin-left: 43px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
   .delete-account {
-  margin-left: 30px;
-}
+    margin-left: 30px;
+  }
 }
