@@ -55,8 +55,8 @@ const OrderFilter = ({ onChangeOrderFilter, filterOrder, onChangeFilterUser }) =
         onChange={changeFilerUser}
       >
         <option value="">Por cliente</option>
-        {customers.map((user) => {
-          return <option value={user.userBd}>{user.userBd}</option>
+        {customers.map((user, index) => {
+          return <option key={index} value={user.userBd}>{user.userBd}</option>
       })}
         
       </select>}

@@ -229,7 +229,6 @@ const Login = ({ setLogStatusHandle }) => {
                 ¿Ya tienes cuenta?
                 <label
                   onClick={goToSingInHandle}
-                  for="signup_toggle"
                   className="signup_tog"
                 >
                   Iniciar sesion

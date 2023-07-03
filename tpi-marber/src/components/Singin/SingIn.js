@@ -164,7 +164,6 @@ const SingIn = ({ setLogStatusHandle }) => {
           <span className={`quest ${theme === "dark" && "quest-dark"}`}>
             ¿No tienes una cuenta?
             <label
-              for="signup_toggle"
               className="signup_tog"
               onClick={goToLoginHandler}
             >
