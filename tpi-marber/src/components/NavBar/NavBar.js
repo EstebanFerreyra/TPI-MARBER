@@ -16,7 +16,7 @@ const NavBar = () => {
   const { registeredUser, removeRegisteredUser } = useContext(
     RegisteredUserContext
   );
-  const {customers} = useContext(CustomersContext);
+  const { customers } = useContext(CustomersContext);
 
   const navigation = useNavigate();
 
@@ -180,11 +180,13 @@ const NavBar = () => {
                 className="navbar-text"
                 style={{ "margin-right": "10px" }}
               >
-                ¡Bienvenido {customers
+                ¡Bienvenido{" "}
+                {customers
                   .filter((user) => user.id === registeredUser.id)
                   .map((user, index) => (
                     <strong key={index}>{user.userBd}</strong>
-                  ))}!
+                  ))}
+                !
               </span>
             )}
             <div className="d-flex" role="search">
@@ -227,9 +229,9 @@ const NavBar = () => {
                   Cerrar sesion
                 </button>
               )}
+              {<ToggleTheme />}
             </div>
           </div>
-          {<ToggleTheme />}
         </div>
       </nav>
     </div>

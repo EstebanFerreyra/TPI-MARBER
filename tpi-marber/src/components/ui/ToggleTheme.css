@@ -17,6 +17,34 @@
   stroke-width: 2px;
 }
 
+.theme-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 13px;
+  margin-left: 3px;
+  position: relative;
+  display: inline-block;
+}
+
+.theme-toggle-button {
+  display: flex;
+  width: 28px;
+  height: 28px;
+  position: relative;
+  z-index: 2;
+  border: none;
+  opacity: 0%;
+}
+
+.mmm {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
 .theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
   stroke: var(--icon-fill-hover);
 }

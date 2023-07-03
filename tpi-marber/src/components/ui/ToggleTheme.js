@@ -3,12 +3,12 @@ import { ThemeContext } from "../context/Theme/Theme";
 import "./ToggleTheme.css";
 
 const ToggleTheme = () => {
-  const { themee, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const storageKey = "theme-preference";
 
   const onClick = () => {
-    theme.value = theme.value === "light" ? "dark" : "light";
+    themee.value = themee.value === "light" ? "dark" : "light";
 
     setPreference();
   };
@@ -23,19 +23,19 @@ const ToggleTheme = () => {
   };
 
   const setPreference = () => {
-    localStorage.setItem(storageKey, theme.value);
+    localStorage.setItem(storageKey, themee.value);
     reflectPreference();
   };
 
   const reflectPreference = () => {
-    document.firstElementChild.setAttribute("data-theme", theme.value);
+    document.firstElementChild.setAttribute("data-theme", themee.value);
 
     document
       .querySelector("#theme-toggle")
-      ?.setAttribute("aria-label", theme.value);
+      ?.setAttribute("aria-label", themee.value);
   };
 
-  const theme = {
+  const themee = {
     value: getColorPreference(),
   };
 
@@ -50,51 +50,33 @@ const ToggleTheme = () => {
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", ({ matches: isDark }) => {
-      theme.value = isDark ? "dark" : "light";
+      themee.value = isDark ? "dark" : "light";
       setPreference();
     });
   return (
     <>
-      <button
-        className="theme-toggle"
-        onClick={toggleTheme}
-        variant={themee === "light" ? "dark" : "light"}
-        id="theme-toggle"
-        title="Toggles light & dark"
-        aria-label="auto"
-        aria-live="polite"
-      >
-        <svg
-          className="sun-and-moon"
-          aria-hidden="true"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-        >
-          <mask className="moon" id="moon-mask">
-            <rect x="0" y="0" width="100%" height="100%" fill="white" />
-            <circle cx="24" cy="10" r="6" fill="black" />
-          </mask>
-          <circle
-            className="sun"
-            cx="12"
-            cy="12"
-            r="6"
-            mask="url(#moon-mask)"
-            fill="currentColor"
+      <div className="theme-container">
+        <button
+          className="theme-toggle-button"
+          onClick={toggleTheme}
+          variant={themee === "light" ? "dark" : "light"}
+          //id="theme-toggle"
+          title="Toggles light & dark"
+          aria-label="auto"
+          aria-live="polite"
+        ></button>
+        {theme === "light" ? (
+          <img
+            className="mmm"
+            src="https://cdn-icons-png.flaticon.com/512/66/66275.png"
           />
-          <g className="sun-beams" stroke="currentColor">
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </g>
-        </svg>
-      </button>
+        ) : (
+          <img
+            className="mmm"
+            src="https://cdn-icons-png.flaticon.com/512/702/702471.png"
+          />
+        )}
+      </div>
     </>
   );
 };
