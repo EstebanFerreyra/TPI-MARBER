@@ -42,8 +42,8 @@ const Beers = ({
   let beersMapped = "";
   if (filter === "") {
     beersMapped = beers
-      .filter((beer) => beer.beerPrice < maxPrice)
-      .filter((beer) => beer.beerPrice > minPrice)
+      .filter((beer) => beer.beerPrice <= maxPrice)
+      .filter((beer) => beer.beerPrice >= minPrice)
       .map((beer) => (
         <BeerItem
           key={beer.id}
@@ -57,8 +57,8 @@ const Beers = ({
   } else {
     beersMapped = beers
       .filter((beer) => beer.beerStyle === filter)
-      .filter((beer) => beer.beerPrice < maxPrice)
-      .filter((beer) => beer.beerPrice > minPrice)
+      .filter((beer) => beer.beerPrice <= maxPrice)
+      .filter((beer) => beer.beerPrice >= minPrice)
       .map((beer) => (
         <BeerItem
           key={beer.id}

@@ -30,7 +30,7 @@ const CartItems = () => {
   const createPreference = async () => {
     try {
       const response = await axios.post(
-        "https://b733-181-105-78-11.ngrok-free.app/create_preference",
+        "https://5652-190-210-128-139.ngrok-free.app/create_preference",
         {
           description: "Cervecería Marber",
           price: total,
@@ -142,18 +142,16 @@ const CartItems = () => {
                   <p className="cart-text">${item.price * item.quantity}</p>
                   <div className="cart-buttons">
                     <button
-                      className={`quant-button ${
-                        theme === "dark" && "quant-button-dark"
-                      }`}
+                      className={`quant-button ${theme === "dark" && "quant-button-dark"
+                        }`}
                       onClick={() => increaseHandler(item.id)}
                     >
                       +
                     </button>
                     {
                       <button
-                        className={`quant-button ${
-                          theme === "dark" && "quant-button-dark"
-                        }`}
+                        className={`quant-button ${theme === "dark" && "quant-button-dark"
+                          }`}
                         onClick={() => decreaseHandler(item.id)}
                         disabled={item.quantity === 1}
                       >
@@ -161,9 +159,8 @@ const CartItems = () => {
                       </button>
                     }
                     <button
-                      className={`bin-button ${
-                        theme === "dark" && "bin-button-dark"
-                      }`}
+                      className={`bin-button ${theme === "dark" && "bin-button-dark"
+                        }`}
                       onClick={() => removeItemHandler(item.id)}
                     >
                       <svg
@@ -201,9 +198,8 @@ const CartItems = () => {
           </div>
           <div className="d-flex justify-content-center">
             <button
-              className={`checkout-button-cart ${
-                theme === "dark" && "checkout-button-cart-dark"
-              }`}
+              className={`checkout-button-cart ${theme === "dark" && "checkout-button-cart-dark"
+                }`}
               onClick={checkoutHandler}
             >
               Finalizar compra
